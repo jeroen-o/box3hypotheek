@@ -1,0 +1,1930 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hypotheektoets 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F4EFE6; --bg-card: #FBF8F2;
+  --ink: #1A2421; --ink-soft: #4A5450; --ink-faint: #8C928E;
+  --line: #D8D0BF; --line-soft: #E8E1D2;
+  --teal: #1F4E5F; --teal-bg: #E5EDF0;
+  --terra: #B5471A; --terra-bg: #F4DDCF;
+  --gold: #8B6F2A; --gold-bg: #EFE5C8;
+  --moss: #4F6B3A; --moss-bg: #E2EAD3;
+  --plum: #5C3D5C; --plum-bg: #ECDDEB;
+  --sky: #2D5F8B; --sky-bg: #DCE8F2;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: var(--bg); color: var(--ink);
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased;
+}
+body {
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(31,78,95,0.04) 0%, transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(181,71,26,0.04) 0%, transparent 40%);
+  min-height: 100vh; padding: 48px 24px 80px;
+}
+.wrap { max-width: 1080px; margin: 0 auto; }
+
+header {
+  margin-bottom: 56px; border-bottom: 1px solid var(--line);
+  padding-bottom: 32px; display: flex; align-items: flex-end;
+  justify-content: space-between; gap: 24px; flex-wrap: wrap;
+}
+.header-main { flex: 1; min-width: 280px; }
+.eyebrow {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-faint); font-weight: 600; margin-bottom: 12px;
+}
+h1 {
+  font-family: 'Fraunces', serif; font-weight: 500;
+  font-size: clamp(40px, 6vw, 60px); line-height: 1.0;
+  letter-spacing: -0.02em; font-style: italic;
+}
+h1 em { font-style: normal; font-weight: 600; }
+.lede {
+  margin-top: 14px; font-size: 15px; color: var(--ink-soft); max-width: 580px;
+}
+.print-card { text-align: right; font-size: 12px; color: var(--ink-soft); line-height: 1.55; }
+.print-card .stamp-name {
+  font-family: 'Fraunces', serif; font-style: italic;
+  font-size: 17px; font-weight: 500; color: var(--ink);
+  margin-bottom: 4px; display: block;
+}
+.print-card .stamp-line { display: block; }
+.print-card .stamp-line strong { color: var(--ink); font-weight: 500; }
+.regelgeving-tag {
+  display: inline-block; margin-top: 6px;
+  font-size: 10px; letter-spacing: 0.08em;
+  color: var(--ink-faint); padding: 2px 8px;
+  background: var(--line-soft); border-radius: 2px; font-weight: 600;
+}
+
+.section { margin-bottom: 56px; }
+.section-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 28px; padding-bottom: 12px;
+  border-bottom: 1px solid var(--line); gap: 16px;
+}
+.section-head h2 {
+  font-family: 'Fraunces', serif; font-size: 26px; font-weight: 500;
+  font-style: italic; letter-spacing: -0.01em;
+}
+.section-head h2 .num {
+  font-style: normal; font-weight: 600; color: var(--ink-faint);
+  margin-right: 6px; font-size: 18px;
+}
+.section-meta {
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-faint); font-weight: 600;
+}
+.section-meta a {
+  color: var(--ink-faint); text-decoration: underline;
+  text-decoration-color: var(--line); text-underline-offset: 3px;
+  transition: color 0.15s;
+}
+.section-meta a:hover { color: var(--ink); }
+.subhead {
+  font-family: 'Fraunces', serif; font-size: 17px; font-weight: 500;
+  font-style: italic; color: var(--ink); margin: 24px 0 12px;
+  padding-bottom: 8px; border-bottom: 1px dashed var(--line);
+}
+
+label.lbl {
+  display: block; font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-faint);
+  font-weight: 600; margin-bottom: 10px;
+}
+label.lbl .lbl-extra {
+  font-weight: 400; text-transform: none; letter-spacing: 0;
+  color: var(--ink-faint); font-size: 11px; font-style: italic;
+}
+.help { font-size: 11.5px; color: var(--ink-faint); margin-top: 6px; font-style: italic; }
+
+input[type="number"], input[type="text"] {
+  font-family: 'Fraunces', serif; background: transparent; color: var(--ink);
+  outline: none; border: none; -moz-appearance: textfield;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+input[type="text"].field-text, input[type="number"].field-text-num {
+  width: 100%; font-size: 22px; font-weight: 500; padding: 10px 0;
+  border-bottom: 2px solid var(--ink); letter-spacing: -0.005em;
+}
+input[type="text"].field-text:focus, input[type="number"].field-text-num:focus {
+  border-bottom-color: var(--teal);
+}
+input[type="text"].field-text::placeholder { color: var(--ink-faint); font-style: italic; opacity: 0.6; }
+
+input[type="date"] {
+  width: 100%; font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500;
+  padding: 10px 0; border: none; border-bottom: 2px solid var(--ink);
+  background: transparent; color: var(--ink); outline: none;
+}
+input[type="date"]:focus { border-bottom-color: var(--teal); }
+input[type="date"]::-webkit-calendar-picker-indicator { cursor: pointer; filter: opacity(0.5); }
+input[type="date"]:hover::-webkit-calendar-picker-indicator { filter: opacity(0.9); }
+
+select.field-select {
+  width: 100%; font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500;
+  padding: 10px 0; border: none; border-bottom: 2px solid var(--ink);
+  background: transparent; color: var(--ink); outline: none;
+  cursor: pointer; appearance: none; -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'><path d='M3 5l4 4 4-4' stroke='%231A2421' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat; background-position: right 4px center; padding-right: 24px;
+}
+select.field-select:focus { border-bottom-color: var(--teal); }
+
+select.field-select-sm {
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
+  padding: 6px 24px 6px 10px; border: 1px solid var(--line);
+  background: var(--bg-card); color: var(--ink); outline: none;
+  cursor: pointer; appearance: none; -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 14 14'><path d='M3 5l4 4 4-4' stroke='%231A2421' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat; background-position: right 6px center;
+  border-radius: 3px;
+}
+
+.field-big input[type="number"] {
+  width: 100%; font-size: 28px; font-weight: 500;
+  padding: 8px 0; border-bottom: 2px solid var(--ink);
+}
+.field-big .input-prefix {
+  display: flex; align-items: baseline; gap: 8px;
+  border-bottom: 2px solid var(--ink);
+}
+.field-big .input-prefix span {
+  font-family: 'Fraunces', serif; font-size: 28px;
+  font-weight: 500; color: var(--ink-soft);
+}
+.field-big .input-prefix input { border: none; padding: 8px 0; }
+.field-big .input-prefix:focus-within { border-bottom-color: var(--teal); }
+
+.field-med .input-prefix {
+  display: flex; align-items: baseline; gap: 6px;
+  border-bottom: 2px solid var(--ink);
+}
+.field-med .input-prefix span {
+  font-family: 'Fraunces', serif; font-size: 22px;
+  font-weight: 500; color: var(--ink-soft);
+}
+.field-med .input-prefix input {
+  width: 100%; font-size: 22px; font-weight: 500; padding: 10px 0; border: none;
+}
+.field-med .input-prefix:focus-within { border-bottom-color: var(--teal); }
+
+.field-sm .input-prefix {
+  display: flex; align-items: baseline; gap: 4px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+}
+.field-sm .input-prefix span {
+  font-family: 'Fraunces', serif; font-size: 16px; color: var(--ink-soft);
+}
+.field-sm .input-prefix input {
+  width: 100%; font-size: 16px; padding: 6px 0; font-weight: 500; border: none;
+}
+.field-sm .input-prefix:focus-within { border-bottom-color: var(--teal); }
+.field-sm .lbl { margin-bottom: 6px; font-size: 10px; }
+
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; align-items: end; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: end; }
+.grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px; align-items: end; }
+.grid-2-mt { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: end; margin-top: 28px; }
+.grid-3-mt { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; align-items: end; margin-top: 28px; }
+.grid-4-mt { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px; align-items: end; margin-top: 28px; }
+@media (max-width: 720px) {
+  .grid-2, .grid-3, .grid-4, .grid-2-mt, .grid-3-mt, .grid-4-mt {
+    grid-template-columns: 1fr; gap: 24px;
+  }
+}
+
+.fund-check { display: flex; align-items: end; height: 100%; padding-bottom: 4px; }
+.fund-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 18px; border: 1px solid var(--ink);
+  background: var(--bg-card); font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink); cursor: pointer;
+  border-radius: 4px; transition: all 0.2s; text-decoration: none;
+}
+.fund-btn:hover { background: var(--ink); color: var(--bg-card); }
+.fund-btn[aria-disabled="true"] { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
+
+.bouwjaar-warn { margin-top: 6px; font-size: 11px; color: var(--terra); font-style: italic; }
+
+.aankoop-summary {
+  margin-top: 28px; padding: 20px 24px;
+  background: var(--bg-card); border: 1px solid var(--line); border-radius: 4px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+@media (max-width: 720px) { .aankoop-summary { grid-template-columns: 1fr 1fr; } }
+.aankoop-cell .lbl-mini {
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-faint); font-weight: 600; margin-bottom: 6px;
+}
+.aankoop-cell .val-mini {
+  font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.aankoop-cell.highlight .val-mini { color: var(--teal); font-size: 22px; }
+.aankoop-cell .sub-mini { font-size: 11px; color: var(--ink-faint); margin-top: 4px; font-style: italic; }
+
+/* OPT BLOCK (toggles) */
+.opt-block {
+  margin-top: 18px; padding: 20px 24px;
+  border: 1px solid var(--line); border-radius: 4px;
+  background: var(--bg-card); display: grid;
+  grid-template-columns: 56px 1fr auto; gap: 20px;
+  align-items: center; transition: all 0.2s;
+}
+.opt-block.active-rule.gold { border-color: var(--gold); background: linear-gradient(to right, var(--gold-bg), var(--bg-card) 60%); }
+.opt-block.active-rule.moss { border-color: var(--moss); background: linear-gradient(to right, var(--moss-bg), var(--bg-card) 60%); }
+.opt-block.active-rule.plum { border-color: var(--plum); background: linear-gradient(to right, var(--plum-bg), var(--bg-card) 60%); }
+.opt-block.active-rule.teal { border-color: var(--teal); background: linear-gradient(to right, var(--teal-bg), var(--bg-card) 60%); }
+.opt-block.inactive-rule { opacity: 0.78; }
+.opt-block .opt-title {
+  font-family: 'Fraunces', serif; font-size: 17px; font-weight: 500;
+  font-style: italic; margin-bottom: 4px;
+}
+.opt-block .opt-desc { font-size: 12.5px; color: var(--ink-soft); line-height: 1.45; }
+.opt-status {
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  font-weight: 700; padding: 6px 12px; border-radius: 2px; white-space: nowrap;
+}
+.opt-status.gold-active { background: var(--gold-bg); color: var(--gold); }
+.opt-status.moss-active { background: var(--moss-bg); color: var(--moss); }
+.opt-status.plum-active { background: var(--plum-bg); color: var(--plum); }
+.opt-status.teal-active { background: var(--teal-bg); color: var(--teal); }
+.opt-status.inactive { background: var(--line-soft); color: var(--ink-faint); }
+.opt-status.off { background: transparent; color: var(--ink-faint); border: 1px dashed var(--line); }
+.opt-reason {
+  display: block; font-size: 11px; font-style: italic; font-weight: 500;
+  color: var(--ink-faint); margin-top: 4px;
+}
+@media (max-width: 720px) {
+  .opt-block { grid-template-columns: 1fr; gap: 14px; }
+  .opt-status { justify-self: start; }
+}
+
+.subfields {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  padding: 16px 24px 20px 100px;
+  background: var(--bg-card); border: 1px solid var(--line);
+  border-top: none; border-radius: 0 0 4px 4px; margin-top: -16px;
+}
+.subfields.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.subfields.cols-1 { grid-template-columns: 1fr; }
+@media (max-width: 720px) { .subfields, .subfields.cols-3 { grid-template-columns: 1fr; padding: 16px 24px; } }
+
+/* TOGGLE SWITCH */
+.toggle { position: relative; display: inline-block; width: 44px; height: 24px; flex-shrink: 0; }
+.toggle.lg { width: 56px; height: 30px; }
+.toggle input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; inset: 0; background: var(--line); transition: 0.2s; border-radius: 999px; }
+.slider:before {
+  position: absolute; content: ''; height: 18px; width: 18px;
+  left: 3px; top: 3px; background: var(--bg-card);
+  transition: 0.2s; border-radius: 50%; box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+.toggle.lg .slider:before { height: 24px; width: 24px; }
+.toggle input:checked + .slider { background: var(--terra); }
+.toggle input:checked + .slider:before { transform: translateX(20px); }
+.toggle.lg input:checked + .slider:before { transform: translateX(26px); }
+.toggle.gold input:checked + .slider { background: var(--gold); }
+.toggle.moss input:checked + .slider { background: var(--moss); }
+.toggle.plum input:checked + .slider { background: var(--plum); }
+.toggle.teal input:checked + .slider { background: var(--teal); }
+.toggle.sky input:checked + .slider { background: var(--sky); }
+
+/* PERSONA HEADER */
+.persona-head {
+  font-family: 'Fraunces', serif; font-size: 15px; font-weight: 500;
+  font-style: italic; color: var(--ink-soft);
+  display: flex; align-items: baseline; gap: 12px;
+  margin-bottom: 12px; padding: 6px 0;
+  border-bottom: 1px dashed var(--line);
+}
+.persona-head .pchip {
+  font-family: 'Inter', sans-serif; font-size: 9px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--teal); background: var(--teal-bg);
+  padding: 2px 8px; border-radius: 2px; font-weight: 700; font-style: normal;
+}
+.persona-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px; align-items: end; }
+@media (max-width: 800px) { .persona-grid { grid-template-columns: 1fr 1fr; gap: 18px; } }
+@media (max-width: 480px) { .persona-grid { grid-template-columns: 1fr; } }
+
+/* AOW INFO */
+.aow-info {
+  background: var(--bg-card); border: 1px solid var(--line); border-radius: 4px;
+  padding: 16px 20px; margin-top: 14px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+}
+@media (max-width: 720px) { .aow-info { grid-template-columns: 1fr 1fr; } }
+.aow-cell .lbl-mini {
+  font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-faint); font-weight: 600; margin-bottom: 4px;
+}
+.aow-cell .val-mini {
+  font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500;
+  line-height: 1.1;
+}
+.aow-cell .sub-mini { font-size: 10px; color: var(--ink-faint); margin-top: 4px; font-style: italic; }
+.aow-cell.status-yes .val-mini { color: var(--terra); }
+.aow-cell.status-no .val-mini { color: var(--teal); }
+.aow-cell.status-soon .val-mini { color: var(--gold); }
+.aow-cell .estimate-tag {
+  display: inline-block; font-size: 8px; letter-spacing: 0.1em;
+  text-transform: uppercase; font-family: 'Inter', sans-serif; font-weight: 700;
+  background: var(--line-soft); color: var(--ink-faint);
+  padding: 1px 5px; border-radius: 2px; margin-left: 4px; vertical-align: 3px;
+}
+
+.pension-warning {
+  margin-top: 14px; padding: 14px 20px;
+  background: var(--gold-bg); border-left: 3px solid var(--gold);
+  border-radius: 0 4px 4px 0; font-size: 13px; color: var(--gold);
+}
+.pension-warning strong { font-weight: 700; }
+
+/* LOAN TABLE */
+.loan-table {
+  background: var(--bg-card); border: 1px solid var(--line);
+  border-radius: 4px; overflow: hidden;
+}
+.loan-cols {
+  display: grid; grid-template-columns: 1.5fr 0.9fr 0.9fr 1.1fr 0.6fr 36px;
+  gap: 12px; padding: 14px 20px;
+  border-bottom: 1px solid var(--line); align-items: center;
+}
+.loan-header {
+  background: rgba(26,36,33,0.04); font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-faint); font-weight: 700;
+}
+.loan-header a {
+  color: var(--ink-faint); text-decoration: underline;
+  text-decoration-color: var(--line); text-underline-offset: 3px;
+}
+.loan-header a:hover { color: var(--teal); }
+.loan-row:last-of-type { border-bottom: none; }
+.loan-row .row-cell {
+  display: flex; align-items: baseline; gap: 6px;
+  border-bottom: 1px solid var(--line-soft); padding-bottom: 4px;
+}
+.loan-row .row-cell:focus-within { border-bottom-color: var(--teal); }
+.loan-row .row-cell span { font-size: 12px; color: var(--ink-faint); font-family: 'Fraunces', serif; }
+.loan-row .row-cell input { width: 100%; font-size: 16px; font-weight: 500; padding: 6px 0; }
+.loan-row .row-toggle { display: flex; justify-content: flex-start; align-items: center; }
+.loan-row select.aflosvorm-sel {
+  width: 100%; font-family: 'Inter', sans-serif; font-size: 13px;
+  font-weight: 500; padding: 6px 22px 6px 8px;
+  border: 1px solid var(--line); background: var(--bg-card);
+  color: var(--ink); outline: none; cursor: pointer;
+  appearance: none; -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 14 14'><path d='M3 5l4 4 4-4' stroke='%231A2421' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat; background-position: right 6px center;
+  border-radius: 3px;
+}
+
+.remove-btn {
+  width: 28px; height: 28px; border: 1px solid var(--line);
+  background: transparent; color: var(--ink-faint); border-radius: 50%;
+  cursor: pointer; font-size: 16px; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s; font-family: 'Inter', sans-serif;
+}
+.remove-btn:hover { border-color: var(--terra); color: var(--terra); background: var(--terra-bg); }
+.add-btn {
+  margin-top: 14px; padding: 14px 20px;
+  border: 1px dashed var(--line); background: transparent; color: var(--ink-soft);
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer;
+  width: 100%; border-radius: 4px;
+}
+.add-btn:hover { border-color: var(--ink); color: var(--ink); border-style: solid; background: var(--bg-card); }
+.empty-state { padding: 32px 24px; text-align: center; color: var(--ink-faint); font-style: italic; font-size: 14px; }
+
+/* TOETS BANNER */
+.toets-banner {
+  padding: 28px 32px; border-radius: 4px;
+  display: flex; align-items: center; gap: 24px;
+  margin-bottom: 24px; border: 1px solid;
+}
+.toets-banner.pass { background: var(--teal-bg); border-color: var(--teal); color: var(--teal); }
+.toets-banner.fail { background: var(--terra-bg); border-color: var(--terra); color: var(--terra); }
+.toets-banner.idle { background: var(--bg-card); border-color: var(--line); color: var(--ink-faint); border-style: dashed; }
+.toets-icon {
+  font-family: 'Fraunces', serif; font-size: 28px; font-weight: 600;
+  width: 56px; height: 56px; border: 2px solid currentColor; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.toets-content { flex: 1; }
+.toets-content h3 {
+  font-family: 'Fraunces', serif; font-size: 24px;
+  font-style: italic; font-weight: 500; margin-bottom: 4px; line-height: 1.15;
+}
+.toets-content p { font-size: 14px; opacity: 0.85; }
+
+.toets-metrics {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  background: var(--bg-card); border: 1px solid var(--line);
+  border-radius: 4px; overflow: hidden;
+}
+@media (max-width: 720px) { .toets-metrics { grid-template-columns: repeat(2, 1fr); } }
+.t-metric { padding: 22px 24px; border-right: 1px solid var(--line); }
+@media (max-width: 720px) {
+  .t-metric:nth-child(2) { border-right: none; }
+  .t-metric:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+}
+.t-metric:last-child { border-right: none; }
+.t-metric .lab {
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-faint); font-weight: 700; margin-bottom: 8px;
+}
+.t-metric .val {
+  font-family: 'Fraunces', serif; font-size: 24px; font-weight: 500;
+  letter-spacing: -0.01em; line-height: 1.0;
+}
+.t-metric .val .unit { font-size: 14px; color: var(--ink-soft); font-weight: 400; }
+.t-metric .sub { font-size: 11px; color: var(--ink-faint); margin-top: 6px; font-style: italic; }
+.t-metric.pos .val { color: var(--teal); }
+.t-metric.neg .val { color: var(--terra); }
+
+/* TWO-CARD pre-AOW + post-AOW */
+.aow-toets-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+}
+@media (max-width: 720px) { .aow-toets-grid { grid-template-columns: 1fr; } }
+.aow-toets-card {
+  background: var(--bg-card); border: 1px solid var(--line);
+  border-radius: 4px; padding: 24px; position: relative; overflow: hidden;
+}
+.aow-toets-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+}
+.aow-toets-card.pre::before { background: var(--teal); }
+.aow-toets-card.post::before { background: var(--terra); }
+.aow-toets-card.pass-state .card-status { color: var(--teal); }
+.aow-toets-card.fail-state .card-status { color: var(--terra); }
+.aow-toets-card.fail-state { border-color: var(--terra); }
+.aow-toets-card.pass-state { border-color: var(--teal); }
+.aow-toets-card .card-tag {
+  display: inline-block; font-size: 10px; letter-spacing: 0.16em;
+  text-transform: uppercase; font-weight: 700;
+  padding: 4px 10px; border-radius: 2px; margin-bottom: 14px;
+}
+.aow-toets-card.pre .card-tag { background: var(--teal-bg); color: var(--teal); }
+.aow-toets-card.post .card-tag { background: var(--terra-bg); color: var(--terra); }
+.aow-toets-card .card-title {
+  font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500;
+  font-style: italic; margin-bottom: 16px;
+}
+.aow-toets-card .row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 8px 0; border-bottom: 1px solid var(--line-soft); font-size: 13px;
+}
+.aow-toets-card .row:last-child { border-bottom: none; }
+.aow-toets-card .row .label { color: var(--ink-soft); font-size: 12px; }
+.aow-toets-card .row .value { font-family: 'Fraunces', serif; font-weight: 500; font-size: 15px; }
+.aow-toets-card .card-status {
+  font-family: 'Fraunces', serif; font-size: 17px; font-weight: 600;
+  font-style: italic; padding: 12px 0; margin-top: 8px;
+  border-top: 1px dashed var(--line); text-align: right;
+}
+
+/* BREAKDOWN */
+.breakdown {
+  margin-top: 24px; background: var(--bg-card);
+  border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+}
+.breakdown-title {
+  padding: 14px 22px; border-bottom: 1px solid var(--line);
+  background: rgba(26,36,33,0.03); font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-faint); font-weight: 700;
+}
+.breakdown-row {
+  display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 0.7fr;
+  gap: 10px; padding: 12px 22px;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 12.5px; align-items: center;
+}
+.breakdown-row:last-child { border-bottom: none; }
+.breakdown-row.head {
+  font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-faint); font-weight: 600;
+}
+.breakdown-row .num { font-family: 'Fraunces', serif; font-weight: 500; font-size: 13.5px; }
+.breakdown-row .b3-tag {
+  display: inline-block; padding: 2px 8px; border-radius: 2px;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+}
+.breakdown-row .b3-tag.yes { background: var(--terra-bg); color: var(--terra); }
+.breakdown-row .b3-tag.no { background: var(--line-soft); color: var(--ink-faint); }
+.breakdown-row .form-tag {
+  display: inline-block; padding: 1px 6px; border-radius: 2px;
+  font-size: 9.5px; font-weight: 600; background: var(--bg); color: var(--ink-soft);
+  border: 1px solid var(--line); font-family: 'Inter', sans-serif;
+}
+@media (max-width: 720px) {
+  .breakdown-row { grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px; }
+  .breakdown-row.head { display: none; }
+  .breakdown-row .cell::before {
+    content: attr(data-label); display: block;
+    font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-faint); font-weight: 600; margin-bottom: 2px;
+  }
+}
+
+/* RESULT CARDS */
+.result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 720px) { .result-grid { grid-template-columns: 1fr; } }
+.result-card {
+  background: var(--bg-card); border: 1px solid var(--line);
+  border-radius: 4px; padding: 24px; position: relative; overflow: hidden;
+}
+.result-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+}
+.result-card.pass::before { background: var(--teal); }
+.result-card.fail::before { background: var(--terra); }
+.result-card.idle::before { background: var(--line); }
+.result-card .card-tag {
+  display: inline-block; font-size: 10px; letter-spacing: 0.16em;
+  text-transform: uppercase; font-weight: 700;
+  padding: 4px 10px; border-radius: 2px; margin-bottom: 16px;
+}
+.result-card.pass .card-tag { background: var(--teal-bg); color: var(--teal); }
+.result-card.fail .card-tag { background: var(--terra-bg); color: var(--terra); }
+.result-card.idle .card-tag { background: var(--line-soft); color: var(--ink-faint); }
+.result-card .card-title {
+  font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500;
+  font-style: italic; margin-bottom: 16px;
+}
+.result-card .row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 10px 0; border-bottom: 1px solid var(--line-soft); font-size: 14px;
+}
+.result-card .row:last-child { border-bottom: none; }
+.result-card .row .label { color: var(--ink-soft); font-size: 12px; }
+.result-card .row .value { font-family: 'Fraunces', serif; font-weight: 500; font-size: 16px; }
+
+/* COMPARISON CARDS (max hyp) */
+.results { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 640px) { .results { grid-template-columns: 1fr; } }
+.card {
+  background: var(--bg-card); border: 1px solid var(--line);
+  padding: 24px; border-radius: 4px; position: relative; overflow: hidden;
+}
+.card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.card.noaow::before { background: var(--teal); }
+.card.aow::before { background: var(--terra); }
+.card-tag-cmp {
+  display: inline-block; font-size: 10px; letter-spacing: 0.16em;
+  text-transform: uppercase; font-weight: 700;
+  padding: 4px 10px; border-radius: 2px; margin-bottom: 16px;
+}
+.card.noaow .card-tag-cmp { background: var(--teal-bg); color: var(--teal); }
+.card.aow .card-tag-cmp { background: var(--terra-bg); color: var(--terra); }
+.card.noaow.active { box-shadow: 0 0 0 2px var(--teal) inset; }
+.card.aow.active { box-shadow: 0 0 0 2px var(--terra) inset; }
+.card-title-cmp {
+  font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500;
+  font-style: italic; margin-bottom: 16px;
+}
+.metric { padding: 10px 0; }
+.metric + .metric { border-top: 1px solid var(--line); }
+.metric .lab {
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-faint); font-weight: 700; margin-bottom: 6px;
+}
+.metric .v {
+  font-family: 'Fraunces', serif; font-size: 26px; font-weight: 500;
+  line-height: 1.0; letter-spacing: -0.01em;
+}
+.metric .v .u { font-size: 14px; color: var(--ink-soft); font-weight: 400; }
+.metric .verh-mark {
+  display: block; margin-top: 6px; font-size: 11px;
+  font-family: 'Inter', sans-serif; font-weight: 500; color: var(--ink-faint);
+}
+.metric .verh-mark .chip {
+  display: inline-block; padding: 1px 7px; border-radius: 2px;
+  font-weight: 600; font-size: 10px; letter-spacing: 0.04em; margin-right: 4px;
+}
+.metric .verh-mark .chip.gold { background: var(--gold-bg); color: var(--gold); }
+.metric .verh-mark .chip.moss { background: var(--moss-bg); color: var(--moss); }
+.metric .verh-mark .chip.plum { background: var(--plum-bg); color: var(--plum); }
+.warn-row {
+  background: var(--terra-bg); border-left: 3px solid var(--terra);
+  padding: 10px 14px; margin-top: 14px; font-size: 12px; color: var(--terra);
+  border-radius: 0 4px 4px 0;
+}
+
+.box-toggle-bar {
+  background: var(--bg-card); border: 1px solid var(--line); border-radius: 4px;
+  padding: 18px 24px; margin-bottom: 20px;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 20px; flex-wrap: wrap;
+}
+.box-toggle-bar .label-block { flex: 1; min-width: 200px; }
+.box-toggle-bar .label-block strong {
+  font-family: 'Fraunces', serif; font-style: italic; font-size: 17px;
+  font-weight: 500; display: block; margin-bottom: 2px;
+}
+.box-toggle-bar .label-block span { font-size: 12.5px; color: var(--ink-soft); }
+
+footer {
+  margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line);
+  font-size: 11.5px; color: var(--ink-faint); line-height: 1.7;
+}
+footer p { margin-bottom: 6px; }
+footer code {
+  font-family: 'Inter', monospace; font-size: 10.5px;
+  background: rgba(26,36,33,0.06); padding: 1px 6px; border-radius: 2px;
+}
+footer a { color: var(--ink-soft); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 2px; }
+footer a:hover { color: var(--ink); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.section { animation: fadeUp 0.45s ease both; }
+.section:nth-child(2) { animation-delay: 0.04s; }
+.section:nth-child(3) { animation-delay: 0.08s; }
+.section:nth-child(4) { animation-delay: 0.12s; }
+.section:nth-child(5) { animation-delay: 0.16s; }
+.section:nth-child(6) { animation-delay: 0.20s; }
+.section:nth-child(7) { animation-delay: 0.24s; }
+.section:nth-child(8) { animation-delay: 0.28s; }
+.section:nth-child(9) { animation-delay: 0.32s; }
+
+@media print {
+  body { background: white; padding: 20px; }
+  .add-btn, .remove-btn, .fund-btn { display: none; }
+  .section { page-break-inside: avoid; margin-bottom: 28px; animation: none; }
+  .toets-banner, .toets-metrics, .breakdown, .result-grid, .results, .opt-block, .aow-info, .loan-table, .aankoop-summary, .aow-toets-grid {
+    page-break-inside: avoid;
+  }
+  body { font-size: 12px; }
+  h1 { font-size: 32px; }
+  .section-head h2 { font-size: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="header-main">
+    <div class="eyebrow">Financieringslastnormen 2026 · Tijdelijke Regeling Hypothecair Krediet</div>
+    <h1>Hypotheek<em>toets</em></h1>
+    <p class="lede">Volledige TRHK-toets: geïntegreerde norm, pre/post-AOW, LTV, NHG, kosten koper, alle hypotheekvormen en complete verplichtingen.</p>
+    <span class="regelgeving-tag">Regelgeving: TRHK 2026 · Stcrt 2024 nr. 35962 · NHG VnN 2026</span>
+  </div>
+  <div class="print-card" id="print-card">
+    <span class="stamp-name" id="stamp-naam">—</span>
+    <span class="stamp-line">Adviseur: <strong id="stamp-adviseur">—</strong></span>
+    <span class="stamp-line">Wft-nr: <strong id="stamp-wft">—</strong></span>
+    <span class="stamp-line">Datum: <strong id="stamp-datum">—</strong></span>
+  </div>
+</header>
+
+<section class="section">
+  <div class="section-head">
+    <h2><span class="num">I.</span> <em>Klant &amp; adviseur</em></h2>
+    <span class="section-meta">Stap 1</span>
+  </div>
+  <div class="grid-3">
+    <div><label class="lbl" for="naam">Naam klant(en)</label>
+      <input type="text" id="naam" class="field-text" value="" placeholder="Naam klant 1, klant 2"></div>
+    <div><label class="lbl" for="adviseur">Hypotheekadviseur</label>
+      <input type="text" id="adviseur" class="field-text" value="" placeholder="Naam adviseur"></div>
+    <div><label class="lbl" for="wft">Wft / SEH-nummer</label>
+      <input type="text" id="wft" class="field-text" value="" placeholder="bv. 12.345.678"></div>
+  </div>
+  <div class="grid-2-mt">
+    <div><label class="lbl">Datum toets</label>
+      <input type="text" id="datum-input" class="field-text" value="" readonly style="border-bottom-color: var(--line);"></div>
+    <div><label class="lbl">Versie regelgeving</label>
+      <input type="text" class="field-text" value="TRHK 2026 (per 1-1-2026)" readonly style="border-bottom-color: var(--line);"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2><span class="num">II.</span> <em>Woning &amp; aankoop</em></h2>
+    <span class="section-meta">Stap 2</span>
+  </div>
+  <div class="grid-2">
+    <div><label class="lbl" for="adres">Adres aan te kopen woning</label>
+      <input type="text" id="adres" class="field-text" value="" placeholder="Straat, huisnummer, postcode, plaats"></div>
+    <div><label class="lbl" for="bouwjaar">Bouwjaar</label>
+      <input type="number" id="bouwjaar" class="field-text-num" value="" placeholder="bv. 1985" min="1700" max="2030">
+      <div class="bouwjaar-warn" id="bouwjaar-warn" style="display:none;">⚠ Bouwjaar vóór 1970 — funderingsrisico mogelijk.</div></div>
+  </div>
+  <div class="grid-3-mt">
+    <div><label class="lbl" for="elabel">Energielabel</label>
+      <select id="elabel" class="field-select">
+        <option value="EFG">E, F of G</option><option value="CD">C of D</option>
+        <option value="AB" selected>A of B</option><option value="A12">A+ of A++</option>
+        <option value="A3">A+++</option><option value="A4">A++++</option>
+        <option value="A4G">A++++ met garantie</option><option value="GEEN">Geen geldig label</option>
+      </select></div>
+    <div><label class="lbl" for="vonkk">Aankoopvorm</label>
+      <select id="vonkk" class="field-select">
+        <option value="kk" selected>K.K. (kosten koper)</option>
+        <option value="von">V.O.N. (vrij op naam)</option>
+      </select></div>
+    <div class="fund-check">
+      <a id="fund-btn" class="fund-btn" href="https://www.funderingslabel.nl" target="_blank" rel="noopener" aria-disabled="true">
+        Check funderingslabel <span>↗</span></a></div>
+  </div>
+  <h3 class="subhead">Aankoopkosten</h3>
+  <div class="grid-3">
+    <div class="field-med"><label class="lbl" for="koopsom">Koopsom</label>
+      <div class="input-prefix"><span>€</span><input type="number" id="koopsom" value="350000" min="0" step="1000"></div></div>
+    <div class="field-med"><label class="lbl" for="marktwaarde">Marktwaarde</label>
+      <div class="input-prefix"><span>€</span><input type="number" id="marktwaarde" value="350000" min="0" step="1000"></div>
+      <div class="help">Na verbouwing als EBV/EBB van toepassing</div></div>
+    <div class="field-med"><label class="lbl" for="overdrachtspct">Overdrachtsbelasting</label>
+      <div class="input-prefix"><input type="number" id="overdrachtspct" value="2.0" min="0" max="11" step="0.1"><span>%</span></div>
+      <div class="help">0% startersvrijstelling · 2% eigen woning · 8% beleggers/2e woning · 10,4% niet-woningen</div></div>
+  </div>
+  <div class="grid-4-mt">
+    <div class="field-sm"><label class="lbl">Notariskosten</label>
+      <div class="input-prefix"><span>€</span><input type="number" id="notariskosten" value="1500" min="0" step="50"></div></div>
+    <div class="field-sm"><label class="lbl">Taxatiekosten</label>
+      <div class="input-prefix"><span>€</span><input type="number" id="taxatiekosten" value="700" min="0" step="50"></div></div>
+    <div class="field-sm"><label class="lbl">Advieskosten</label>
+      <div class="input-prefix"><span>€</span><input type="number" id="advieskosten" value="2500" min="0" step="100"></div></div>
+    <div class="field-sm"><label class="lbl">Bouwdepot/verbouwing <span class="lbl-extra">meefin.</span></label>
+      <div class="input-prefix"><span>€</span><input type="number" id="bouwdepot" value="0" min="0" step="1000"></div></div>
+  </div>
+  <div class="grid-2-mt">
+    <div class="opt-block teal" id="nhg-block" style="margin-top: 0;">
+      <div><label class="toggle lg teal"><input type="checkbox" id="nhg-toggle"><span class="slider"></span></label></div>
+      <div><div class="opt-title">NHG gewenst</div>
+        <div class="opt-desc">Toetst tegen NHG-grens 2026 (€ 470.000 / € 498.200 met EBV/EBB) en rekent borgtochtprovisie 0,4% mee in kosten koper.</div></div>
+      <div><span class="opt-status off" id="nhg-status">Uit</span></div>
+    </div>
+    <div class="field-med"><label class="lbl" for="eigengeld">Eigen geld inbreng</label>
+      <div class="input-prefix"><span>€</span><input type="number" id="eigengeld" value="0" min="0" step="1000"></div>
+      <div class="help">Cash van klant, verlaagt benodigde lening</div></div>
+  </div>
+  <div class="aankoop-summary">
+    <div class="aankoop-cell"><div class="lbl-mini">Koopsom</div><div class="val-mini" id="sum-koopsom">—</div></div>
+    <div class="aankoop-cell"><div class="lbl-mini">Kosten koper totaal</div>
+      <div class="val-mini" id="sum-kk">—</div><div class="sub-mini" id="sum-kk-detail">—</div></div>
+    <div class="aankoop-cell"><div class="lbl-mini">Bouwdepot</div><div class="val-mini" id="sum-depot">—</div></div>
+    <div class="aankoop-cell"><div class="lbl-mini">Totaal financieringsbehoefte</div><div class="val-mini" id="sum-totaal">—</div></div>
+    <div class="aankoop-cell"><div class="lbl-mini">Eigen geld</div><div class="val-mini" id="sum-eigen">—</div></div>
+    <div class="aankoop-cell highlight"><div class="lbl-mini">Hypotheek nodig</div>
+      <div class="val-mini" id="sum-hyp-nodig">—</div><div class="sub-mini" id="sum-hyp-vs-delen">—</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2><span class="num">III.</span> <em>Inkomen</em></h2>
+    <span class="section-meta">Stap 3</span>
+  </div>
+  <div class="persona-head">Klant 1 <span class="pchip">primair</span></div>
+  <div class="persona-grid">
+    <div class="field-big"><label class="lbl" for="inc1">Bruto jaarinkomen <span class="lbl-extra">incl. vakantiegeld, 13e mnd, vaste toeslagen</span></label>
+      <div class="input-prefix"><span>€</span><input type="number" id="inc1" value="50000" min="0" step="1000"></div></div>
+    <div><label class="lbl" for="inc1type">Type inkomen</label>
+      <select id="inc1type" class="field-select">
+        <option value="vast" selected>Vast / bestendig</option>
+        <option value="flex">Flexibel / zzp</option></select>
+      <div class="help" id="inc1-flex-help" style="display:none;">Gemiddelde 36 maanden — of huidig indien bestendig (TRHK art. 2 lid 2/3)</div></div>
+    <div><label class="lbl" for="birth1">Geboortedatum</label>
+      <input type="date" id="birth1" value="1985-06-15" min="1920-01-01" max="2010-12-31"></div>
+    <div class="field-med"><label class="lbl" for="pens1">Pensioeninkomen <span class="lbl-extra">verwacht na AOW</span></label>
+      <div class="input-prefix"><span>€</span><input type="number" id="pens1" value="25000" min="0" step="1000"></div></div>
+  </div>
+  <div class="aow-info">
+    <div class="aow-cell"><div class="lbl-mini">Huidige leeftijd</div><div class="val-mini" id="aow1-current">—</div></div>
+    <div class="aow-cell"><div class="lbl-mini">AOW-leeftijd</div>
+      <div class="val-mini" id="aow1-target">—</div><div class="sub-mini" id="aow1-target-sub"></div></div>
+    <div class="aow-cell"><div class="lbl-mini">AOW-datum</div><div class="val-mini" id="aow1-date">—</div></div>
+    <div class="aow-cell" id="aow1-status-cell"><div class="lbl-mini">Status</div>
+      <div class="val-mini" id="aow1-status">—</div><div class="sub-mini" id="aow1-status-sub"></div></div>
+  </div>
+
+  <div class="persona-head" style="margin-top: 32px;">Klant 2 <span class="pchip" style="background:var(--gold-bg);color:var(--gold);">optioneel</span></div>
+  <div class="persona-grid">
+    <div class="field-big"><label class="lbl" for="inc2">Bruto jaarinkomen</label>
+      <div class="input-prefix"><span>€</span><input type="number" id="inc2" value="0" min="0" step="1000"></div></div>
+    <div><label class="lbl" for="inc2type">Type inkomen</label>
+      <select id="inc2type" class="field-select">
+        <option value="vast" selected>Vast / bestendig</option>
+        <option value="flex">Flexibel / zzp</option></select></div>
+    <div><label class="lbl" for="birth2">Geboortedatum</label>
+      <input type="date" id="birth2" value="" min="1920-01-01" max="2010-12-31"></div>
+    <div class="field-med"><label class="lbl" for="pens2">Pensioeninkomen</label>
+      <div class="input-prefix"><span>€</span><input type="number" id="pens2" value="0" min="0" step="1000"></div></div>
+  </div>
+  <div class="aow-info" id="aow2-info" style="display:none;">
+    <div class="aow-cell"><div class="lbl-mini">Huidige leeftijd</div><div class="val-mini" id="aow2-current">—</div></div>
+    <div class="aow-cell"><div class="lbl-mini">AOW-leeftijd</div>
+      <div class="val-mini" id="aow2-target">—</div><div class="sub-mini" id="aow2-target-sub"></div></div>
+    <div class="aow-cell"><div class="lbl-mini">AOW-datum</div><div class="val-mini" id="aow2-date">—</div></div>
+    <div class="aow-cell" id="aow2-status-cell"><div class="lbl-mini">Status</div>
+      <div class="val-mini" id="aow2-status">—</div><div class="sub-mini" id="aow2-status-sub"></div></div>
+  </div>
+  <div class="pension-warning" id="pension-warning" style="display:none;">
+    <strong>Pensioentoets vereist</strong> — ten minste één klant bereikt binnen 10 jaar de AOW-leeftijd. Conform TRHK art. 2 lid 5 wordt zowel het huidige inkomen (pre-AOW) als het verwachte pensioeninkomen (post-AOW) getoetst. Beide toetsen moeten passen.
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2><span class="num">IV.</span> <em>Verhogingen</em></h2>
+    <span class="section-meta">Niet-kwetsbaar · EBB</span>
+  </div>
+  <div class="opt-block gold" id="verh-block" style="margin-top: 0;">
+    <div><label class="toggle lg gold"><input type="checkbox" id="verh-toggle" checked><span class="slider"></span></label></div>
+    <div><div class="opt-title">Verhoging niet-kwetsbare groep</div>
+      <div class="opt-desc">Verhoogt de maximale hypotheek met <strong>€ 17.000</strong>. Vervalt bij een tweede inkomen of als inkomen 1 onder het startinkomen ligt.</div></div>
+    <div><span class="opt-status off" id="verh-status">Uit</span><span class="opt-reason" id="verh-reason"></span></div>
+  </div>
+  <div class="opt-block moss" id="ebb-block">
+    <div><label class="toggle lg moss"><input type="checkbox" id="ebb-toggle"><span class="slider"></span></label></div>
+    <div><div class="opt-title">Energiebespaarbudget (EBB)</div>
+      <div class="opt-desc">Aanvullend label-afhankelijk budget voor verduurzaming. E/F/G € 20k tot energiezuinige labels € 0.</div></div>
+    <div><span class="opt-status off" id="ebb-status">Uit</span><span class="opt-reason" id="ebb-reason"></span></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2><span class="num">V.</span> <em>Verplichtingen</em></h2>
+    <span class="section-meta">Studielening · BKR · Alimentatie</span>
+  </div>
+  <h3 class="subhead">Studielening</h3>
+  <div class="opt-block plum" id="studie-block" style="margin-top: 0;">
+    <div><label class="toggle lg plum"><input type="checkbox" id="studie-toggle"><span class="slider"></span></label></div>
+    <div><div class="opt-title">Studielening van toepassing</div>
+      <div class="opt-desc">Maandtermijn × bruteringsfactor (1,05 tot 1,40 op basis van debetrente) wordt afgetrokken van de toegestane financieringslast.</div></div>
+    <div><span class="opt-status off" id="studie-status">Uit</span><span class="opt-reason" id="studie-reason"></span></div>
+  </div>
+  <div class="subfields cols-3" id="studie-subfields" style="display:none;">
+    <div><label class="lbl" for="studie-fase">Fase</label>
+      <select id="studie-fase" class="field-select">
+        <option value="regulier" selected>Reguliere terugbetaling</option>
+        <option value="aanloop">Aanloopfase / aflosvrij / draagkracht</option></select>
+      <div class="help">Bij aanloop/aflosvrij/draagkracht: theoretisch maandtermijn berekend uit restschuld+rente+looptijd</div></div>
+    <div class="field-med" id="studie-mt-wrap"><label class="lbl" for="studie-mt">Werkelijke maandtermijn</label>
+      <div class="input-prefix"><span>€</span><input type="number" id="studie-mt" value="0" min="0" step="10"></div></div>
+    <div class="field-med"><label class="lbl" for="studie-rente">Debetrente</label>
+      <div class="input-prefix"><input type="number" id="studie-rente" value="2.5" min="0" max="15" step="0.1"><span>%</span></div></div>
+    <div class="field-med" id="studie-rest-wrap" style="display:none;"><label class="lbl" for="studie-rest">Actuele restschuld</label>
+      <div class="input-prefix"><span>€</span><input type="number" id="studie-rest" value="0" min="0" step="100"></div></div>
+    <div class="field-med" id="studie-looptijd-wrap" style="display:none;"><label class="lbl" for="studie-looptijd">Resterende looptijd</label>
+      <div class="input-prefix"><input type="number" id="studie-looptijd" value="20" min="1" max="35" step="1"><span>jr</span></div>
+      <div class="help">DUO standaard 35 jaar</div></div>
+  </div>
+  <h3 class="subhead">BKR-verplichtingen</h3>
+  <div class="grid-4">
+    <div class="field-sm"><label class="lbl">Doorlopend krediet <span class="lbl-extra">limiet</span></label>
+      <div class="input-prefix"><span>€</span><input type="number" id="bkr-dk" value="0" min="0" step="500"></div>
+      <div class="help">2% van limiet wordt belast</div></div>
+    <div class="field-sm"><label class="lbl">Persoonlijke lening <span class="lbl-extra">mnd</span></label>
+      <div class="input-prefix"><span>€</span><input type="number" id="bkr-pl" value="0" min="0" step="10"></div></div>
+    <div class="field-sm"><label class="lbl">Lease / private lease <span class="lbl-extra">mnd</span></label>
+      <div class="input-prefix"><span>€</span><input type="number" id="bkr-lease" value="0" min="0" step="10"></div></div>
+    <div class="field-sm"><label class="lbl">Restschuld vorige hyp. <span class="lbl-extra">mnd</span></label>
+      <div class="input-prefix"><span>€</span><input type="number" id="bkr-rest" value="0" min="0" step="10"></div></div>
+  </div>
+  <h3 class="subhead">Alimentatie</h3>
+  <div class="grid-2">
+    <div class="field-sm"><label class="lbl">Kindalimentatie <span class="lbl-extra">per maand</span></label>
+      <div class="input-prefix"><span>€</span><input type="number" id="ali-kind" value="0" min="0" step="10"></div></div>
+    <div class="field-sm"><label class="lbl">Partneralimentatie <span class="lbl-extra">per maand</span></label>
+      <div class="input-prefix"><span>€</span><input type="number" id="ali-partner" value="0" min="0" step="10"></div></div>
+  </div>
+  <div class="aankoop-summary" style="margin-top: 28px;">
+    <div class="aankoop-cell"><div class="lbl-mini">Studielening (gebruteerd)</div>
+      <div class="val-mini" id="vsum-studie">€ 0</div><div class="sub-mini" id="vsum-studie-detail">factor —</div></div>
+    <div class="aankoop-cell"><div class="lbl-mini">BKR + alimentatie totaal</div><div class="val-mini" id="vsum-bkr">€ 0</div></div>
+    <div class="aankoop-cell highlight"><div class="lbl-mini">Totaal verplichtingen / mnd</div>
+      <div class="val-mini" id="vsum-totaal">€ 0</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2><span class="num">VI.</span> <em>Leningdelen</em></h2>
+    <span class="section-meta">Marktrentes · <a href="https://www.hypotheekrente.nl" target="_blank" rel="noopener">Hypotheekrente.nl ↗</a></span>
+  </div>
+  <div class="loan-table">
+    <div class="loan-cols loan-header">
+      <div>Bedrag</div><div>Rente</div><div>Rentevast (jr)</div><div>Aflosvorm</div><div>Box 3</div><div></div>
+    </div>
+    <div id="rows"></div>
+  </div>
+  <button class="add-btn" id="add-btn">+ Leningdeel toevoegen</button>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2><span class="num">VII.</span> <em>Toets geïntegreerd</em></h2>
+    <span class="section-meta" id="aow-summary-int">Pre-AOW</span>
+  </div>
+  <div class="toets-banner idle" id="int-banner">
+    <div class="toets-icon" id="int-icon">—</div>
+    <div class="toets-content">
+      <h3 id="int-title">Voer leningdelen in</h3>
+      <p id="int-text">Volledige geintegreerde toets verschijnt zodra er gegevens zijn.</p>
+    </div>
+  </div>
+  <div class="toets-metrics">
+    <div class="t-metric"><div class="lab">Totale lening</div>
+      <div class="val"><span class="unit">€ </span><span id="int-bedrag">—</span></div>
+      <div class="sub" id="int-bedrag-sub">som van leningdelen</div></div>
+    <div class="t-metric"><div class="lab">Maandlast (toets)</div>
+      <div class="val"><span class="unit">€ </span><span id="int-last">—</span></div>
+      <div class="sub">annuïteit @ toetsrente</div></div>
+    <div class="t-metric"><div class="lab">Toegestaan</div>
+      <div class="val"><span class="unit">€ </span><span id="int-toeg">—</span></div>
+      <div class="sub" id="int-toeg-sub">—</div></div>
+    <div class="t-metric" id="int-ruimte-card"><div class="lab">Ruimte</div>
+      <div class="val"><span class="unit">€ </span><span id="int-ruimte">—</span></div>
+      <div class="sub">per maand</div></div>
+  </div>
+  <div class="breakdown">
+    <div class="breakdown-title">Berekening per leningdeel</div>
+    <div class="breakdown-row head">
+      <div>Deel</div><div>Bedrag</div><div>Rente</div><div>Toetsr.</div><div>Vorm</div><div>Werk. mnd</div><div>Toets mnd</div><div>Box 3</div>
+    </div>
+    <div id="breakdown-rows"></div>
+  </div>
+</section>
+
+<section class="section" id="aow-section" style="display:none;">
+  <div class="section-head">
+    <h2><span class="num">VIII.</span> <em>Pre- en post-AOW toets</em></h2>
+    <span class="section-meta">TRHK art. 2 lid 5</span>
+  </div>
+  <div class="aow-toets-grid">
+    <div class="aow-toets-card pre" id="pre-aow-card">
+      <span class="card-tag">Pre-AOW</span>
+      <h3 class="card-title">Huidig inkomen</h3>
+      <div class="row"><span class="label">Toetsinkomen</span><span class="value" id="pre-inkomen">—</span></div>
+      <div class="row"><span class="label">Gewogen pct</span><span class="value" id="pre-pct">—</span></div>
+      <div class="row"><span class="label">Toegestaan / mnd</span><span class="value" id="pre-toeg">—</span></div>
+      <div class="row"><span class="label">Werkelijk / mnd</span><span class="value" id="pre-werk">—</span></div>
+      <div class="row"><span class="label">Ruimte</span><span class="value" id="pre-ruimte">—</span></div>
+      <div class="card-status" id="pre-status">—</div>
+    </div>
+    <div class="aow-toets-card post" id="post-aow-card">
+      <span class="card-tag">Post-AOW</span>
+      <h3 class="card-title">Pensioeninkomen</h3>
+      <div class="row"><span class="label">Toetsinkomen</span><span class="value" id="post-inkomen">—</span></div>
+      <div class="row"><span class="label">Gewogen pct</span><span class="value" id="post-pct">—</span></div>
+      <div class="row"><span class="label">Toegestaan / mnd</span><span class="value" id="post-toeg">—</span></div>
+      <div class="row"><span class="label">Werkelijk / mnd</span><span class="value" id="post-werk">—</span></div>
+      <div class="row"><span class="label">Ruimte</span><span class="value" id="post-ruimte">—</span></div>
+      <div class="card-status" id="post-status">—</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2><span class="num">IX.</span> <em>LTV, NHG &amp; aflossingsvrij</em></h2>
+    <span class="section-meta">Lening / waarde</span>
+  </div>
+  <div class="result-grid">
+    <div class="result-card idle" id="ltv-card">
+      <span class="card-tag">Loan-to-Value</span>
+      <h3 class="card-title">LTV-toets</h3>
+      <div class="row"><span class="label">Totale lening</span><span class="value" id="ltv-lening">—</span></div>
+      <div class="row"><span class="label">Marktwaarde</span><span class="value" id="ltv-mw">—</span></div>
+      <div class="row"><span class="label">LTV-ratio</span><span class="value" id="ltv-ratio">—</span></div>
+      <div class="row"><span class="label">Toegestaan max</span><span class="value" id="ltv-max">—</span></div>
+      <div class="row"><span class="label">Aflossingsvrij deel</span><span class="value" id="av-bedrag">—</span></div>
+      <div class="row"><span class="label">Aflossingsvrij %</span><span class="value" id="av-pct">—</span></div>
+      <div class="row"><span class="label">Status</span><span class="value" id="ltv-status">—</span></div>
+    </div>
+    <div class="result-card idle" id="nhg-card">
+      <span class="card-tag">Nationale Hypotheek Garantie</span>
+      <h3 class="card-title">NHG-toets 2026</h3>
+      <div class="row"><span class="label">NHG aangevraagd</span><span class="value" id="nhg-gewenst">—</span></div>
+      <div class="row"><span class="label">Geldende grens</span><span class="value" id="nhg-grens">—</span></div>
+      <div class="row"><span class="label">Totale lening</span><span class="value" id="nhg-lening">—</span></div>
+      <div class="row"><span class="label">Borgtochtprovisie 0,4%</span><span class="value" id="nhg-borg">—</span></div>
+      <div class="row"><span class="label">Verschil grens</span><span class="value" id="nhg-verschil">—</span></div>
+      <div class="row"><span class="label">Status</span><span class="value" id="nhg-status-result">—</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2><span class="num">X.</span> <em>Maximaal box 3-deel</em></h2>
+    <span class="section-meta">Vergelijking met / zonder AOW</span>
+  </div>
+  <div class="results">
+    <article class="card noaow" id="card-noaow">
+      <span class="card-tag-cmp">Niet AOW-gerechtigd</span>
+      <h3 class="card-title-cmp">Onder de AOW-leeftijd</h3>
+      <div class="metric"><div class="lab">Maximale box 3-hypotheek</div>
+        <div class="v"><span class="u">€ </span><span id="hyp-noaow">—</span></div>
+        <div class="verh-mark" id="hyp-noaow-marks"></div></div>
+      <div class="metric"><div class="lab">Box 3-percentage</div>
+        <div class="v"><span id="pct-noaow">—</span><span class="u">%</span></div></div>
+      <div id="warn-noaow"></div>
+    </article>
+    <article class="card aow" id="card-aow">
+      <span class="card-tag-cmp">AOW-gerechtigd</span>
+      <h3 class="card-title-cmp">Met AOW-leeftijd</h3>
+      <div class="metric"><div class="lab">Maximale box 3-hypotheek</div>
+        <div class="v"><span class="u">€ </span><span id="hyp-aow">—</span></div>
+        <div class="verh-mark" id="hyp-aow-marks"></div></div>
+      <div class="metric"><div class="lab">Box 3-percentage</div>
+        <div class="v"><span id="pct-aow">—</span><span class="u">%</span></div></div>
+      <div id="warn-aow"></div>
+    </article>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Bron</strong> · Bijlage Financieringslastnormen 2026 (TRHK) · Stcrt 2024 nr. 35962 · NHG VnN 2026.</p>
+  <p><strong>Toetsrente</strong> · werkelijke rente bij rentevast ≥ 10 jaar; anders min. 5%. Geintegreerde toets gebruikt gewogen gemiddelde van box 1- en box 3-percentages naar leningdeel-grootte.</p>
+  <p><strong>Werkelijke maandlast</strong> per aflosvorm · annuitair: maandelijkse annuiteit · lineair: eerste maand (hoogste) · aflossingsvrij: alleen rente. Voor de TRHK-toets wordt altijd annuiteit @ toetsrente gebruikt (regelgeving).</p>
+  <p><strong>Aflossingsvrij regel</strong> · box 1 deel maximaal 50% van marktwaarde aflossingsvrij.</p>
+  <p><strong>Studielening</strong> · reguliere fase: maandtermijn × bruteringsfactor. Aanloop/aflosvrij/draagkracht: maandtermijn berekend uit actuele restschuld + rente + resterende looptijd, dan × bruteringsfactor.</p>
+  <p><strong>BKR-belasting</strong> · doorlopend krediet 2% van limiet · persoonlijke lening, lease, restschuld vorige hypotheek: actuele maandtermijn.</p>
+  <p><strong>Pensioentoets</strong> · verplicht binnen 10 jaar AOW (TRHK art. 2 lid 5). Pre-AOW gebruikt huidig inkomen + niet-AOW tabellen, post-AOW gebruikt pensioeninkomen + welAOW tabellen.</p>
+  <p><strong>EBV/EBB-bedragen</strong> · EBV automatisch label-afhankelijk: A++++ garantie € 40k tot E/F/G € 0. EBB opt-in, omgekeerd: E/F/G € 20k tot energiezuinige labels € 0. NHG-grens stijgt naar € 498.200, LTV naar 106%.</p>
+  <p><strong>Externe bronnen</strong> · marktrentes <a href="https://www.hypotheekrente.nl" target="_blank" rel="noopener">Hypotheekrente.nl</a> · funderingsrisico <a href="https://www.funderingslabel.nl" target="_blank" rel="noopener">Funderingslabel.nl</a>.</p>
+  <p><strong>Niet inbegrepen</strong> · fiscaliteit (renteaftrek, EWF, bijleenregeling), rentemiddeling, oversluiting, meeneemregeling, bestendigheidsbeoordeling. Deze blijven adviseur-oordeel.</p>
+  <p><strong>Disclaimer</strong> · Indicatief, geen advies. Voor de definitieve toets bij een geldverstrekker geldt diens beleid.</p>
+</footer>
+
+</div>
+
+<script>
+const DATA = {"nietAOW_box1":[[30000,[0.155,0.165,0.175,0.184,0.193,0.201,0.209,0.216,0.222,0.227,0.232,0.237],[116278,115467,114455,112678,110867,108504,106212,103518,100506,97246,94199,91351],[3.876,3.849,3.815,3.756,3.696,3.617,3.54,3.451,3.35,3.242,3.14,3.045]],[31000,[0.162,0.173,0.183,0.193,0.202,0.212,0.22,0.227,0.234,0.241,0.246,0.251],[125581,125101,123677,122130,119905,118257,115529,112416,109470,106685,103213,99972],[4.051,4.036,3.99,3.94,3.868,3.815,3.727,3.626,3.531,3.441,3.329,3.225]],[32000,[0.167,0.179,0.19,0.201,0.211,0.221,0.23,0.238,0.246,0.253,0.259,0.264],[133633,133616,132550,131295,129287,127254,124676,121666,118797,115610,112173,108542],[4.176,4.175,4.142,4.103,4.04,3.977,3.896,3.802,3.712,3.613,3.505,3.392]],[33000,[0.171,0.183,0.195,0.206,0.216,0.226,0.236,0.246,0.254,0.261,0.268,0.274],[140284,140870,140289,138766,136487,134200,131927,129685,126493,122992,119698,116174],[4.251,4.269,4.251,4.205,4.136,4.067,3.998,3.93,3.833,3.727,3.627,3.52]],[34000,[0.173,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[147086,146725,145282,142971,140623,138266,135924,133615,130839,128176,125626,122752],[4.326,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[35000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[152287,151041,149555,147176,144759,142333,139922,137545,134688,131946,129321,126362],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[36000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[156638,155356,153828,151381,148895,146400,143920,141475,138536,135716,133016,129973],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[37000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[160989,159672,158101,155586,153031,150466,147918,145405,142384,139486,136710,133583],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[38000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[165340,163987,162374,159791,157167,154533,151916,149335,146232,143255,140405,137193],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[39000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[169692,168303,166647,163996,161303,158600,155913,153264,150080,147025,144100,140804],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[40000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[174043,172618,170920,168201,165439,162666,159911,157194,153929,150795,147795,144414],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[41000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[178394,176933,175193,172406,169575,166733,163909,161124,157777,154565,151490,148024],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[42000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[182745,181249,179466,176611,173711,170800,167907,165054,161625,158335,155185,151635],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[43000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[187096,185564,183739,180816,177847,174866,171904,168984,165473,162105,158880,155245],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[44000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[191447,189880,188012,185021,181983,178933,175902,172914,169322,165875,162575,158855],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[45000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[195798,194195,192284,189226,186119,183000,179900,176844,173170,169645,166270,162466],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[46000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[200149,198511,196557,193431,190255,187066,183898,180773,177018,173415,169964,166076],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[47000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[204500,202826,200830,197636,194391,191133,187896,184703,180866,177184,173659,169686],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[48000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[208851,207142,205103,201841,198527,195200,191893,188633,184714,180954,177354,173297],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[49000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[213202,211457,209376,206047,202662,199266,195891,192563,188563,184724,181049,176907],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[50000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[217553,215773,213649,210252,206798,203333,199889,196493,192411,188494,184744,180518],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[51000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[221904,220088,217922,214457,210934,207400,203887,200423,196259,192264,188439,184128],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[52000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[226255,224403,222195,218662,215070,211466,207884,204353,200107,196034,192134,187738],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[53000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[230606,228719,226468,222867,219206,215533,211882,208282,203956,199804,195829,191349],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[54000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[234958,233034,230741,227072,223342,219600,215880,212212,207804,203574,199523,194959],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[55000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[239309,237350,235014,231277,227478,223666,219878,216142,211652,207343,203218,198569],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[56000,[0.174,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[243660,241665,239287,235482,231614,227733,223876,220072,215500,211113,206913,202180],[4.351,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[57000,[0.175,0.185,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[249436,245981,243560,239687,235750,231800,227873,224002,219348,214883,210608,205790],[4.376,4.315,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[58000,[0.176,0.186,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[255263,251649,247833,243892,239886,235866,231871,227932,223197,218653,214303,209400],[4.401,4.339,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[59000,[0.176,0.186,0.196,0.206,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[259664,255988,252106,248097,244022,239933,235869,231862,227045,222423,217998,213011],[4.401,4.339,4.273,4.205,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[60000,[0.177,0.187,0.197,0.207,0.216,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[265565,261726,257687,253527,248158,244000,239867,235791,230893,226193,221693,216621],[4.426,4.362,4.295,4.225,4.136,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[61000,[0.177,0.187,0.197,0.207,0.217,0.226,0.236,0.246,0.255,0.264,0.273,0.281],[269991,266088,261982,257752,253462,248066,243864,239721,234741,229963,225388,220231],[4.426,4.362,4.295,4.225,4.155,4.067,3.998,3.93,3.848,3.77,3.695,3.61]],[62000,[0.178,0.188,0.198,0.207,0.217,0.227,0.236,0.246,0.255,0.264,0.273,0.281],[275968,271897,267629,261977,257617,253249,247862,243651,238589,233733,229082,223842],[4.451,4.385,4.317,4.225,4.155,4.085,3.998,3.93,3.848,3.77,3.695,3.61]],[63000,[0.178,0.189,0.199,0.209,0.218,0.227,0.237,0.246,0.255,0.264,0.273,0.281],[280419,277752,273319,268775,262979,257333,252927,247581,242438,237502,232777,227452],[4.451,4.409,4.338,4.266,4.174,4.085,4.015,3.93,3.848,3.77,3.695,3.61]],[64000,[0.179,0.189,0.199,0.21,0.219,0.228,0.237,0.246,0.255,0.264,0.273,0.281],[286470,282161,277657,274348,268378,262569,256942,251511,246286,241272,236472,231062],[4.476,4.409,4.338,4.287,4.193,4.103,4.015,3.93,3.848,3.77,3.695,3.61]],[65000,[0.18,0.19,0.2,0.21,0.22,0.229,0.238,0.247,0.255,0.264,0.273,0.281],[292572,288086,283413,278634,273816,267842,262058,256479,250134,245042,240167,234673],[4.501,4.432,4.36,4.287,4.213,4.121,4.032,3.946,3.848,3.77,3.695,3.61]],[66000,[0.181,0.191,0.201,0.211,0.221,0.23,0.239,0.247,0.256,0.264,0.273,0.281],[298723,294057,289212,284268,279293,273150,267207,260425,254978,248812,243862,238283],[4.526,4.455,4.382,4.307,4.232,4.139,4.049,3.946,3.863,3.77,3.695,3.61]],[67000,[0.182,0.192,0.202,0.212,0.222,0.231,0.24,0.248,0.257,0.265,0.273,0.281],[304925,300075,295054,289943,284807,278494,272391,265441,259853,253539,247557,241894],[4.551,4.479,4.404,4.328,4.251,4.157,4.066,3.962,3.878,3.784,3.695,3.61]],[68000,[0.183,0.194,0.204,0.214,0.223,0.232,0.241,0.25,0.258,0.267,0.274,0.282],[311176,307727,302423,297047,290360,283874,277608,271576,264757,259265,252172,246378],[4.576,4.525,4.447,4.368,4.27,4.175,4.082,3.994,3.893,3.813,3.708,3.623]],[69000,[0.185,0.195,0.205,0.215,0.225,0.234,0.243,0.251,0.26,0.268,0.276,0.283],[319203,313862,308375,302823,297273,290532,284029,276672,270733,264063,257748,250887],[4.626,4.549,4.469,4.389,4.308,4.211,4.116,4.01,3.924,3.827,3.735,3.636]],[70000,[0.186,0.197,0.207,0.217,0.227,0.236,0.245,0.253,0.262,0.27,0.278,0.285],[325580,321676,315896,310070,304262,297262,290517,282918,276770,269889,263378,256322],[4.651,4.595,4.513,4.43,4.347,4.247,4.15,4.042,3.954,3.856,3.763,3.662]],[71000,[0.188,0.199,0.209,0.219,0.229,0.238,0.247,0.256,0.264,0.272,0.28,0.287],[333782,329584,323504,317398,311327,304064,297072,290362,282867,275772,269063,261808],[4.701,4.642,4.556,4.47,4.385,4.283,4.184,4.09,3.984,3.884,3.79,3.687]],[72000,[0.19,0.2,0.211,0.221,0.231,0.241,0.25,0.258,0.266,0.274,0.282,0.289],[342084,335905,331200,324808,318470,312233,304915,296752,289024,281713,274801,267346],[4.751,4.665,4.6,4.511,4.423,4.337,4.235,4.122,4.014,3.913,3.817,3.713]],[73000,[0.191,0.202,0.213,0.223,0.233,0.243,0.252,0.26,0.269,0.276,0.284,0.292],[348660,343976,338983,332299,325688,319197,311623,303206,296343,287710,280594,273873],[4.776,4.712,4.644,4.552,4.461,4.373,4.269,4.154,4.059,3.941,3.844,3.752]],[74000,[0.193,0.204,0.215,0.225,0.235,0.245,0.254,0.263,0.271,0.279,0.286,0.293],[357137,352141,346853,339873,332984,326232,318399,310906,302636,294822,286441,278575],[4.826,4.759,4.687,4.593,4.5,4.409,4.303,4.201,4.09,3.984,3.871,3.765]],[75000,[0.194,0.205,0.216,0.226,0.237,0.246,0.256,0.264,0.273,0.281,0.288,0.295],[363839,358649,353176,345996,340356,331991,325243,316306,308989,300948,292342,284267],[4.851,4.782,4.709,4.613,4.538,4.427,4.337,4.217,4.12,4.013,3.898,3.79]],[76000,[0.195,0.206,0.217,0.228,0.238,0.248,0.257,0.266,0.275,0.282,0.29,0.297],[370591,365204,359541,353712,346349,339152,330867,322951,315403,306046,298297,290010],[4.876,4.805,4.731,4.654,4.557,4.463,4.354,4.249,4.15,4.027,3.925,3.816]],[77000,[0.196,0.208,0.219,0.229,0.24,0.249,0.259,0.268,0.276,0.284,0.292,0.299],[377392,373601,367630,359938,353855,345000,337829,329661,320715,312272,304306,295805],[4.901,4.852,4.774,4.675,4.596,4.481,4.387,4.281,4.165,4.055,3.952,3.842]],[78000,[0.197,0.209,0.22,0.231,0.241,0.251,0.261,0.27,0.278,0.286,0.294,0.301],[384244,380273,374105,367797,359944,352288,344859,336434,327234,318555,310370,301651],[4.926,4.875,4.796,4.715,4.615,4.517,4.421,4.313,4.195,4.084,3.979,3.867]],[79000,[0.198,0.209,0.221,0.232,0.242,0.252,0.262,0.271,0.279,0.287,0.295,0.302],[391146,385148,380623,374125,366072,358226,350619,342009,332622,323767,315418,306533],[4.951,4.875,4.818,4.736,4.634,4.535,4.438,4.329,4.21,4.098,3.993,3.88]],[80000,[0.199,0.21,0.222,0.232,0.243,0.253,0.263,0.272,0.281,0.289,0.296,0.303],[398098,391890,387185,378861,372237,364200,356412,347617,339247,330150,320493,311441],[4.976,4.899,4.84,4.736,4.653,4.552,4.455,4.345,4.241,4.127,4.006,3.893]],[81000,[0.2,0.211,0.222,0.233,0.243,0.254,0.264,0.273,0.281,0.29,0.297,0.304],[405099,398678,392025,385250,376890,370210,362239,353256,343487,335434,325596,316375],[5.001,4.922,4.84,4.756,4.653,4.57,4.472,4.361,4.241,4.141,4.02,3.906]],[82000,[0.201,0.212,0.223,0.234,0.244,0.254,0.264,0.273,0.282,0.29,0.298,0.305],[412151,405512,398652,391680,383113,374780,366711,357617,348965,339575,330725,321334],[5.026,4.945,4.862,4.777,4.672,4.57,4.472,4.361,4.256,4.141,4.033,3.919]],[83000,[0.201,0.212,0.223,0.234,0.244,0.254,0.264,0.274,0.282,0.291,0.299,0.306],[417177,410458,403514,396457,387785,379351,371184,363304,353221,344901,335882,326319],[5.026,4.945,4.862,4.777,4.672,4.57,4.472,4.377,4.256,4.155,4.047,3.932]],[84000,[0.202,0.213,0.224,0.234,0.245,0.255,0.265,0.274,0.283,0.291,0.299,0.306],[424304,417362,410207,401233,394066,385433,377079,367681,358744,349057,339929,330251],[5.051,4.969,4.883,4.777,4.691,4.588,4.489,4.377,4.271,4.155,4.047,3.932]],[85000,[0.202,0.213,0.224,0.235,0.245,0.255,0.265,0.274,0.283,0.292,0.299,0.307],[429355,422331,415090,407745,398757,390021,381568,372059,363015,354426,343976,335274],[5.051,4.969,4.883,4.797,4.691,4.588,4.489,4.377,4.271,4.17,4.047,3.944]],[86000,[0.202,0.214,0.225,0.235,0.246,0.256,0.265,0.274,0.284,0.292,0.3,0.307],[434406,429306,421849,412542,405095,396157,386057,376436,368584,358596,349186,339219],[5.051,4.992,4.905,4.797,4.71,4.606,4.489,4.377,4.286,4.17,4.06,3.944]],[87000,[0.203,0.214,0.225,0.236,0.246,0.256,0.266,0.275,0.284,0.292,0.3,0.308],[441633,434298,426754,419115,409806,400764,392019,382203,372870,362765,353247,344281],[5.076,4.992,4.905,4.817,4.71,4.606,4.506,4.393,4.286,4.17,4.06,3.957]],[88000,[0.204,0.215,0.225,0.236,0.246,0.256,0.266,0.275,0.284,0.293,0.301,0.308],[448910,441342,431659,423932,414516,405370,396525,386596,377156,368192,358498,348238],[5.101,5.015,4.905,4.817,4.71,4.606,4.506,4.393,4.286,4.184,4.074,3.957]],[89000,[0.205,0.215,0.226,0.237,0.247,0.257,0.266,0.276,0.284,0.293,0.301,0.308],[456237,446358,438505,430567,420931,411578,401031,392411,381441,372376,362572,352196],[5.126,5.015,4.927,4.838,4.73,4.624,4.506,4.409,4.286,4.184,4.074,3.957]],[90000,[0.205,0.216,0.226,0.237,0.247,0.257,0.267,0.276,0.285,0.293,0.301,0.309],[461363,453472,443432,435404,425660,416203,407062,396820,387085,376560,366646,357309],[5.126,5.039,4.927,4.838,4.73,4.624,4.523,4.409,4.301,4.184,4.074,3.97]],[91000,[0.205,0.216,0.227,0.237,0.248,0.258,0.267,0.276,0.285,0.293,0.302,0.309],[466489,458511,450343,440242,432132,422465,411585,401229,391386,380744,371951,361279],[5.126,5.039,4.949,4.838,4.749,4.642,4.523,4.409,4.301,4.184,4.087,3.97]],[92000,[0.206,0.217,0.227,0.238,0.248,0.258,0.268,0.277,0.286,0.294,0.302,0.31],[473916,465696,455291,446958,436881,427107,417666,407108,397076,386241,376038,366431],[5.151,5.062,4.949,4.858,4.749,4.642,4.54,4.425,4.316,4.198,4.087,3.983]],[93000,[0.207,0.217,0.228,0.238,0.248,0.258,0.268,0.277,0.286,0.294,0.302,0.31],[481393,470757,462268,451816,441630,431750,422206,411533,401392,390440,380126,370414],[5.176,5.062,4.971,4.858,4.749,4.642,4.54,4.425,4.316,4.198,4.087,3.983]],[94000,[0.208,0.218,0.228,0.239,0.249,0.259,0.269,0.278,0.286,0.295,0.302,0.31],[488920,478012,467238,458593,448178,438084,428338,417460,405708,395980,384213,374397],[5.201,5.085,4.971,4.879,4.768,4.66,4.557,4.441,4.316,4.213,4.087,3.983]],[95000,[0.208,0.219,0.229,0.239,0.25,0.259,0.269,0.278,0.287,0.295,0.303,0.31],[494121,485313,474280,463472,454765,442744,432895,421901,411457,400193,389586,378380],[5.201,5.109,4.992,4.879,4.787,4.66,4.557,4.441,4.331,4.213,4.101,3.983]],[96000,[0.209,0.219,0.23,0.24,0.25,0.26,0.269,0.279,0.287,0.295,0.303,0.31],[501723,490422,481365,470310,459552,449132,437452,427875,415789,404405,393687,382363],[5.226,5.109,5.014,4.899,4.787,4.678,4.557,4.457,4.331,4.213,4.101,3.983]],[97000,[0.21,0.22,0.23,0.24,0.25,0.26,0.27,0.279,0.288,0.296,0.304,0.311],[509375,497793,486379,475209,464339,453810,443652,432332,421584,410003,399101,387592],[5.251,5.132,5.014,4.899,4.787,4.678,4.574,4.457,4.346,4.227,4.114,3.996]],[98000,[0.21,0.221,0.231,0.241,0.251,0.261,0.27,0.279,0.288,0.296,0.304,0.311],[514626,505211,493530,482109,471003,460252,448225,436789,425930,414230,403215,391588],[5.251,5.155,5.036,4.919,4.806,4.696,4.574,4.457,4.346,4.227,4.114,3.996]],[99000,[0.211,0.221,0.232,0.242,0.251,0.261,0.271,0.28,0.288,0.296,0.304,0.312],[522353,510366,500725,489049,475809,464949,454476,442828,430276,418457,407330,396856],[5.276,5.155,5.058,4.94,4.806,4.696,4.591,4.473,4.346,4.227,4.114,4.009]],[100000,[0.211,0.222,0.232,0.242,0.252,0.261,0.271,0.28,0.289,0.297,0.305,0.312],[527629,517854,505782,493989,482530,469645,459067,447301,436131,424112,412798,400865],[5.276,5.179,5.058,4.94,4.825,4.696,4.591,4.473,4.361,4.241,4.128,4.009]],[101000,[0.212,0.222,0.233,0.243,0.253,0.262,0.271,0.28,0.289,0.297,0.305,0.312],[535431,523033,513042,500991,489289,476159,463658,451774,440493,428353,416926,404873],[5.301,5.179,5.08,4.96,4.844,4.714,4.591,4.473,4.361,4.241,4.128,4.009]],[102000,[0.212,0.223,0.234,0.244,0.253,0.263,0.271,0.281,0.289,0.298,0.305,0.313],[540732,530591,520345,508033,494133,482709,468248,457876,444854,434050,421054,410192],[5.301,5.202,5.101,4.981,4.844,4.732,4.591,4.489,4.361,4.255,4.128,4.021]],[103000,[0.213,0.224,0.234,0.244,0.254,0.263,0.272,0.281,0.29,0.298,0.306,0.313],[548609,538195,525447,513014,500950,487441,474584,462365,450770,438306,426576,414214],[5.326,5.225,5.101,4.981,4.864,4.732,4.608,4.489,4.376,4.255,4.142,4.021]],[104000,[0.213,0.224,0.235,0.245,0.255,0.264,0.273,0.281,0.29,0.298,0.306,0.313],[553936,543420,532816,520117,507805,494045,480953,466854,455146,442561,430717,418235],[5.326,5.225,5.123,5.001,4.883,4.75,4.625,4.489,4.376,4.255,4.142,4.021]],[105000,[0.213,0.225,0.235,0.245,0.255,0.265,0.273,0.282,0.291,0.299,0.306,0.314],[559262,551095,537939,525119,512688,500685,485578,473021,461107,448316,434859,423606],[5.326,5.249,5.123,5.001,4.883,4.768,4.625,4.505,4.391,4.27,4.142,4.034]],[106000,[0.214,0.225,0.236,0.246,0.256,0.265,0.274,0.282,0.291,0.299,0.307,0.314],[567239,556343,545373,532283,519600,505453,491998,477526,465499,452586,440435,427640],[5.351,5.249,5.145,5.022,4.902,4.768,4.641,4.505,4.391,4.27,4.155,4.034]],[107000,[0.214,0.225,0.237,0.247,0.256,0.266,0.275,0.283,0.291,0.3,0.307,0.315],[572590,561592,552851,539489,524502,512147,498452,483740,469890,458383,444590,433049],[5.351,5.249,5.167,5.042,4.902,4.786,4.658,4.521,4.391,4.284,4.155,4.047]],[108000,[0.215,0.226,0.237,0.247,0.257,0.267,0.275,0.284,0.292,0.3,0.308,0.315],[580642,569360,558017,544531,531472,518877,503110,489986,475911,462667,450207,437097],[5.376,5.272,5.167,5.042,4.921,4.804,4.658,4.537,4.407,4.284,4.169,4.047]],[109000,[0.215,0.226,0.237,0.248,0.258,0.267,0.276,0.284,0.292,0.3,0.308,0.315],[586019,574631,563184,551798,538480,523681,509615,494523,480318,466951,454375,441144],[5.376,5.272,5.167,5.062,4.94,4.804,4.675,4.537,4.407,4.284,4.169,4.047]],[110000,[0.216,0.227,0.237,0.248,0.258,0.267,0.277,0.285,0.293,0.3,0.308,0.315],[594146,582469,568351,556860,543420,528486,516154,500817,486385,471235,458544,445191],[5.401,5.295,5.167,5.062,4.94,4.804,4.692,4.553,4.422,4.284,4.169,4.047]],[111000,[0.216,0.227,0.238,0.248,0.259,0.268,0.277,0.285,0.293,0.301,0.308,0.316],[599547,587764,575938,561923,550486,535288,520846,505370,490806,477104,462712,450664],[5.401,5.295,5.189,5.062,4.959,4.822,4.692,4.553,4.422,4.298,4.169,4.06]],[112000,[0.217,0.228,0.238,0.249,0.259,0.268,0.277,0.286,0.294,0.301,0.309,0.316],[607749,595672,581126,569271,555445,540110,525538,511712,496918,481402,468397,454724],[5.426,5.319,5.189,5.083,4.959,4.822,4.692,4.569,4.437,4.298,4.182,4.06]],[113000,[0.217,0.228,0.239,0.249,0.259,0.269,0.278,0.287,0.294,0.302,0.309,0.317],[613175,600991,588779,574354,560405,546966,532145,518086,501355,487314,472579,460236],[5.426,5.319,5.21,5.083,4.959,4.84,4.709,4.585,4.437,4.313,4.182,4.073]],[114000,[0.218,0.229,0.239,0.25,0.259,0.269,0.278,0.287,0.295,0.302,0.309,0.317],[621452,608968,593989,581764,565364,551806,536854,522671,507512,491627,476761,464309],[5.451,5.342,5.21,5.103,4.959,4.84,4.709,4.585,4.452,4.313,4.182,4.073]],[115000,[0.218,0.229,0.24,0.25,0.26,0.269,0.279,0.287,0.295,0.303,0.31,0.317],[626904,614310,601707,586867,572525,556646,543512,527256,511964,497581,482500,468382],[5.451,5.342,5.232,5.103,4.978,4.84,4.726,4.585,4.452,4.327,4.196,4.073]],[116000,[0.218,0.229,0.24,0.25,0.26,0.27,0.279,0.288,0.296,0.303,0.31,0.317],[632355,619652,606939,591970,577504,563574,548238,533694,518166,501908,486695,472455],[5.451,5.342,5.232,5.103,4.978,4.858,4.726,4.601,4.467,4.327,4.196,4.073]],[117000,[0.219,0.23,0.241,0.251,0.261,0.27,0.28,0.288,0.296,0.304,0.311,0.318],[640732,627723,614722,599462,584723,568433,554946,538295,522633,507906,492474,478031],[5.476,5.365,5.254,5.124,4.998,4.858,4.743,4.601,4.467,4.341,4.209,4.086]],[118000,[0.219,0.23,0.241,0.251,0.261,0.271,0.28,0.289,0.297,0.304,0.311,0.318],[646208,633088,619976,604585,589720,575414,559689,544781,528881,512247,496684,482117],[5.476,5.365,5.254,5.124,4.998,4.876,4.743,4.617,4.482,4.341,4.209,4.086]],[119000,[0.22,0.231,0.241,0.252,0.262,0.271,0.28,0.289,0.297,0.305,0.312,0.319],[654660,641229,625230,612138,596997,580291,564432,549397,533363,518287,502503,487731],[5.501,5.388,5.254,5.144,5.017,4.876,4.743,4.617,4.482,4.355,4.223,4.099]],[120000,[0.22,0.231,0.242,0.252,0.262,0.272,0.281,0.289,0.298,0.305,0.313,0.319],[660162,646618,633100,617282,602013,587326,571208,554014,539656,522643,508350,491830],[5.501,5.388,5.276,5.144,5.017,4.894,4.76,4.617,4.497,4.355,4.236,4.099]],[121000,[0.22,0.232,0.242,0.253,0.263,0.272,0.281,0.29,0.298,0.306,0.313,0.32],[665663,654829,638376,624896,609347,592221,575968,560564,544153,528726,512587,497483],[5.501,5.412,5.276,5.164,5.036,4.894,4.76,4.633,4.497,4.37,4.236,4.111]],[122000,[0.221,0.232,0.243,0.253,0.263,0.273,0.282,0.29,0.299,0.306,0.314,0.32],[674215,660241,646311,630061,614383,599310,582795,565197,550491,533095,518474,501595],[5.526,5.412,5.298,5.164,5.036,4.912,4.777,4.633,4.512,4.37,4.25,4.111]],[123000,[0.221,0.232,0.243,0.254,0.264,0.273,0.282,0.291,0.299,0.307,0.314,0.321],[679742,665653,651609,637736,621774,604223,587572,571794,555004,539221,522724,507286],[5.526,5.412,5.298,5.185,5.055,4.912,4.777,4.649,4.512,4.384,4.25,4.124]],[124000,[0.222,0.233,0.244,0.254,0.264,0.274,0.283,0.291,0.299,0.308,0.315,0.321],[688369,673957,659610,642921,626829,611366,594449,576443,559516,545376,528652,511411],[5.551,5.435,5.319,5.185,5.055,4.93,4.794,4.649,4.512,4.398,4.263,4.124]],[125000,[0.222,0.233,0.244,0.255,0.265,0.274,0.283,0.292,0.3,0.308,0.315,0.322],[693920,679392,664929,650657,634278,616297,599243,583089,565914,549774,532915,517141],[5.551,5.435,5.319,5.205,5.074,4.93,4.794,4.665,4.527,4.398,4.263,4.137]]],"welAOW_box1":[[29000,[0.185,0.189,0.194,0.197,0.201,0.204,0.207,0.209,0.211,0.213,0.215,0.217],[134158,127854,122652,116618,111614,106453,101689,96825,92342,88207,84387,80854],[4.626,4.409,4.229,4.021,3.849,3.671,3.507,3.339,3.184,3.042,2.91,2.788]],[30000,[0.192,0.198,0.203,0.208,0.211,0.215,0.218,0.221,0.223,0.225,0.227,0.229],[144035,138561,132768,127376,121207,116062,110786,105914,100959,96389,92169,88267],[4.801,4.619,4.426,4.246,4.04,3.869,3.693,3.53,3.365,3.213,3.072,2.942]],[31000,[0.199,0.206,0.212,0.217,0.221,0.225,0.228,0.231,0.234,0.237,0.239,0.241],[154263,148965,143276,137317,131183,125509,119730,114397,109470,104914,100276,95989],[4.976,4.805,4.622,4.43,4.232,4.049,3.862,3.69,3.531,3.384,3.235,3.096]],[32000,[0.205,0.212,0.218,0.224,0.23,0.234,0.238,0.241,0.244,0.247,0.249,0.252],[164040,158249,152084,146319,140929,134740,129013,123199,117831,112868,107842,103608],[5.126,4.945,4.753,4.572,4.404,4.211,4.032,3.85,3.682,3.527,3.37,3.238]],[33000,[0.209,0.217,0.223,0.229,0.235,0.24,0.245,0.248,0.252,0.255,0.257,0.26],[172467,167043,160433,154259,148493,142513,136958,130740,125497,120165,114785,110238],[5.226,5.062,4.862,4.675,4.5,4.319,4.15,3.962,3.803,3.641,3.478,3.341]],[34000,[0.212,0.22,0.228,0.234,0.24,0.245,0.251,0.255,0.259,0.262,0.265,0.267],[180244,174484,169001,162404,156248,149891,144564,138504,132892,127205,121945,116636],[5.301,5.132,4.971,4.777,4.596,4.409,4.252,4.074,3.909,3.741,3.587,3.43]],[35000,[0.216,0.224,0.231,0.239,0.245,0.251,0.256,0.261,0.265,0.269,0.272,0.275],[189046,182882,176261,170753,164194,158078,151780,145932,139969,134445,128847,123664],[5.401,5.225,5.036,4.879,4.691,4.517,4.337,4.169,3.999,3.841,3.681,3.533]],[36000,[0.218,0.227,0.235,0.243,0.249,0.256,0.261,0.266,0.271,0.275,0.279,0.282],[196248,190626,184436,178571,171643,165833,159166,152977,147228,141371,135939,130435],[5.451,5.295,5.123,4.96,4.768,4.606,4.421,4.249,4.09,3.927,3.776,3.623]],[37000,[0.219,0.229,0.238,0.246,0.253,0.26,0.266,0.271,0.275,0.28,0.284,0.288],[202625,197648,191979,185797,179244,173103,166721,160182,153551,147939,142219,136911],[5.476,5.342,5.189,5.022,4.844,4.678,4.506,4.329,4.15,3.998,3.844,3.7]],[38000,[0.22,0.231,0.24,0.249,0.257,0.263,0.27,0.275,0.28,0.284,0.289,0.292],[209051,204762,198825,193146,186999,179833,173802,166939,160569,154108,148634,142564],[5.501,5.388,5.232,5.083,4.921,4.732,4.574,4.393,4.225,4.055,3.911,3.752]],[39000,[0.221,0.232,0.242,0.251,0.259,0.266,0.273,0.279,0.284,0.289,0.293,0.297],[215528,211061,205757,199821,193414,186670,180357,173824,167148,160948,154657,148821],[5.526,5.412,5.276,5.124,4.959,4.786,4.625,4.457,4.286,4.127,3.966,3.816]],[40000,[0.222,0.233,0.243,0.252,0.261,0.269,0.276,0.282,0.288,0.293,0.297,0.301],[222054,217405,211905,205761,199905,193616,187015,180198,173849,167360,160788,154693],[5.551,5.435,5.298,5.144,4.998,4.84,4.675,4.505,4.346,4.184,4.02,3.867]],[41000,[0.223,0.234,0.244,0.253,0.263,0.271,0.279,0.285,0.291,0.296,0.301,0.305],[228631,223797,218097,211742,206473,199932,193774,186668,180051,173300,167027,160667],[5.576,5.458,5.319,5.164,5.036,4.876,4.726,4.553,4.391,4.227,4.074,3.919]],[42000,[0.224,0.235,0.245,0.255,0.264,0.273,0.281,0.288,0.294,0.3,0.305,0.309],[235258,230235,224332,218621,212313,206320,199923,193234,186344,179926,173375,166744],[5.601,5.482,5.341,5.205,5.055,4.912,4.76,4.601,4.437,4.284,4.128,3.97]],[43000,[0.225,0.236,0.246,0.256,0.266,0.274,0.283,0.29,0.297,0.303,0.308,0.313],[241934,236720,230611,224704,219015,212006,206140,199209,192728,186052,179249,172924],[5.626,5.505,5.363,5.226,5.093,4.93,4.794,4.633,4.482,4.327,4.169,4.021]],[44000,[0.227,0.237,0.248,0.258,0.267,0.276,0.284,0.292,0.299,0.306,0.311,0.316],[249761,243251,237892,231726,224951,218520,211679,205247,198538,192264,185204,178642],[5.676,5.528,5.407,5.266,5.113,4.966,4.811,4.665,4.512,4.37,4.209,4.06]],[45000,[0.228,0.239,0.249,0.259,0.268,0.277,0.286,0.294,0.301,0.308,0.314,0.319],[256563,250879,244280,237911,230925,224296,218014,211350,204408,197919,191240,184436],[5.701,5.575,5.428,5.287,5.132,4.984,4.845,4.697,4.542,4.398,4.25,4.099]],[46000,[0.229,0.24,0.25,0.26,0.269,0.279,0.287,0.295,0.303,0.309,0.316,0.322],[263415,257527,250711,244137,236937,230936,223638,216781,210339,202974,196735,190308],[5.726,5.598,5.45,5.307,5.151,5.02,4.862,4.713,4.573,4.412,4.277,4.137]],[47000,[0.231,0.241,0.252,0.261,0.271,0.28,0.289,0.297,0.304,0.311,0.318,0.324],[271492,264222,258211,250403,243888,236802,230092,222995,215621,208729,202284,195653],[5.776,5.622,5.494,5.328,5.189,5.038,4.896,4.745,4.588,4.441,4.304,4.163]],[48000,[0.231,0.243,0.253,0.263,0.273,0.282,0.29,0.299,0.306,0.313,0.32,0.326],[277268,272083,264751,257691,250915,243568,235801,229274,221657,214540,207888,201049],[5.776,5.668,5.516,5.369,5.227,5.074,4.913,4.777,4.618,4.47,4.331,4.189]],[49000,[0.233,0.244,0.255,0.265,0.275,0.283,0.292,0.3,0.308,0.315,0.322,0.328],[285495,278895,272403,265060,258019,249524,242374,234833,227754,220409,213545,206497],[5.826,5.692,5.559,5.409,5.266,5.092,4.946,4.793,4.648,4.498,4.358,4.214]],[50000,[0.234,0.246,0.256,0.267,0.276,0.286,0.294,0.302,0.31,0.317,0.324,0.33],[292572,286919,279052,272510,264242,257315,249014,241223,233911,226336,219257,211996],[5.851,5.738,5.581,5.45,5.285,5.146,4.98,4.824,4.678,4.527,4.385,4.24]],[51000,[0.236,0.248,0.258,0.268,0.279,0.288,0.297,0.305,0.313,0.32,0.327,0.333],[300974,295037,286857,279002,272457,264297,256586,248492,240898,233047,225712,218201],[5.901,5.785,5.625,5.471,5.342,5.182,5.031,4.872,4.723,4.57,4.426,4.278]],[52000,[0.239,0.25,0.262,0.272,0.281,0.291,0.3,0.308,0.316,0.323,0.33,0.337],[310776,303248,297016,288718,279791,272286,264260,255856,247976,239844,232249,225152],[5.976,5.832,5.712,5.552,5.381,5.236,5.082,4.92,4.769,4.612,4.466,4.33]],[53000,[0.242,0.254,0.265,0.275,0.285,0.294,0.304,0.312,0.32,0.327,0.335,0.341],[320729,314025,306195,297516,289231,280384,272933,264163,255944,247484,240302,232206],[6.051,5.925,5.777,5.614,5.457,5.29,5.15,4.984,4.829,4.67,4.534,4.381]],[54000,[0.245,0.257,0.268,0.279,0.289,0.298,0.307,0.316,0.324,0.332,0.339,0.345],[330831,323729,315504,307539,298824,289561,280827,272598,264033,256009,247760,239362],[6.127,5.995,5.843,5.695,5.534,5.362,5.2,5.048,4.889,4.741,4.588,4.433]],[55000,[0.248,0.26,0.272,0.283,0.293,0.303,0.311,0.32,0.329,0.336,0.343,0.35],[341084,333573,326142,317725,308570,299871,289754,281161,273073,263892,255326,247328],[6.202,6.065,5.93,5.777,5.61,5.452,5.268,5.112,4.965,4.798,4.642,4.497]],[56000,[0.25,0.264,0.276,0.286,0.297,0.307,0.316,0.324,0.332,0.34,0.347,0.355],[350086,344863,336956,326931,318470,309354,299766,289851,280573,271888,263000,255423],[6.252,6.158,6.017,5.838,5.687,5.524,5.353,5.176,5.01,4.855,4.696,4.561]],[57000,[0.252,0.266,0.279,0.29,0.3,0.311,0.32,0.328,0.337,0.344,0.352,0.359],[359188,353680,346701,337423,327431,318981,308981,298669,289884,279999,271553,262913],[6.302,6.205,6.082,5.92,5.744,5.596,5.421,5.24,5.086,4.912,4.764,4.613]],[58000,[0.253,0.268,0.281,0.294,0.304,0.314,0.324,0.333,0.341,0.348,0.355,0.363],[366940,362591,355312,348079,337618,327708,318332,308542,298471,288225,278672,270506],[6.327,6.252,6.126,6.001,5.821,5.65,5.488,5.32,5.146,4.969,4.805,4.664]],[59000,[0.254,0.27,0.284,0.296,0.308,0.318,0.328,0.337,0.345,0.353,0.36,0.366],[374742,371595,365297,356489,347958,337605,327818,317632,307178,297406,287470,277445],[6.352,6.298,6.191,6.042,5.898,5.722,5.556,5.384,5.206,5.041,4.872,4.702]],[60000,[0.255,0.271,0.286,0.299,0.311,0.321,0.331,0.341,0.349,0.357,0.364,0.371],[382594,379293,374105,366205,357302,346566,336423,326849,316007,305874,295590,286001],[6.377,6.322,6.235,6.103,5.955,5.776,5.607,5.447,5.267,5.098,4.927,4.767]],[61000,[0.256,0.272,0.287,0.301,0.314,0.325,0.335,0.344,0.353,0.361,0.368,0.375],[390496,387038,381669,374799,366761,356732,346164,335220,324956,314457,303819,293903],[6.402,6.345,6.257,6.144,6.012,5.848,5.675,5.495,5.327,5.155,4.981,4.818]],[62000,[0.257,0.273,0.289,0.304,0.316,0.328,0.338,0.348,0.357,0.365,0.372,0.379],[398448,394829,390630,384740,375148,365927,354989,344677,334025,323153,312156,301908],[6.427,6.368,6.3,6.205,6.051,5.902,5.726,5.559,5.388,5.212,5.035,4.869]],[63000,[0.258,0.274,0.29,0.305,0.319,0.33,0.341,0.351,0.36,0.368,0.376,0.383],[406450,402667,398304,392231,384817,374097,363916,353256,342265,331064,320602,310015],[6.452,6.392,6.322,6.226,6.108,5.938,5.776,5.607,5.433,5.255,5.089,4.921]],[64000,[0.258,0.276,0.291,0.307,0.321,0.333,0.344,0.354,0.363,0.372,0.379,0.386],[412901,412044,406021,401070,393377,383490,372945,361930,350595,339975,328289,317403],[6.452,6.438,6.344,6.267,6.147,5.992,5.827,5.655,5.478,5.312,5.13,4.959]],[65000,[0.259,0.276,0.292,0.308,0.323,0.336,0.346,0.356,0.366,0.375,0.383,0.39],[420978,418482,413782,408664,402012,392990,380975,369662,359016,348071,336938,325702],[6.477,6.438,6.366,6.287,6.185,6.046,5.861,5.687,5.523,5.355,5.184,5.011]],[66000,[0.259,0.276,0.294,0.309,0.324,0.338,0.349,0.36,0.368,0.378,0.386,0.393],[427455,424920,423026,416298,409461,401412,390190,379567,366531,356254,344801,333257],[6.477,6.438,6.409,6.308,6.204,6.082,5.912,5.751,5.554,5.398,5.224,5.049]],[67000,[0.26,0.277,0.294,0.31,0.325,0.34,0.352,0.362,0.371,0.38,0.389,0.397],[435607,432921,429435,423973,416948,409905,399507,387458,375118,363565,352746,341750],[6.502,6.462,6.409,6.328,6.223,6.118,5.963,5.783,5.599,5.426,5.265,5.101]],[68000,[0.26,0.277,0.295,0.311,0.326,0.341,0.354,0.364,0.375,0.383,0.392,0.4],[442108,439383,437327,431689,424473,417246,407773,395414,384822,371904,360772,349472],[6.502,6.462,6.431,6.348,6.242,6.136,5.997,5.815,5.659,5.469,5.305,5.139]],[69000,[0.261,0.278,0.295,0.312,0.327,0.342,0.356,0.367,0.377,0.386,0.394,0.403],[450335,447454,443759,439446,432036,424624,416108,404536,392563,380330,367945,357271],[6.527,6.485,6.431,6.369,6.261,6.154,6.031,5.863,5.689,5.512,5.333,5.178]],[70000,[0.262,0.279,0.296,0.313,0.328,0.343,0.357,0.369,0.379,0.389,0.397,0.405],[458612,455572,451716,447244,439638,432038,423324,412635,400366,388840,376120,364247],[6.552,6.508,6.453,6.389,6.281,6.172,6.047,5.895,5.72,5.555,5.373,5.204]],[71000,[0.262,0.279,0.296,0.313,0.329,0.344,0.358,0.371,0.382,0.391,0.399,0.407],[465164,462080,458169,453633,447278,439487,430574,420798,409299,396423,383415,371275],[6.552,6.508,6.453,6.389,6.3,6.19,6.064,5.927,5.765,5.583,5.4,5.229]],[72000,[0.263,0.28,0.297,0.314,0.33,0.345,0.359,0.373,0.384,0.394,0.403,0.41],[473516,470268,466192,461492,454957,446973,437858,429025,417237,405091,392713,379280],[6.577,6.531,6.475,6.41,6.319,6.208,6.081,5.959,5.795,5.626,5.454,5.268]],[73000,[0.264,0.28,0.297,0.314,0.331,0.346,0.36,0.373,0.384,0.395,0.405,0.413],[481918,476799,472667,467902,462673,454494,445176,434984,423032,411759,400143,387361],[6.602,6.531,6.475,6.41,6.338,6.226,6.098,5.959,5.795,5.641,5.481,5.306]],[74000,[0.265,0.281,0.297,0.314,0.331,0.347,0.361,0.373,0.384,0.395,0.406,0.416],[490370,485057,479142,474311,469011,462052,452528,440943,428827,417400,406626,395520],[6.627,6.555,6.475,6.41,6.338,6.244,6.115,5.959,5.795,5.641,5.495,5.345]],[75000,[0.265,0.282,0.298,0.314,0.331,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[496997,493361,487252,480721,475349,469645,458643,446902,434622,423041,412121,401828],[6.627,6.578,6.497,6.41,6.338,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[76000,[0.266,0.283,0.299,0.315,0.332,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[505524,501712,495405,488682,483142,475907,464759,452860,440417,428681,417616,407186],[6.652,6.601,6.518,6.43,6.357,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[77000,[0.267,0.283,0.3,0.316,0.332,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[514101,508313,503602,496684,489500,482169,470874,458819,446212,434322,423111,412544],[6.677,6.601,6.54,6.45,6.357,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[78000,[0.268,0.284,0.3,0.316,0.333,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[522728,516734,510143,503134,497350,488431,476989,464778,452007,439962,428606,417901],[6.702,6.625,6.54,6.45,6.376,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[79000,[0.269,0.285,0.301,0.317,0.333,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[531405,525202,518405,511197,503727,494693,483104,470736,457802,445603,434101,423259],[6.727,6.648,6.562,6.471,6.376,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[80000,[0.271,0.285,0.301,0.317,0.333,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[542133,531850,524967,517668,510103,500955,489220,476695,463597,451243,439596,428617],[6.777,6.648,6.562,6.471,6.376,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[81000,[0.272,0.286,0.302,0.318,0.334,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[550935,540388,533295,525792,518030,507217,495335,482654,469392,456884,445091,433974],[6.802,6.671,6.584,6.491,6.395,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[82000,[0.272,0.288,0.302,0.319,0.334,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[557737,550885,539879,533957,524426,513479,501450,488612,475187,462524,450586,439332],[6.802,6.718,6.584,6.512,6.395,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[83000,[0.273,0.288,0.303,0.319,0.334,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[566614,557603,548272,540469,530821,519741,507565,494571,480982,468165,456081,444690],[6.827,6.718,6.606,6.512,6.395,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[84000,[0.274,0.289,0.304,0.319,0.334,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[575541,566281,556709,546981,537216,526003,513681,500530,486777,473805,461576,450048],[6.852,6.741,6.627,6.512,6.395,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[85000,[0.275,0.29,0.304,0.319,0.334,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[584518,575005,563337,553492,543612,532265,519796,506488,492572,479446,467070,455405],[6.877,6.765,6.627,6.512,6.395,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[86000,[0.276,0.291,0.305,0.319,0.334,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[593545,583776,571839,560004,550007,538526,525911,512447,498367,485087,472565,460763],[6.902,6.788,6.649,6.512,6.395,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[87000,[0.277,0.291,0.306,0.32,0.334,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[602623,590564,580385,568292,556403,544788,532026,518406,504162,490727,478060,466121],[6.927,6.788,6.671,6.532,6.395,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[88000,[0.277,0.292,0.306,0.32,0.334,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[609549,599405,587056,574824,562798,551050,538142,524364,509957,496368,483555,471478],[6.927,6.811,6.671,6.532,6.395,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[89000,[0.277,0.292,0.306,0.32,0.334,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[616476,606216,593727,581356,569194,557312,544257,530323,515752,502008,489050,476836],[6.927,6.811,6.671,6.532,6.395,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[90000,[0.277,0.292,0.306,0.321,0.334,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[623403,613027,600399,589725,575589,563574,550372,536282,521547,507649,494545,482194],[6.927,6.811,6.671,6.552,6.395,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[91000,[0.278,0.292,0.307,0.321,0.334,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[632605,619839,609054,596277,581985,569836,556487,542241,527342,513289,500040,487552],[6.952,6.811,6.693,6.552,6.395,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[92000,[0.278,0.293,0.307,0.321,0.334,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[639557,628796,615746,602830,588380,576098,562603,548199,533137,518930,505535,492909],[6.952,6.835,6.693,6.552,6.395,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[93000,[0.278,0.293,0.307,0.321,0.335,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[646508,635631,622439,609382,596556,582360,568718,554158,538932,524570,511030,498267],[6.952,6.835,6.693,6.552,6.415,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[94000,[0.278,0.293,0.307,0.321,0.335,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[653460,642466,629132,615935,602971,588622,574833,560117,544727,530211,516525,503625],[6.952,6.835,6.693,6.552,6.415,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[95000,[0.279,0.293,0.308,0.321,0.335,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[662787,649300,637896,622487,609385,594884,580948,566075,550521,535851,522020,508982],[6.977,6.835,6.715,6.552,6.415,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[96000,[0.279,0.294,0.308,0.322,0.335,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[669764,658375,644611,631000,615800,601146,587064,572034,556316,541492,527515,514340],[6.977,6.858,6.715,6.573,6.415,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[97000,[0.279,0.294,0.308,0.322,0.335,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[676741,665233,651326,637572,622214,607408,593179,577993,562111,547132,533010,519698],[6.977,6.858,6.715,6.573,6.415,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[98000,[0.28,0.294,0.308,0.322,0.336,0.348,0.361,0.373,0.384,0.395,0.406,0.417],[686168,672091,658040,644145,630506,613670,599294,583951,567906,552773,538505,525056],[7.002,6.858,6.715,6.573,6.434,6.262,6.115,5.959,5.795,5.641,5.495,5.358]],[99000,[0.28,0.294,0.309,0.322,0.336,0.349,0.361,0.373,0.384,0.395,0.406,0.417],[693170,678949,666913,650718,636939,621713,605409,589910,573701,558414,544000,530413],[7.002,6.858,6.736,6.573,6.434,6.28,6.115,5.959,5.795,5.641,5.495,5.358]],[100000,[0.28,0.295,0.309,0.323,0.336,0.349,0.361,0.373,0.384,0.395,0.406,0.417],[700172,688140,673650,659332,643373,627993,611525,595869,579496,564054,549495,535771],[7.002,6.881,6.736,6.593,6.434,6.28,6.115,5.959,5.795,5.641,5.495,5.358]],[101000,[0.281,0.295,0.309,0.323,0.336,0.349,0.361,0.373,0.384,0.395,0.406,0.417],[709699,695021,680386,665926,649807,634273,617640,601827,585291,569695,554990,541129],[7.027,6.881,6.736,6.593,6.434,6.28,6.115,5.959,5.795,5.641,5.495,5.358]],[102000,[0.281,0.295,0.309,0.323,0.336,0.349,0.361,0.373,0.384,0.395,0.406,0.417],[716726,701902,687123,672519,656240,640553,623755,607786,591086,575335,560485,546486],[7.027,6.881,6.736,6.593,6.434,6.28,6.115,5.959,5.795,5.641,5.495,5.358]],[103000,[0.281,0.296,0.309,0.323,0.337,0.349,0.362,0.373,0.384,0.395,0.406,0.417],[723752,711186,693859,679112,664646,646833,631615,613745,596881,580976,565980,551844],[7.027,6.905,6.736,6.593,6.453,6.28,6.132,5.959,5.795,5.641,5.495,5.358]],[104000,[0.282,0.296,0.31,0.323,0.337,0.35,0.362,0.374,0.385,0.395,0.406,0.417],[733380,718091,702863,685706,671099,654984,637747,621365,604246,586616,571474,557202],[7.052,6.905,6.758,6.593,6.453,6.298,6.132,5.975,5.81,5.641,5.495,5.358]],[105000,[0.282,0.296,0.31,0.324,0.337,0.35,0.362,0.374,0.385,0.395,0.406,0.417],[740431,724996,709621,694442,677552,661282,643879,627340,610056,592257,576969,562559],[7.052,6.905,6.758,6.614,6.453,6.298,6.132,5.975,5.81,5.641,5.495,5.358]],[106000,[0.282,0.296,0.31,0.324,0.337,0.35,0.362,0.374,0.385,0.395,0.406,0.417],[747483,731901,716380,701056,684005,667580,650012,633314,615866,597897,582464,567917],[7.052,6.905,6.758,6.614,6.453,6.298,6.132,5.975,5.81,5.641,5.495,5.358]],[107000,[0.283,0.297,0.311,0.324,0.337,0.35,0.363,0.374,0.385,0.396,0.406,0.417],[757210,741301,725471,707670,690458,673878,657956,639289,621676,605066,587959,573275],[7.077,6.928,6.78,6.614,6.453,6.298,6.149,5.975,5.81,5.655,5.495,5.358]],[108000,[0.283,0.297,0.311,0.325,0.338,0.351,0.363,0.374,0.385,0.396,0.406,0.417],[764287,748229,732251,716488,698979,682119,664106,645264,627486,610721,593454,578633],[7.077,6.928,6.78,6.634,6.472,6.316,6.149,5.975,5.81,5.655,5.495,5.358]],[109000,[0.283,0.297,0.311,0.325,0.338,0.351,0.363,0.375,0.385,0.396,0.406,0.417],[771364,755157,739031,723122,705451,688435,670255,652979,633296,616375,598949,583990],[7.077,6.928,6.78,6.634,6.472,6.316,6.149,5.991,5.81,5.655,5.495,5.358]],[110000,[0.284,0.298,0.312,0.325,0.338,0.351,0.363,0.375,0.386,0.396,0.406,0.417],[781191,764651,748209,729757,711923,694751,676404,658970,640766,622030,604444,589348],[7.102,6.951,6.802,6.634,6.472,6.316,6.149,5.991,5.825,5.655,5.495,5.358]]],"nietAOW_box3":[[30000,[0.14,0.142,0.145,0.147,0.149,0.151,0.152,0.154,0.156,0.157,0.158,0.16],[105026,99372,94834,90020,85592,81513,77245,73805,70626,67258,64153,61671],[3.501,3.312,3.161,3.001,2.853,2.717,2.575,2.46,2.354,2.242,2.138,2.056]],[31000,[0.145,0.148,0.15,0.152,0.154,0.156,0.158,0.16,0.161,0.163,0.164,0.166],[112403,107023,101374,96185,91413,87019,82971,79236,75319,72156,68809,66117],[3.626,3.452,3.27,3.103,2.949,2.807,2.676,2.556,2.43,2.328,2.22,2.133]],[32000,[0.15,0.153,0.155,0.157,0.16,0.162,0.163,0.165,0.167,0.168,0.17,0.171],[120029,114208,108133,102554,98038,93281,88358,84348,80647,76768,73627,70305],[3.751,3.569,3.379,3.205,3.064,2.915,2.761,2.636,2.52,2.399,2.301,2.197]],[33000,[0.153,0.156,0.158,0.161,0.163,0.165,0.167,0.168,0.17,0.172,0.173,0.175],[126256,120086,113670,108453,102997,97978,93355,88566,84661,81052,77268,74198],[3.826,3.639,3.445,3.286,3.121,2.969,2.829,2.684,2.565,2.456,2.341,2.248]],[34000,[0.156,0.158,0.161,0.163,0.165,0.167,0.169,0.171,0.173,0.174,0.176,0.177],[132632,125311,119338,113128,107420,102170,97336,92879,88766,84480,80990,77321],[3.901,3.686,3.51,3.327,3.159,3.005,2.863,2.732,2.611,2.485,2.382,2.274]],[35000,[0.157,0.16,0.162,0.165,0.167,0.169,0.171,0.173,0.175,0.176,0.178,0.179],[137409,130630,123611,117884,111920,106435,101384,96729,92433,87964,84319,80494],[3.926,3.732,3.532,3.368,3.198,3.041,2.897,2.764,2.641,2.513,2.409,2.3]],[36000,[0.159,0.161,0.164,0.166,0.169,0.171,0.173,0.174,0.176,0.178,0.179,0.181],[143135,135202,128713,121987,116496,110771,105501,100068,95617,91505,87215,83719],[3.976,3.756,3.575,3.389,3.236,3.077,2.931,2.78,2.656,2.542,2.423,2.326]],[37000,[0.159,0.161,0.164,0.166,0.169,0.171,0.173,0.174,0.176,0.178,0.179,0.181],[147111,138958,132288,125375,119732,113848,108431,102847,98273,94047,89638,86045],[3.976,3.756,3.575,3.389,3.236,3.077,2.931,2.78,2.656,2.542,2.423,2.326]],[38000,[0.159,0.161,0.164,0.166,0.169,0.171,0.173,0.174,0.176,0.178,0.179,0.181],[151087,142713,135864,128764,122968,116925,111362,105627,100929,96589,92061,88370],[3.976,3.756,3.575,3.389,3.236,3.077,2.931,2.78,2.656,2.542,2.423,2.326]],[39000,[0.159,0.161,0.164,0.166,0.169,0.171,0.173,0.174,0.176,0.178,0.179,0.181],[155063,146469,139439,132152,126205,120002,114292,108407,103585,99131,94483,90696],[3.976,3.756,3.575,3.389,3.236,3.077,2.931,2.78,2.656,2.542,2.423,2.326]],[40000,[0.159,0.161,0.164,0.166,0.169,0.171,0.173,0.174,0.176,0.178,0.179,0.181],[159039,150224,143014,135541,129441,123079,117223,111186,106241,101673,96906,93021],[3.976,3.756,3.575,3.389,3.236,3.077,2.931,2.78,2.656,2.542,2.423,2.326]],[41000,[0.159,0.161,0.164,0.166,0.169,0.171,0.173,0.174,0.176,0.178,0.179,0.181],[163015,153980,146590,138929,132677,126156,120154,113966,108897,104214,99329,95347],[3.976,3.756,3.575,3.389,3.236,3.077,2.931,2.78,2.656,2.542,2.423,2.326]],[42000,[0.159,0.161,0.164,0.166,0.169,0.171,0.173,0.174,0.176,0.178,0.179,0.181],[166991,157736,150165,142318,135913,129233,123084,116746,111553,106756,101751,97672],[3.976,3.756,3.575,3.389,3.236,3.077,2.931,2.78,2.656,2.542,2.423,2.326]],[43000,[0.159,0.161,0.164,0.166,0.169,0.171,0.173,0.174,0.176,0.178,0.179,0.181],[170967,161491,153740,145706,139149,132310,126015,119525,114209,109298,104174,99998],[3.976,3.756,3.575,3.389,3.236,3.077,2.931,2.78,2.656,2.542,2.423,2.326]],[44000,[0.159,0.161,0.164,0.166,0.169,0.171,0.173,0.174,0.176,0.178,0.179,0.181],[174943,165247,157316,149095,142385,135387,128945,122305,116865,111840,106597,102323],[3.976,3.756,3.575,3.389,3.236,3.077,2.931,2.78,2.656,2.542,2.423,2.326]],[45000,[0.159,0.161,0.164,0.166,0.169,0.171,0.173,0.174,0.176,0.178,0.179,0.181],[178919,169002,160891,152483,145621,138464,131876,125085,119521,114382,109019,104649],[3.976,3.756,3.575,3.389,3.236,3.077,2.931,2.78,2.656,2.542,2.423,2.326]],[46000,[0.159,0.161,0.164,0.166,0.169,0.171,0.173,0.174,0.176,0.178,0.179,0.181],[182895,172758,164466,155872,148857,141541,134806,127864,122177,116923,111442,106974],[3.976,3.756,3.575,3.389,3.236,3.077,2.931,2.78,2.656,2.542,2.423,2.326]],[47000,[0.159,0.161,0.164,0.166,0.169,0.171,0.173,0.174,0.176,0.178,0.179,0.181],[186871,176514,168042,159260,152093,144618,137737,130644,124833,119465,113865,109300],[3.976,3.756,3.575,3.389,3.236,3.077,2.931,2.78,2.656,2.542,2.423,2.326]],[48000,[0.159,0.161,0.164,0.166,0.169,0.171,0.173,0.174,0.176,0.178,0.179,0.181],[190847,180269,171617,162649,155329,147695,140668,133423,127489,122007,116287,111625],[3.976,3.756,3.575,3.389,3.236,3.077,2.931,2.78,2.656,2.542,2.423,2.326]],[49000,[0.159,0.161,0.164,0.166,0.169,0.171,0.173,0.174,0.176,0.178,0.179,0.181],[194823,184025,175193,166037,158565,150772,143598,136203,130145,124549,118710,113951],[3.976,3.756,3.575,3.389,3.236,3.077,2.931,2.78,2.656,2.542,2.423,2.326]],[50000,[0.159,0.161,0.164,0.166,0.169,0.171,0.173,0.174,0.176,0.178,0.179,0.181],[198799,187780,178768,169426,161801,153849,146529,138983,132801,127091,121132,116276],[3.976,3.756,3.575,3.389,3.236,3.077,2.931,2.78,2.656,2.542,2.423,2.326]],[51000,[0.159,0.161,0.164,0.166,0.169,0.171,0.173,0.174,0.176,0.178,0.179,0.181],[202775,191536,182343,172815,165037,156926,149459,141762,135457,129632,123555,118602],[3.976,3.756,3.575,3.389,3.236,3.077,2.931,2.78,2.656,2.542,2.423,2.326]],[52000,[0.159,0.161,0.164,0.166,0.169,0.171,0.173,0.174,0.176,0.178,0.179,0.181],[206751,195292,185919,176203,168273,160003,152390,144542,138113,132174,125978,120927],[3.976,3.756,3.575,3.389,3.236,3.077,2.931,2.78,2.656,2.542,2.423,2.326]],[53000,[0.159,0.162,0.164,0.167,0.169,0.171,0.173,0.175,0.176,0.178,0.179,0.181],[210727,200284,189494,180673,171509,163080,155320,148168,140769,134716,128400,123253],[3.976,3.779,3.575,3.409,3.236,3.077,2.931,2.796,2.656,2.542,2.423,2.326]],[54000,[0.159,0.162,0.165,0.167,0.169,0.171,0.173,0.175,0.177,0.178,0.18,0.181],[214703,204063,194247,184082,174745,166157,158251,150964,144240,137258,131554,125579],[3.976,3.779,3.597,3.409,3.236,3.077,2.931,2.796,2.671,2.542,2.436,2.326]],[55000,[0.16,0.163,0.165,0.168,0.17,0.172,0.174,0.176,0.178,0.179,0.181,0.182],[220054,209124,197844,188614,179034,170224,162113,154638,147741,140585,134734,128611],[4.001,3.802,3.597,3.429,3.255,3.095,2.948,2.812,2.686,2.556,2.45,2.338]],[56000,[0.161,0.163,0.166,0.168,0.171,0.173,0.175,0.177,0.178,0.18,0.182,0.183],[225455,212927,202662,192043,183361,174327,166009,158345,150428,143941,137942,131669],[4.026,3.802,3.619,3.429,3.274,3.113,2.964,2.828,2.686,2.57,2.463,2.351]],[57000,[0.161,0.164,0.167,0.169,0.171,0.174,0.175,0.177,0.179,0.181,0.182,0.184],[229481,218059,207523,196636,186636,178465,168974,161172,153974,147325,140405,134752],[4.026,3.826,3.641,3.45,3.274,3.131,2.964,2.828,2.701,2.585,2.463,2.364]],[58000,[0.162,0.165,0.167,0.17,0.172,0.174,0.176,0.178,0.18,0.181,0.183,0.184],[234958,223237,211164,201270,191021,181596,172921,164926,157551,149910,143654,137116],[4.051,3.849,3.641,3.47,3.293,3.131,2.981,2.844,2.716,2.585,2.477,2.364]],[59000,[0.163,0.165,0.168,0.17,0.173,0.175,0.177,0.179,0.18,0.182,0.184,0.185],[240484,227086,216091,204740,195444,185789,176902,168712,160267,153337,146929,140238],[4.076,3.849,3.663,3.47,3.313,3.149,2.998,2.86,2.716,2.599,2.49,2.377]],[60000,[0.163,0.166,0.169,0.171,0.173,0.175,0.177,0.179,0.181,0.183,0.184,0.186],[244560,232335,221062,209435,198756,188938,179900,171572,163889,156793,149419,143386],[4.076,3.872,3.684,3.491,3.313,3.149,2.998,2.86,2.731,2.613,2.49,2.39]],[61000,[0.164,0.167,0.169,0.172,0.174,0.176,0.178,0.18,0.182,0.183,0.185,0.186],[250161,237630,224746,214171,203237,193184,183932,175406,167541,159406,152735,145776],[4.101,3.896,3.684,3.511,3.332,3.167,3.015,2.876,2.747,2.613,2.504,2.39]],[62000,[0.164,0.167,0.17,0.172,0.175,0.177,0.179,0.181,0.183,0.184,0.186,0.187],[254262,241525,229782,217682,207756,197467,187997,179272,171223,162905,156078,148962],[4.101,3.896,3.706,3.511,3.351,3.185,3.032,2.891,2.762,2.627,2.517,2.403]],[63000,[0.165,0.168,0.171,0.173,0.175,0.178,0.18,0.182,0.183,0.185,0.187,0.188],[259939,246890,234862,222479,211107,201785,192097,183170,173985,166432,159448,152174],[4.126,3.919,3.728,3.531,3.351,3.203,3.049,2.907,2.762,2.642,2.531,2.415]],[64000,[0.166,0.169,0.171,0.174,0.176,0.179,0.181,0.182,0.184,0.186,0.187,0.189],[265665,252302,238590,227317,215683,206140,196230,186077,177712,169987,161979,155412],[4.151,3.942,3.728,3.552,3.37,3.221,3.066,2.907,2.777,2.656,2.531,2.428]],[65000,[0.167,0.17,0.172,0.175,0.177,0.179,0.182,0.183,0.185,0.187,0.188,0.19],[271441,257761,243735,232195,220298,209361,200397,190023,181470,173572,165390,158676],[4.176,3.966,3.75,3.572,3.389,3.221,3.083,2.923,2.792,2.67,2.544,2.441]],[66000,[0.167,0.17,0.173,0.176,0.178,0.18,0.182,0.184,0.186,0.188,0.19,0.191],[275618,261726,248923,237115,224951,213770,203480,194001,185258,177184,169721,161965],[4.176,3.966,3.772,3.593,3.408,3.239,3.083,2.939,2.807,2.685,2.572,2.454]],[67000,[0.168,0.171,0.174,0.177,0.179,0.181,0.184,0.185,0.187,0.189,0.191,0.192],[281469,267255,254156,242075,229642,218214,208833,198011,189076,180826,173199,165280],[4.201,3.989,3.793,3.613,3.427,3.257,3.117,2.955,2.822,2.699,2.585,2.467]],[68000,[0.169,0.173,0.176,0.178,0.181,0.183,0.185,0.187,0.189,0.19,0.192,0.193],[287370,274416,260914,247076,235674,223918,213102,203139,193950,184496,176704,168620],[4.226,4.036,3.837,3.633,3.466,3.293,3.134,2.987,2.852,2.713,2.599,2.48]],[69000,[0.17,0.173,0.177,0.18,0.182,0.184,0.186,0.188,0.19,0.192,0.193,0.195],[293322,278452,266255,253527,240461,228453,217405,207228,197844,189179,180237,172873],[4.251,4.036,3.859,3.674,3.485,3.311,3.151,3.003,2.867,2.742,2.612,2.505]],[70000,[0.172,0.175,0.178,0.181,0.184,0.186,0.188,0.19,0.192,0.194,0.195,0.197],[301074,285753,271640,258630,246626,234283,222927,212468,202824,193920,184744,177177],[4.301,4.082,3.881,3.695,3.523,3.347,3.185,3.035,2.897,2.77,2.639,2.531]],[71000,[0.173,0.176,0.179,0.182,0.185,0.187,0.19,0.192,0.193,0.195,0.197,0.198],[307150,291491,277068,263774,251509,238907,228517,217772,206793,197705,189305,180620],[4.326,4.106,3.902,3.715,3.542,3.365,3.219,3.067,2.913,2.785,2.666,2.544]],[72000,[0.175,0.178,0.181,0.184,0.187,0.189,0.191,0.193,0.195,0.197,0.199,0.2],[315077,298956,284110,270428,257809,244863,232955,221989,211878,202545,193920,185014],[4.376,4.152,3.946,3.756,3.581,3.401,3.235,3.083,2.943,2.813,2.693,2.57]],[73000,[0.177,0.18,0.183,0.185,0.188,0.191,0.193,0.195,0.197,0.199,0.2,0.202],[323104,306514,291239,275674,262787,250891,238664,227405,217024,207443,197602,189460],[4.426,4.199,3.99,3.776,3.6,3.437,3.269,3.115,2.973,2.842,2.707,2.595]],[74000,[0.178,0.181,0.184,0.187,0.19,0.193,0.195,0.197,0.199,0.201,0.202,0.204],[329381,312439,296842,282472,269221,256991,244440,232884,222231,212399,202311,193957],[4.451,4.222,4.011,3.817,3.638,3.473,3.303,3.147,3.003,2.87,2.734,2.621]],[75000,[0.18,0.183,0.186,0.188,0.191,0.194,0.196,0.198,0.2,0.202,0.204,0.206],[337583,320160,304123,287820,274295,261814,249014,237229,226366,216340,207076,198505],[4.501,4.269,4.055,3.838,3.657,3.491,3.32,3.163,3.018,2.885,2.761,2.647]],[76000,[0.181,0.184,0.187,0.19,0.192,0.195,0.198,0.2,0.202,0.204,0.205,0.207],[343984,326201,309835,294760,279408,266672,254909,242820,231678,221395,210865,202128],[4.526,4.292,4.077,3.878,3.676,3.509,3.354,3.195,3.048,2.913,2.775,2.66]],[77000,[0.182,0.186,0.188,0.191,0.194,0.197,0.199,0.201,0.203,0.205,0.207,0.209],[350436,334086,315591,300211,286033,272952,259568,247246,235888,225407,215724,206766],[4.551,4.339,4.099,3.899,3.715,3.545,3.371,3.211,3.063,2.927,2.802,2.685]],[78000,[0.183,0.187,0.19,0.193,0.195,0.198,0.2,0.203,0.205,0.207,0.208,0.21],[356937,340244,323090,307294,291241,277900,264260,252949,241306,230562,219581,210454],[4.576,4.362,4.142,3.94,3.734,3.563,3.388,3.243,3.094,2.956,2.815,2.698]],[79000,[0.185,0.188,0.191,0.194,0.196,0.199,0.202,0.204,0.206,0.208,0.21,0.211],[365465,346449,328955,312846,296488,282885,270324,257454,245592,234647,224535,214167],[4.626,4.385,4.164,3.96,3.753,3.581,3.422,3.259,3.109,2.97,2.842,2.711]],[80000,[0.185,0.189,0.192,0.195,0.198,0.2,0.203,0.205,0.207,0.209,0.211,0.213],[370091,352701,334863,318439,303304,287905,275101,261991,249908,238759,228460,218934],[4.626,4.409,4.186,3.98,3.791,3.599,3.439,3.275,3.124,2.984,2.856,2.737]],[81000,[0.186,0.19,0.193,0.196,0.199,0.201,0.204,0.206,0.209,0.21,0.212,0.214],[376742,358999,340814,324073,308647,292961,279912,266559,255476,242900,232412,222711],[4.651,4.432,4.208,4.001,3.81,3.617,3.456,3.291,3.154,2.999,2.869,2.75]],[82000,[0.187,0.191,0.194,0.197,0.2,0.202,0.205,0.207,0.21,0.212,0.213,0.215],[383444,365344,346810,329748,314027,298054,284757,271160,259868,248241,236391,226514],[4.676,4.455,4.229,4.021,3.83,3.635,3.473,3.307,3.169,3.027,2.883,2.762]],[83000,[0.188,0.191,0.195,0.198,0.201,0.203,0.206,0.208,0.21,0.213,0.214,0.216],[390196,369799,352849,335463,319446,303182,289636,275793,263037,252453,240397,230343],[4.701,4.455,4.251,4.042,3.849,3.653,3.49,3.323,3.169,3.042,2.896,2.775]],[84000,[0.189,0.192,0.196,0.199,0.202,0.204,0.206,0.209,0.211,0.213,0.215,0.217],[396997,376214,358931,341220,324903,308346,293125,280458,267474,255495,244430,234197],[4.726,4.479,4.273,4.062,3.868,3.671,3.49,3.339,3.184,3.042,2.91,2.788]],[85000,[0.19,0.193,0.197,0.2,0.202,0.205,0.207,0.209,0.212,0.214,0.216,0.218],[403849,382676,365057,347017,328771,313547,298055,283796,271941,259750,248491,238078],[4.751,4.502,4.295,4.083,3.868,3.689,3.507,3.339,3.199,3.056,2.923,2.801]],[86000,[0.191,0.194,0.197,0.2,0.203,0.206,0.208,0.21,0.213,0.215,0.217,0.219],[410751,389184,369352,351100,334286,318783,303018,288509,276438,264034,252578,241983],[4.776,4.525,4.295,4.083,3.887,3.707,3.523,3.355,3.214,3.07,2.937,2.814]],[87000,[0.191,0.195,0.198,0.201,0.204,0.206,0.209,0.211,0.213,0.216,0.218,0.219],[415527,395739,375543,356958,339839,322490,308015,293254,279652,268347,256693,244797],[4.776,4.549,4.317,4.103,3.906,3.707,3.54,3.371,3.214,3.084,2.95,2.814]],[88000,[0.192,0.195,0.198,0.202,0.205,0.207,0.21,0.212,0.214,0.217,0.219,0.22],[422503,400287,379860,362857,345430,327780,313046,298030,284195,272688,260834,248742],[4.801,4.549,4.317,4.123,3.925,3.725,3.557,3.387,3.229,3.099,2.964,2.827]],[89000,[0.193,0.196,0.199,0.203,0.205,0.208,0.21,0.213,0.215,0.217,0.219,0.221],[429530,406912,386117,368798,349355,333106,316604,302839,288767,275787,263798,252712],[4.826,4.572,4.338,4.144,3.925,3.743,3.557,3.403,3.245,3.099,2.964,2.839]],[90000,[0.193,0.197,0.2,0.203,0.206,0.209,0.211,0.213,0.216,0.218,0.22,0.222],[434356,413584,392417,372941,355004,338468,321686,306241,293370,280171,267980,256708],[4.826,4.595,4.36,4.144,3.944,3.761,3.574,3.403,3.26,3.113,2.978,2.852]],[91000,[0.194,0.197,0.201,0.204,0.207,0.209,0.212,0.214,0.216,0.218,0.221,0.223],[441458,418179,398761,378943,360691,342229,326801,311098,296630,283284,272189,260729],[4.851,4.595,4.382,4.164,3.964,3.761,3.591,3.419,3.26,3.113,2.991,2.865]],[92000,[0.195,0.198,0.201,0.204,0.207,0.21,0.213,0.215,0.217,0.219,0.221,0.223],[448610,424920,403143,383107,364655,347645,331951,315986,301278,287710,275180,263594],[4.876,4.619,4.382,4.164,3.964,3.779,3.608,3.435,3.275,3.127,2.991,2.865]],[93000,[0.195,0.199,0.202,0.205,0.208,0.211,0.213,0.216,0.218,0.22,0.222,0.224],[453486,431708,409553,389169,370399,353098,335559,320906,305956,292166,279430,267654],[4.876,4.642,4.404,4.185,3.983,3.797,3.608,3.451,3.29,3.142,3.005,2.878]],[94000,[0.196,0.199,0.203,0.206,0.208,0.211,0.214,0.216,0.218,0.22,0.222,0.225],[460713,436350,416006,395273,374382,356894,340760,324357,309246,295307,282435,271740],[4.901,4.642,4.426,4.205,3.983,3.797,3.625,3.451,3.29,3.142,3.005,2.891]],[95000,[0.196,0.2,0.203,0.206,0.209,0.212,0.215,0.217,0.219,0.221,0.223,0.225],[465614,443209,420432,399478,380184,362401,345994,329325,313969,299805,286725,274631],[4.901,4.665,4.426,4.205,4.002,3.815,3.642,3.467,3.305,3.156,3.018,2.891]],[96000,[0.197,0.2,0.204,0.207,0.21,0.213,0.215,0.218,0.22,0.222,0.224,0.225],[472916,447874,426950,405643,386024,367943,349636,334325,318723,304332,291043,277522],[4.926,4.665,4.447,4.225,4.021,3.833,3.642,3.483,3.32,3.17,3.032,2.891]],[97000,[0.197,0.201,0.204,0.207,0.21,0.213,0.216,0.218,0.22,0.223,0.224,0.226],[477842,454802,431397,409868,390045,371775,354921,337808,322043,308887,294074,281659],[4.926,4.689,4.447,4.225,4.021,3.833,3.659,3.483,3.32,3.184,3.032,2.904]],[98000,[0.198,0.202,0.205,0.208,0.211,0.214,0.216,0.219,0.221,0.223,0.225,0.227],[485219,461777,437981,416094,395942,377372,358580,342856,326842,312072,298432,285822],[4.951,4.712,4.469,4.246,4.04,3.851,3.659,3.499,3.335,3.184,3.045,2.917]],[99000,[0.198,0.202,0.205,0.209,0.212,0.214,0.217,0.22,0.222,0.224,0.226,0.227],[490170,466489,442451,422361,401878,381222,363916,347936,331671,316670,302818,288738],[4.951,4.712,4.469,4.266,4.059,3.851,3.676,3.515,3.35,3.199,3.059,2.917]],[100000,[0.199,0.202,0.206,0.209,0.212,0.215,0.218,0.22,0.222,0.224,0.226,0.228],[497622,471201,449100,426627,405938,386872,369286,351451,335021,319869,305876,292939],[4.976,4.712,4.491,4.266,4.059,3.869,3.693,3.515,3.35,3.199,3.059,2.929]],[101000,[0.199,0.203,0.207,0.21,0.213,0.215,0.218,0.221,0.223,0.225,0.227,0.229],[502598,478269,455793,432955,411931,390741,372979,356579,339896,324510,310302,297167],[4.976,4.735,4.513,4.287,4.079,3.869,3.693,3.53,3.365,3.213,3.072,2.942]],[102000,[0.2,0.203,0.207,0.21,0.213,0.216,0.218,0.221,0.224,0.226,0.228,0.229],[510125,483004,460306,437242,416010,396445,376672,360109,344800,329179,314755,300109],[5.001,4.735,4.513,4.287,4.079,3.887,3.693,3.53,3.38,3.227,3.086,2.942]],[103000,[0.201,0.204,0.207,0.211,0.214,0.217,0.219,0.222,0.224,0.226,0.228,0.23],[517702,490142,464818,443631,422060,402185,382110,365285,348181,332406,317841,304374],[5.026,4.759,4.513,4.307,4.098,3.905,3.71,3.546,3.38,3.227,3.086,2.955]],[104000,[0.201,0.205,0.208,0.211,0.214,0.217,0.22,0.222,0.225,0.227,0.229,0.231],[522728,497327,471598,447938,426158,406090,387581,368832,353131,337119,322334,308666],[5.026,4.782,4.535,4.307,4.098,3.905,3.727,3.546,3.395,3.242,3.099,2.968]],[105000,[0.201,0.205,0.208,0.212,0.215,0.218,0.22,0.223,0.225,0.227,0.229,0.231],[527754,502109,476133,454388,432266,411884,391308,374055,356526,340360,325433,311634],[5.026,4.782,4.535,4.328,4.117,3.923,3.727,3.562,3.395,3.242,3.099,2.968]],[106000,[0.202,0.206,0.209,0.212,0.215,0.218,0.221,0.223,0.226,0.228,0.23,0.232],[535431,509363,482979,458716,436383,415807,396830,377618,361521,345115,329968,315964],[5.051,4.805,4.556,4.328,4.117,3.923,3.744,3.562,3.411,3.256,3.113,2.981]],[107000,[0.202,0.206,0.209,0.212,0.216,0.219,0.221,0.224,0.226,0.228,0.23,0.232],[540482,514169,487535,463043,442549,421655,400574,382890,364932,348371,333080,318944],[5.051,4.805,4.556,4.328,4.136,3.941,3.744,3.578,3.411,3.256,3.113,2.981]],[108000,[0.203,0.207,0.21,0.213,0.216,0.219,0.222,0.224,0.226,0.229,0.231,0.233],[548234,521493,494446,469575,446685,425596,406147,386468,368342,353169,337655,323313],[5.076,4.829,4.578,4.348,4.136,3.941,3.761,3.578,3.411,3.27,3.126,2.994]],[109000,[0.203,0.207,0.21,0.213,0.217,0.22,0.222,0.225,0.227,0.229,0.231,0.233],[553311,526322,499024,473923,452908,431498,409908,391788,373398,356439,340781,326306],[5.076,4.829,4.578,4.348,4.155,3.959,3.761,3.594,3.426,3.27,3.126,2.994]],[110000,[0.203,0.207,0.211,0.214,0.217,0.22,0.223,0.225,0.227,0.23,0.232,0.234],[558387,531150,506000,480517,457063,435456,415532,395382,376824,361280,345397,330713],[5.076,4.829,4.6,4.368,4.155,3.959,3.778,3.594,3.426,3.284,3.14,3.006]],[111000,[0.204,0.208,0.211,0.214,0.217,0.22,0.223,0.226,0.228,0.23,0.232,0.234],[566239,538568,510600,484885,461218,439415,419309,400750,381924,364565,348537,333720],[5.101,4.852,4.6,4.368,4.155,3.959,3.778,3.61,3.441,3.284,3.14,3.006]],[112000,[0.204,0.208,0.212,0.215,0.218,0.221,0.224,0.226,0.228,0.23,0.233,0.235],[571340,543420,517642,491540,467518,445389,424984,404360,385365,367849,353192,338165],[5.101,4.852,4.622,4.389,4.174,3.977,3.795,3.61,3.441,3.284,3.154,3.019]],[113000,[0.204,0.208,0.212,0.215,0.218,0.221,0.224,0.226,0.229,0.231,0.233,0.235],[576441,548272,522264,495928,471692,449366,428779,407970,390511,372747,356346,341185],[5.101,4.852,4.622,4.389,4.174,3.977,3.795,3.61,3.456,3.299,3.154,3.019]],[114000,[0.205,0.208,0.212,0.215,0.218,0.222,0.224,0.227,0.229,0.231,0.233,0.235],[584393,553124,526886,500317,475866,455394,432573,413402,393967,376046,359499,344204],[5.126,4.852,4.622,4.389,4.174,3.995,3.795,3.626,3.456,3.299,3.154,3.019]],[115000,[0.205,0.209,0.213,0.216,0.219,0.222,0.225,0.227,0.229,0.232,0.234,0.236],[589519,560659,534015,507053,482243,459389,438316,417028,397423,380986,364209,348701],[5.126,4.875,4.644,4.409,4.193,3.995,3.811,3.626,3.456,3.313,3.167,3.032]],[116000,[0.205,0.209,0.213,0.216,0.219,0.222,0.225,0.228,0.23,0.232,0.234,0.236],[594646,565534,538658,511462,486436,463383,442127,422508,402629,384299,367376,351733],[5.126,4.875,4.644,4.409,4.193,3.995,3.811,3.642,3.471,3.313,3.167,3.032]],[117000,[0.206,0.209,0.213,0.217,0.22,0.222,0.225,0.228,0.23,0.232,0.234,0.237],[602698,570409,543302,518260,492870,467378,445939,426150,406100,387612,370543,356268],[5.151,4.875,4.644,4.43,4.213,3.995,3.811,3.642,3.471,3.313,3.167,3.045]],[118000,[0.206,0.21,0.214,0.217,0.22,0.223,0.226,0.228,0.231,0.233,0.235,0.237],[607849,578037,550518,522689,497082,473496,451749,429792,411352,392610,375308,359313],[5.151,4.899,4.665,4.43,4.213,4.013,3.828,3.642,3.486,3.327,3.181,3.045]],[119000,[0.207,0.21,0.214,0.217,0.22,0.223,0.226,0.229,0.231,0.233,0.235,0.237],[615976,582936,555183,527119,501295,477509,455577,435336,414838,395937,378488,362358],[5.176,4.899,4.665,4.43,4.213,4.013,3.828,3.658,3.486,3.327,3.181,3.045]],[120000,[0.207,0.211,0.214,0.218,0.221,0.223,0.226,0.229,0.231,0.234,0.236,0.238],[621152,590634,559849,533998,507805,481521,459406,438994,418324,400978,383293,366945],[5.176,4.922,4.665,4.45,4.232,4.013,3.828,3.658,3.486,3.341,3.194,3.058]],[121000,[0.207,0.211,0.214,0.218,0.221,0.224,0.227,0.229,0.232,0.234,0.236,0.238],[626328,595556,564514,538448,512037,487711,465284,442652,423636,404320,386487,370003],[5.176,4.922,4.665,4.45,4.232,4.031,3.845,3.658,3.501,3.341,3.194,3.058]],[122000,[0.208,0.211,0.215,0.218,0.222,0.224,0.227,0.23,0.232,0.234,0.236,0.238],[634555,600478,571839,542898,518605,491742,469129,448259,427137,407661,389681,373061],[5.201,4.922,4.687,4.45,4.251,4.031,3.845,3.674,3.501,3.341,3.194,3.058]],[123000,[0.208,0.212,0.215,0.219,0.222,0.225,0.227,0.23,0.233,0.235,0.237,0.239],[639757,608269,576526,549859,522855,497986,472974,451934,432494,412759,394540,377699],[5.201,4.945,4.687,4.47,4.251,4.049,3.845,3.674,3.516,3.356,3.208,3.071]],[124000,[0.208,0.212,0.215,0.219,0.222,0.225,0.228,0.231,0.233,0.235,0.237,0.239],[644958,613214,581214,554329,527106,502034,478920,457589,436011,416115,397748,380770],[5.201,4.945,4.687,4.47,4.251,4.049,3.862,3.69,3.516,3.356,3.208,3.071]],[125000,[0.209,0.212,0.216,0.219,0.223,0.226,0.228,0.231,0.233,0.236,0.238,0.24],[653285,618159,588626,558800,533751,508332,482783,461279,439527,421256,402647,385447],[5.226,4.945,4.709,4.47,4.27,4.067,3.862,3.69,3.516,3.37,3.221,3.084]]],"welAOW_box3":[[29000,[0.179,0.182,0.185,0.188,0.19,0.193,0.195,0.197,0.199,0.201,0.202,0.204],[129807,123119,116962,111290,105506,100713,95794,91265,87090,83237,79284,76010],[4.476,4.245,4.033,3.838,3.638,3.473,3.303,3.147,3.003,2.87,2.734,2.621]],[30000,[0.186,0.189,0.192,0.195,0.198,0.2,0.202,0.204,0.206,0.208,0.21,0.211],[139534,132263,125574,119415,113739,107964,102655,97767,93263,89106,85266,81329],[4.651,4.409,4.186,3.98,3.791,3.599,3.422,3.259,3.109,2.97,2.842,2.711]],[31000,[0.192,0.195,0.198,0.201,0.204,0.206,0.208,0.211,0.213,0.215,0.216,0.218],[148836,141010,133814,127192,121092,114910,109227,104493,99646,95175,90626,86828],[4.801,4.549,4.317,4.103,3.906,3.707,3.523,3.371,3.214,3.07,2.923,2.801]],[32000,[0.197,0.2,0.203,0.206,0.209,0.212,0.214,0.216,0.218,0.22,0.222,0.224],[157639,149291,141619,134561,128062,122072,116003,110419,105275,100530,96148,92096],[4.926,4.665,4.426,4.205,4.002,3.815,3.625,3.451,3.29,3.142,3.005,2.878]],[33000,[0.2,0.203,0.207,0.21,0.212,0.215,0.217,0.22,0.222,0.224,0.226,0.228],[165040,156266,148922,141460,133959,127668,121305,115979,110557,105557,100939,96670],[5.001,4.735,4.513,4.287,4.059,3.869,3.676,3.515,3.35,3.199,3.059,2.929]],[34000,[0.202,0.205,0.209,0.212,0.214,0.217,0.22,0.222,0.224,0.226,0.228,0.23],[171742,162588,154918,147135,139321,132760,126709,120580,114933,109726,104918,100473],[5.051,4.782,4.556,4.328,4.098,3.905,3.727,3.546,3.38,3.227,3.086,2.955]],[35000,[0.203,0.207,0.21,0.213,0.216,0.219,0.221,0.223,0.226,0.228,0.23,0.231],[177669,169002,160237,152177,144759,137925,131029,124685,119370,113953,108952,103878],[5.076,4.829,4.578,4.348,4.136,3.941,3.744,3.562,3.411,3.256,3.113,2.968]],[36000,[0.205,0.208,0.211,0.214,0.217,0.22,0.222,0.225,0.227,0.229,0.231,0.233],[184545,174671,165600,157260,149584,142513,135382,129398,123324,117723,112552,107771],[5.126,4.852,4.6,4.368,4.155,3.959,3.761,3.594,3.426,3.27,3.126,2.994]],[37000,[0.206,0.209,0.212,0.216,0.218,0.221,0.224,0.226,0.228,0.23,0.232,0.234],[190597,180386,171007,163139,154448,147137,140397,133583,127308,121522,116179,111240],[5.151,4.875,4.622,4.409,4.174,3.977,3.795,3.61,3.441,3.284,3.14,3.006]],[38000,[0.207,0.21,0.214,0.217,0.22,0.222,0.225,0.227,0.229,0.231,0.233,0.235],[196698,186148,177285,168324,160077,151798,144835,137801,131322,125349,119833,114735],[5.176,4.899,4.665,4.43,4.213,3.995,3.811,3.626,3.456,3.299,3.154,3.019]],[39000,[0.208,0.211,0.214,0.217,0.22,0.223,0.226,0.228,0.23,0.232,0.234,0.236],[202850,191956,181951,172753,164290,156494,149307,142050,135367,129204,123514,118255],[5.201,4.922,4.665,4.43,4.213,4.013,3.828,3.642,3.471,3.313,3.167,3.032]],[40000,[0.208,0.212,0.215,0.218,0.221,0.224,0.226,0.229,0.231,0.233,0.235,0.237],[208051,197811,187488,177999,169268,161227,153135,146331,139441,133088,127223,121801],[5.201,4.945,4.687,4.45,4.232,4.031,3.828,3.658,3.486,3.327,3.181,3.045]],[41000,[0.209,0.213,0.216,0.219,0.222,0.225,0.227,0.23,0.232,0.234,0.236,0.238],[214277,203713,193069,183286,174285,165995,157658,150645,143546,137001,130958,125373],[5.226,4.969,4.709,4.47,4.251,4.049,3.845,3.674,3.501,3.341,3.194,3.058]],[42000,[0.211,0.214,0.218,0.221,0.224,0.226,0.229,0.231,0.234,0.236,0.238,0.24],[221604,209661,199610,189471,180144,170800,162926,154990,148315,141542,135289,129510],[5.276,4.992,4.753,4.511,4.289,4.067,3.879,3.69,3.531,3.37,3.221,3.084]],[43000,[0.212,0.216,0.219,0.222,0.225,0.228,0.231,0.233,0.235,0.237,0.239,0.241],[227956,216659,205300,194860,185257,176414,168262,160054,152495,145526,139093,133146],[5.301,5.039,4.774,4.532,4.308,4.103,3.913,3.722,3.546,3.384,3.235,3.096]],[44000,[0.214,0.217,0.221,0.224,0.227,0.23,0.232,0.235,0.237,0.239,0.241,0.243],[235458,222724,211993,201188,191250,182100,172921,165182,157369,150167,143518,137373],[5.351,5.062,4.818,4.572,4.347,4.139,3.93,3.754,3.577,3.413,3.262,3.122]],[45000,[0.215,0.219,0.222,0.225,0.228,0.231,0.234,0.236,0.238,0.241,0.243,0.244],[241934,229885,217792,206679,196459,187048,178375,169655,161625,154865,147998,141073],[5.376,5.109,4.84,4.593,4.366,4.157,3.964,3.77,3.592,3.441,3.289,3.135]],[46000,[0.216,0.22,0.223,0.227,0.23,0.232,0.235,0.238,0.24,0.242,0.244,0.246],[248461,236067,223634,213150,202586,192033,183119,174895,166605,158963,151910,145390],[5.401,5.132,4.862,4.634,4.404,4.175,3.981,3.802,3.622,3.456,3.302,3.161]],[47000,[0.217,0.221,0.225,0.228,0.231,0.234,0.236,0.239,0.241,0.243,0.245,0.247],[255037,242295,230545,218743,207890,197899,187896,179448,170936,163090,155848,149155],[5.426,5.155,4.905,4.654,4.423,4.211,3.998,3.818,3.637,3.47,3.316,3.174]],[48000,[0.219,0.222,0.226,0.229,0.232,0.235,0.238,0.24,0.242,0.245,0.247,0.249],[262864,248570,236497,224377,213232,202973,193520,184032,175298,167931,160463,153562],[5.476,5.179,4.927,4.675,4.442,4.229,4.032,3.834,3.652,3.499,3.343,3.199]],[49000,[0.22,0.224,0.228,0.231,0.234,0.237,0.24,0.242,0.245,0.247,0.249,0.251],[269566,256035,243560,231052,219551,208965,199211,189432,181168,172829,165133,158020],[5.501,5.225,4.971,4.715,4.481,4.265,4.066,3.866,3.697,3.527,3.37,3.225]],[50000,[0.221,0.225,0.229,0.233,0.236,0.239,0.241,0.244,0.246,0.248,0.251,0.253],[276318,262426,249621,237809,225946,215029,204124,194895,185620,177070,169856,162530],[5.526,5.249,4.992,4.756,4.519,4.301,4.082,3.898,3.712,3.541,3.397,3.251]],[51000,[0.222,0.227,0.231,0.234,0.237,0.24,0.243,0.246,0.248,0.25,0.252,0.254],[283119,270054,256837,243606,231442,220247,209934,200423,190872,182068,173943,166436],[5.551,5.295,5.036,4.777,4.538,4.319,4.116,3.93,3.743,3.57,3.411,3.263]],[52000,[0.224,0.228,0.232,0.236,0.239,0.242,0.245,0.248,0.25,0.252,0.254,0.256],[291271,276562,263007,250506,237971,226437,215812,206014,196184,187123,178762,171036],[5.601,5.319,5.058,4.817,4.576,4.355,4.15,3.962,3.773,3.599,3.438,3.289]],[53000,[0.226,0.23,0.234,0.238,0.241,0.244,0.247,0.249,0.252,0.254,0.256,0.258],[299523,284353,270376,257487,244577,232699,221758,210823,201556,192235,183634,175687],[5.651,5.365,5.101,4.858,4.615,4.391,4.184,3.978,3.803,3.627,3.465,3.315]],[54000,[0.227,0.231,0.235,0.239,0.242,0.245,0.248,0.251,0.253,0.255,0.258,0.26],[306525,290978,276654,263447,250226,238062,226857,216526,206174,196634,188561,180389],[5.676,5.388,5.123,4.879,4.634,4.409,4.201,4.01,3.818,3.641,3.492,3.341]],[55000,[0.228,0.232,0.236,0.24,0.244,0.247,0.249,0.252,0.255,0.257,0.259,0.261],[313577,297649,282977,269449,256966,244449,231990,221414,211652,201846,192797,184436],[5.701,5.412,5.145,4.899,4.672,4.445,4.218,4.026,3.848,3.67,3.505,3.353]],[56000,[0.229,0.233,0.237,0.241,0.245,0.248,0.251,0.254,0.256,0.258,0.261,0.263],[320679,304368,289342,275491,262711,249902,238105,227229,216345,206315,197818,189229],[5.726,5.435,5.167,4.919,4.691,4.463,4.252,4.058,3.863,3.684,3.532,3.379]],[57000,[0.231,0.235,0.238,0.242,0.246,0.249,0.252,0.255,0.257,0.26,0.262,0.264],[329256,312462,295752,281574,268493,255390,243322,232197,221069,211627,202122,193340],[5.776,5.482,5.189,4.94,4.71,4.481,4.269,4.074,3.878,3.713,3.546,3.392]],[58000,[0.232,0.236,0.24,0.243,0.247,0.25,0.253,0.256,0.259,0.261,0.263,0.265],[336482,319297,303469,287698,274314,260914,248574,237197,226698,216168,206453,197477],[5.801,5.505,5.232,4.96,4.73,4.499,4.286,4.09,3.909,3.727,3.56,3.405]],[59000,[0.232,0.237,0.24,0.244,0.248,0.251,0.254,0.257,0.259,0.262,0.264,0.266],[342284,326178,308702,293862,280174,266474,253859,242229,230606,220738,210811,201640],[5.801,5.528,5.232,4.981,4.749,4.517,4.303,4.106,3.909,3.741,3.573,3.418]],[60000,[0.233,0.237,0.241,0.244,0.248,0.251,0.254,0.257,0.26,0.262,0.264,0.267],[349586,331707,315242,298843,284922,270991,258162,246335,235420,224479,214384,205829],[5.826,5.528,5.254,4.981,4.749,4.517,4.303,4.106,3.924,3.741,3.573,3.43]],[61000,[0.233,0.237,0.241,0.245,0.248,0.252,0.255,0.258,0.26,0.263,0.265,0.267],[355412,337235,320496,305069,289671,276605,263498,251415,239344,229092,218783,209259],[5.826,5.528,5.254,5.001,4.749,4.535,4.32,4.122,3.924,3.756,3.587,3.43]],[62000,[0.234,0.238,0.242,0.245,0.249,0.252,0.255,0.258,0.261,0.263,0.265,0.268],[362789,344210,327102,310070,295607,281139,267817,255537,244203,232847,222369,213486],[5.851,5.552,5.276,5.001,4.768,4.535,4.32,4.122,3.939,3.756,3.587,3.443]],[63000,[0.234,0.238,0.242,0.246,0.249,0.252,0.256,0.259,0.262,0.264,0.266,0.268],[368640,349761,332377,316357,300375,285674,273204,260665,249093,237502,226809,216929],[5.851,5.552,5.276,5.022,4.768,4.535,4.337,4.138,3.954,3.77,3.6,3.443]],[64000,[0.235,0.239,0.243,0.247,0.25,0.253,0.257,0.259,0.262,0.265,0.267,0.269],[376092,356806,339049,322685,306368,291360,278625,264802,253047,242186,231275,221195],[5.876,5.575,5.298,5.042,4.787,4.552,4.354,4.138,3.954,3.784,3.614,3.456]],[65000,[0.235,0.24,0.243,0.247,0.251,0.254,0.257,0.26,0.263,0.265,0.268,0.27],[381969,363898,344346,327727,312400,297082,282978,269978,257981,245970,235768,225486],[5.876,5.598,5.298,5.042,4.806,4.57,4.354,4.154,3.969,3.784,3.627,3.469]],[66000,[0.236,0.24,0.244,0.248,0.251,0.255,0.258,0.261,0.264,0.266,0.269,0.271],[389495,369496,351083,334116,317206,302840,288450,275186,262946,250697,240289,229803],[5.901,5.598,5.319,5.062,4.806,4.588,4.37,4.169,3.984,3.798,3.641,3.482]],[67000,[0.237,0.241,0.245,0.249,0.252,0.256,0.259,0.262,0.265,0.267,0.27,0.272],[397072,376657,357863,340546,323295,308634,293955,280426,267942,255452,244836,234146],[5.926,5.622,5.341,5.083,4.825,4.606,4.387,4.185,3.999,3.813,3.654,3.495]],[68000,[0.238,0.242,0.246,0.25,0.253,0.257,0.26,0.262,0.266,0.268,0.271,0.273],[404699,383865,364687,347017,329422,314464,299495,284611,272967,260236,249411,238514],[5.951,5.645,5.363,5.103,4.844,4.624,4.404,4.185,4.014,3.827,3.668,3.508]],[69000,[0.239,0.243,0.247,0.251,0.254,0.258,0.26,0.263,0.266,0.269,0.272,0.274],[412376,391120,371554,353529,335588,320330,303899,289899,276981,265048,254013,242909],[5.976,5.668,5.385,5.124,4.864,4.642,4.404,4.201,4.014,3.841,3.681,3.52]],[70000,[0.239,0.243,0.247,0.252,0.255,0.258,0.261,0.264,0.267,0.27,0.272,0.275],[418352,396788,376939,360081,341792,324973,309489,295219,282052,269889,257694,247328],[5.976,5.668,5.385,5.144,4.883,4.642,4.421,4.217,4.029,3.856,3.681,3.533]],[71000,[0.24,0.244,0.248,0.252,0.256,0.259,0.262,0.265,0.268,0.271,0.273,0.276],[426104,404113,383871,365225,348034,330893,315113,300570,287152,274759,262336,251774],[6.001,5.692,5.407,5.144,4.902,4.66,4.438,4.233,4.044,3.87,3.695,3.546]],[72000,[0.241,0.246,0.249,0.253,0.257,0.261,0.264,0.266,0.269,0.271,0.274,0.277],[433906,413164,390848,371839,354315,338145,321991,305954,292283,278628,267006,256245],[6.026,5.738,5.428,5.164,4.921,4.696,4.472,4.249,4.059,3.87,3.708,3.559]],[73000,[0.243,0.247,0.251,0.255,0.259,0.262,0.265,0.268,0.271,0.273,0.276,0.278],[443584,420605,399459,379984,362031,344155,327699,312536,298546,284583,272690,260742],[6.076,5.762,5.472,5.205,4.959,4.714,4.489,4.281,4.09,3.898,3.735,3.572]],[74000,[0.244,0.249,0.253,0.256,0.26,0.263,0.267,0.27,0.272,0.275,0.277,0.28],[451511,429819,408158,386700,368408,350201,334695,319181,303753,290595,277427,266215],[6.101,5.808,5.516,5.226,4.978,4.732,4.523,4.313,4.105,3.927,3.749,3.598]],[75000,[0.245,0.25,0.254,0.258,0.261,0.265,0.268,0.271,0.274,0.276,0.279,0.282],[459488,437377,415308,394987,374822,357632,340489,324693,310121,295593,283206,271740],[6.127,5.832,5.537,5.266,4.998,4.768,4.54,4.329,4.135,3.941,3.776,3.623]],[76000,[0.246,0.251,0.256,0.259,0.263,0.266,0.27,0.273,0.275,0.278,0.28,0.283],[467515,444981,424160,401805,382730,363768,347603,331450,315403,301705,288011,276340],[6.152,5.855,5.581,5.287,5.036,4.786,4.574,4.361,4.15,3.97,3.79,3.636]],[77000,[0.248,0.253,0.257,0.261,0.264,0.268,0.271,0.274,0.277,0.28,0.282,0.284],[477517,454429,431419,410235,389241,371326,353482,337041,321877,307874,293885,280965],[6.202,5.902,5.603,5.328,5.055,4.822,4.591,4.377,4.18,3.998,3.817,3.649]],[78000,[0.249,0.254,0.258,0.262,0.266,0.269,0.273,0.276,0.279,0.281,0.283,0.286],[485669,462150,438723,417155,397283,377552,360715,343911,328411,312986,298757,286618],[6.227,5.925,5.625,5.348,5.093,4.84,4.625,4.409,4.21,4.013,3.83,3.675]],[79000,[0.251,0.255,0.26,0.264,0.267,0.271,0.274,0.277,0.28,0.283,0.285,0.287],[495846,469918,447792,425729,403889,385235,366678,349582,333814,319255,304726,291308],[6.277,5.948,5.668,5.389,5.113,4.876,4.641,4.425,4.225,4.041,3.857,3.687]],[80000,[0.252,0.256,0.261,0.265,0.269,0.272,0.275,0.279,0.282,0.284,0.287,0.289],[504123,477732,455204,432751,412065,391551,372674,356563,340454,324438,310749,297051],[6.302,5.972,5.69,5.409,5.151,4.894,4.658,4.457,4.256,4.055,3.884,3.713]],[81000,[0.253,0.258,0.262,0.266,0.27,0.273,0.277,0.28,0.283,0.286,0.288,0.29],[512451,487483,462660,439814,418767,397903,380077,362314,345932,330807,315729,301805],[6.327,6.018,5.712,5.43,5.17,4.912,4.692,4.473,4.271,4.084,3.898,3.726]],[82000,[0.254,0.259,0.263,0.267,0.271,0.275,0.278,0.281,0.284,0.287,0.289,0.292],[520828,495414,470160,446917,425507,405766,386158,368097,351440,336062,320737,307638],[6.352,6.042,5.734,5.45,5.189,4.948,4.709,4.489,4.286,4.098,3.911,3.752]],[83000,[0.255,0.26,0.264,0.268,0.272,0.276,0.279,0.282,0.285,0.288,0.291,0.293],[529255,503392,477703,454062,432285,412208,392274,373912,356979,341346,326895,312456],[6.377,6.065,5.755,5.471,5.208,4.966,4.726,4.505,4.301,4.113,3.938,3.765]],[84000,[0.256,0.261,0.265,0.269,0.273,0.277,0.28,0.283,0.287,0.289,0.292,0.294],[537732,511416,485289,461247,439102,418686,398423,379758,363815,346658,331971,317300],[6.402,6.088,5.777,5.491,5.227,4.984,4.743,4.521,4.331,4.127,3.952,3.777]],[85000,[0.257,0.262,0.266,0.27,0.274,0.278,0.281,0.284,0.287,0.29,0.293,0.295],[546259,519487,492920,468473,445957,425200,404606,385637,368146,351998,337073,322169],[6.427,6.112,5.799,5.511,5.247,5.002,4.76,4.537,4.331,4.141,3.966,3.79]],[86000,[0.258,0.263,0.267,0.271,0.275,0.279,0.282,0.285,0.288,0.291,0.294,0.296],[554836,527605,500594,475740,452850,431750,410823,391548,373775,357368,342203,327064],[6.452,6.135,5.821,5.532,5.266,5.02,4.777,4.553,4.346,4.155,3.979,3.803]],[87000,[0.258,0.264,0.268,0.272,0.276,0.28,0.283,0.286,0.289,0.292,0.295,0.297],[561287,535769,508311,483048,459782,438335,417073,397491,379434,362765,347359,331985],[6.452,6.158,5.843,5.552,5.285,5.038,4.794,4.569,4.361,4.17,3.993,3.816]],[88000,[0.259,0.264,0.269,0.273,0.276,0.28,0.284,0.287,0.29,0.292,0.295,0.298],[569940,541927,516072,490396,465067,443374,423358,403465,385124,366935,351352,336932],[6.477,6.158,5.864,5.573,5.285,5.038,4.811,4.585,4.376,4.17,3.993,3.829]],[89000,[0.26,0.264,0.269,0.273,0.277,0.281,0.284,0.287,0.29,0.293,0.296,0.299],[578642,548086,521937,495969,472056,450014,428169,408050,389500,372376,356549,341904],[6.502,6.158,5.864,5.573,5.304,5.056,4.811,4.585,4.376,4.184,4.006,3.842]],[90000,[0.26,0.265,0.269,0.274,0.277,0.281,0.285,0.288,0.291,0.294,0.297,0.299],[585143,556343,527801,503379,477360,455070,434504,414073,395235,377845,361773,345746],[6.502,6.182,5.864,5.593,5.304,5.056,4.828,4.601,4.391,4.198,4.02,3.842]],[91000,[0.261,0.265,0.27,0.274,0.278,0.282,0.285,0.289,0.291,0.294,0.297,0.299],[593920,562525,535650,508972,484406,461764,439332,420127,399626,382043,365793,349587],[6.527,6.182,5.886,5.593,5.323,5.074,4.828,4.617,4.391,4.198,4.02,3.842]],[92000,[0.261,0.265,0.27,0.275,0.278,0.282,0.286,0.289,0.292,0.294,0.297,0.3],[600447,568706,541536,516443,489729,466838,445718,424744,405406,386241,369813,354611],[6.527,6.182,5.886,5.614,5.323,5.074,4.845,4.617,4.407,4.198,4.02,3.854]],[93000,[0.261,0.266,0.27,0.275,0.279,0.282,0.286,0.289,0.292,0.295,0.297,0.3],[606974,577057,547422,522057,496833,471912,450563,429361,409813,391768,373832,358465],[6.527,6.205,5.886,5.614,5.342,5.074,4.845,4.617,4.407,4.213,4.02,3.854]],[94000,[0.262,0.266,0.271,0.275,0.279,0.283,0.286,0.29,0.293,0.295,0.298,0.301],[615851,583262,555358,527670,502176,478678,455408,435479,415638,395980,379124,363528],[6.552,6.205,5.908,5.614,5.342,5.092,4.845,4.633,4.422,4.213,4.033,3.867]],[95000,[0.262,0.267,0.271,0.276,0.28,0.283,0.287,0.29,0.293,0.296,0.298,0.301],[622402,591683,561266,535223,509337,483771,461862,440112,420059,401549,383158,367395],[6.552,6.228,5.908,5.634,5.361,5.092,4.862,4.633,4.422,4.227,4.033,3.867]],[96000,[0.262,0.267,0.271,0.276,0.28,0.283,0.287,0.29,0.293,0.296,0.299,0.301],[628954,597912,567174,540857,514698,488863,466724,444745,424481,405776,388490,371262],[6.552,6.228,5.908,5.634,5.361,5.092,4.862,4.633,4.422,4.227,4.047,3.867]],[97000,[0.263,0.267,0.272,0.276,0.28,0.284,0.287,0.291,0.294,0.297,0.299,0.302],[637931,604140,575197,546491,520060,495701,471585,450927,430367,411388,392537,376376],[6.577,6.228,5.93,5.634,5.361,5.11,4.862,4.649,4.437,4.241,4.047,3.88]],[98000,[0.263,0.268,0.272,0.276,0.28,0.284,0.287,0.291,0.294,0.297,0.299,0.302],[644508,612654,581126,552125,525421,500811,476447,455576,434803,415629,396584,380256],[6.577,6.252,5.93,5.634,5.361,5.11,4.862,4.649,4.437,4.241,4.047,3.88]],[99000,[0.263,0.268,0.272,0.277,0.281,0.285,0.288,0.291,0.294,0.297,0.3,0.302],[651084,618906,587056,559779,532678,507703,482986,460225,439240,419870,401970,384136],[6.577,6.252,5.93,5.654,5.381,5.128,4.879,4.649,4.437,4.241,4.06,3.88]],[100000,[0.264,0.268,0.273,0.277,0.281,0.285,0.288,0.292,0.295,0.298,0.3,0.303],[660162,625157,595166,565434,538059,512831,487864,466471,445186,425540,406031,389301],[6.602,6.252,5.952,5.654,5.381,5.128,4.879,4.665,4.452,4.255,4.06,3.893]],[101000,[0.264,0.269,0.273,0.277,0.281,0.285,0.289,0.292,0.295,0.298,0.301,0.303],[666763,633765,601118,571088,543440,517959,494454,471136,449638,429795,411458,393194],[6.602,6.275,5.952,5.654,5.381,5.128,4.896,4.665,4.452,4.255,4.074,3.893]],[102000,[0.264,0.269,0.273,0.277,0.282,0.285,0.289,0.292,0.295,0.298,0.301,0.303],[673365,640040,607070,576742,550773,523088,499350,475800,454090,434050,415532,397087],[6.602,6.275,5.952,5.654,5.4,5.128,4.896,4.665,4.452,4.255,4.074,3.893]],[103000,[0.265,0.269,0.274,0.278,0.282,0.286,0.289,0.292,0.296,0.298,0.301,0.304],[682542,646315,615267,584499,556173,530069,504245,480465,460096,438306,419606,402304],[6.627,6.275,5.973,5.675,5.4,5.146,4.896,4.665,4.467,4.255,4.074,3.906]],[104000,[0.265,0.27,0.274,0.278,0.282,0.286,0.29,0.293,0.296,0.299,0.302,0.304],[689169,655016,621240,590174,561573,535216,510903,486791,464563,444046,425087,406209],[6.627,6.298,5.973,5.675,5.4,5.146,4.913,4.681,4.467,4.27,4.087,3.906]],[105000,[0.265,0.27,0.274,0.278,0.283,0.286,0.29,0.293,0.296,0.299,0.302,0.304],[695795,661314,627214,595849,568983,540362,515815,491472,469030,448316,429174,410115],[6.627,6.298,5.973,5.675,5.419,5.146,4.913,4.681,4.467,4.27,4.087,3.906]],[106000,[0.266,0.27,0.275,0.279,0.283,0.286,0.29,0.293,0.297,0.299,0.302,0.305],[705073,667612,635498,603687,574402,545508,520728,496153,475096,452586,433262,415383],[6.652,6.298,5.995,5.695,5.419,5.146,4.913,4.681,4.482,4.27,4.087,3.919]],[107000,[0.266,0.271,0.275,0.279,0.283,0.287,0.29,0.294,0.297,0.3,0.302,0.305],[711724,676406,641493,609382,579821,552580,525640,502543,479578,458383,437349,419302],[6.652,6.322,5.995,5.695,5.419,5.164,4.913,4.697,4.482,4.284,4.087,3.919]],[108000,[0.266,0.271,0.275,0.279,0.283,0.287,0.291,0.294,0.297,0.3,0.303,0.305],[718376,682728,647489,615078,585240,557744,532382,507239,484060,462667,442898,423220],[6.652,6.322,5.995,5.695,5.419,5.164,4.929,4.697,4.482,4.284,4.101,3.919]],[109000,[0.266,0.271,0.276,0.28,0.283,0.287,0.291,0.294,0.297,0.3,0.303,0.306],[725028,689049,655860,622998,590659,562908,537312,511936,488543,466951,446999,428540],[6.652,6.322,6.017,5.716,5.419,5.164,4.929,4.697,4.482,4.284,4.101,3.932]],[110000,[0.267,0.271,0.276,0.28,0.284,0.288,0.291,0.294,0.298,0.301,0.303,0.306],[734430,695371,661877,628713,598184,570052,542241,516633,494685,472806,451100,432471],[6.677,6.322,6.017,5.716,5.438,5.182,4.929,4.697,4.497,4.298,4.101,3.932]]]};
+
+// ===== CONSTANTEN =====
+const BRUTERINGSTABEL = [1.05,1.05,1.10,1.15,1.20,1.20,1.25,1.30,1.30,1.35,1.40,1.40];
+const VERHOGING_BEDRAG = 17000;
+const STARTINKOMEN_NIETAOW = 30000;
+const STARTINKOMEN_WELAOW = 29000;
+const NHG_GRENS_2026 = 470000;
+const NHG_GRENS_EBV_2026 = 498200;
+const EBV_BY_LABEL = {A4G:40000, A4:30000, A3:25000, A12:20000, AB:10000, CD:5000, EFG:0, GEEN:0};
+const EBB_BY_LABEL = {EFG:20000, CD:15000, AB:10000, A12:10000, A3:0, A4:0, A4G:0, GEEN:10000};
+const AOW_AGE_BY_YEAR = {
+  2013:[65,1],2014:[65,2],2015:[65,3],2016:[65,6],2017:[65,9],2018:[66,0],
+  2019:[66,4],2020:[66,4],2021:[66,4],2022:[66,7],2023:[66,10],2024:[67,0],
+  2025:[67,0],2026:[67,0],2027:[67,0],2028:[67,3],2029:[67,3],2030:[67,3],
+  2031:[67,3],2032:[67,3]
+};
+
+// ===== STATE =====
+const state = {
+  // Klant
+  naamKlant:'', naamAdviseur:'', wftNummer:'',
+  // Woning
+  adres:'', bouwjaar:null, energielabel:'AB',
+  // Aankoop
+  vonOfKk:'kk', koopsom:350000, marktwaarde:350000,
+  overdrachtspct:2.0, notariskosten:1500, taxatiekosten:700,
+  advieskosten:2500, bouwdepot:0, eigenGeld:0, nhg:false,
+  // Inkomen
+  inc1:50000, inc1Type:'vast', birth1:'1985-06-15', pens1:25000,
+  inc2:0, inc2Type:'vast', birth2:null, pens2:0,
+  // Verhogingen
+  verhoging:true, ebb:false,
+  // Verplichtingen
+  studie:{aan:false, fase:'regulier', mt:0, rente:2.5, rest:0, looptijd:20},
+  bkr:{dk:0, pl:0, lease:0, rest:0},
+  ali:{kind:0, partner:0},
+  // Leningdelen
+  delen:[
+    {id:1, bedrag:280000, rente:3.8, rentevast:10, box3:false, aflosvorm:'annuitair'},
+    {id:2, bedrag:50000,  rente:3.8, rentevast:10, box3:true,  aflosvorm:'annuitair'}
+  ],
+  nextId:3
+};
+
+// ===== HELPERS =====
+const eur = (n) => n.toLocaleString('nl-NL',{maximumFractionDigits:0});
+const eurStr = (n) => '€ ' + eur(n);
+const pctStr = (n,d=2) => n.toFixed(d).replace('.',',') + '%';
+const todayNL = () => new Date().toLocaleDateString('nl-NL',{day:'numeric',month:'long',year:'numeric'});
+
+function bucketIndex(rate){
+  if(rate<=1.5) return 0;
+  if(rate>=6.501) return 11;
+  return Math.ceil((rate-1.5)/0.5);
+}
+function bruteringsFactor(rate){ return BRUTERINGSTABEL[bucketIndex(rate)]; }
+function annuityFactor(rate, jaren){
+  const m = rate/100/12;
+  const n = jaren*12;
+  if(m===0) return 1/n;
+  return m*Math.pow(1+m,n)/(Math.pow(1+m,n)-1);
+}
+function lookupRow(dataset, income){
+  if(!dataset || dataset.length === 0) return null;
+  if(income < dataset[0][0]) return null;
+  for(let i=0; i<dataset.length; i++){
+    const lo = dataset[i][0];
+    const hi = (i+1 < dataset.length) ? dataset[i+1][0] - 1 : Infinity;
+    if(income >= lo && income <= hi) return {lo, hi, row: dataset[i]};
+  }
+  // Income above highest row, use highest
+  const last = dataset[dataset.length-1];
+  return {lo: last[0], hi: Infinity, row: last};
+}
+function toetsRente(rente, rentevast){ return rentevast>=10 ? rente : Math.max(rente,5); }
+
+// AOW calc voor een persoon
+function calcAow(birthDateStr){
+  if(!birthDateStr) return null;
+  const bd = new Date(birthDateStr);
+  if(isNaN(bd.getTime())) return null;
+
+  // Schat AOW-leeftijd op basis van geboortejaar (huidige bekende cohort + extrapolatie)
+  let geboortejaar = bd.getFullYear();
+  let aowJaarSchatting = geboortejaar + 65;
+  // We gebruiken de tabel om de AOW-leeftijd op te zoeken voor het jaar dat de persoon AOW bereikt
+  // Iteratief: probeer AOW-jaar, kijk welke leeftijd hoort bij dat jaar, herbereken
+  let aowJaar = aowJaarSchatting;
+  let aowAge = [67,0];
+
+  for(let iter=0; iter<5; iter++){
+    let key = Math.max(2013, Math.min(2032, aowJaar));
+    aowAge = AOW_AGE_BY_YEAR[key] || [67,3];
+    const newAowJaar = geboortejaar + aowAge[0] + (aowAge[1]>0?1:0);
+    if(newAowJaar === aowJaar) break;
+    aowJaar = newAowJaar;
+  }
+
+  // Construeer AOW-datum
+  const aowDate = new Date(bd);
+  aowDate.setFullYear(bd.getFullYear() + aowAge[0]);
+  aowDate.setMonth(bd.getMonth() + aowAge[1]);
+
+  // Huidige leeftijd
+  const now = new Date();
+  let age = now.getFullYear() - bd.getFullYear();
+  const m = now.getMonth() - bd.getMonth();
+  if(m < 0 || (m===0 && now.getDate() < bd.getDate())) age--;
+
+  // Status
+  const isAowNow = now >= aowDate;
+  const tienJaarVoorAow = new Date(aowDate);
+  tienJaarVoorAow.setFullYear(aowDate.getFullYear()-10);
+  const within10 = !isAowNow && now >= tienJaarVoorAow;
+
+  // Maanden tot AOW
+  const msToAow = aowDate.getTime() - now.getTime();
+  const yearsToAow = msToAow / (365.25*24*3600*1000);
+
+  return {
+    age, aowAge, aowDate, isAowNow, within10, yearsToAow,
+    aowJaar: aowDate.getFullYear(),
+    estimateUsed: aowJaar > 2032
+  };
+}
+function fmtAowAge(aowAge){
+  if(aowAge[1]===0) return aowAge[0] + ' jr';
+  return aowAge[0] + ' jr ' + aowAge[1] + ' mnd';
+}
+function fmtAowDate(d){
+  return d.toLocaleDateString('nl-NL',{month:'short',year:'numeric'});
+}
+
+// Verplichtingen
+function studieleningLast(){
+  if(!state.studie.aan) return 0;
+  let mt;
+  if(state.studie.fase === 'regulier'){
+    mt = state.studie.mt;
+  } else {
+    // Theoretisch maandtermijn = restschuld * annuityFactor(rente, looptijd)
+    if(state.studie.rest <= 0 || state.studie.looptijd <= 0) return 0;
+    mt = state.studie.rest * annuityFactor(state.studie.rente, state.studie.looptijd);
+  }
+  return mt * bruteringsFactor(state.studie.rente);
+}
+function bkrLast(){
+  return state.bkr.dk * 0.02 + state.bkr.pl + state.bkr.lease + state.bkr.rest;
+}
+function aliLast(){ return state.ali.kind + state.ali.partner; }
+function totaleVerplMaand(){ return studieleningLast() + bkrLast() + aliLast(); }
+
+// EBV/EBB
+function ebvBedrag(){ return EBV_BY_LABEL[state.energielabel] || 0; }
+function ebbBedrag(){ return state.ebb ? (EBB_BY_LABEL[state.energielabel] || 0) : 0; }
+
+// Verhoging applies
+function verhogingApplies(income, isAow){
+  if(!state.verhoging) return false;
+  if(state.inc2 > 0) return false;
+  const start = isAow ? STARTINKOMEN_WELAOW : STARTINKOMEN_NIETAOW;
+  if(income <= start) return false;
+  return true;
+}
+
+// Aankoop calc
+function calcAankoop(){
+  const koop = state.koopsom;
+  const totaalLening = state.delen.reduce((s,d)=>s+d.bedrag,0);
+  let kk = 0;
+  let kkDetail = [];
+  if(state.vonOfKk === 'kk'){
+    const ovb = koop * (state.overdrachtspct/100);
+    kk += ovb; if(ovb>0) kkDetail.push('OVB ' + eurStr(Math.round(ovb)));
+    kk += state.notariskosten; if(state.notariskosten>0) kkDetail.push('not. ' + eurStr(state.notariskosten));
+    kk += state.taxatiekosten; if(state.taxatiekosten>0) kkDetail.push('tax. ' + eurStr(state.taxatiekosten));
+    kk += state.advieskosten;  if(state.advieskosten>0) kkDetail.push('adv. ' + eurStr(state.advieskosten));
+  } else {
+    kk += state.taxatiekosten; if(state.taxatiekosten>0) kkDetail.push('tax. ' + eurStr(state.taxatiekosten));
+    kk += state.advieskosten;  if(state.advieskosten>0) kkDetail.push('adv. ' + eurStr(state.advieskosten));
+  }
+  // NHG borg op basis van benodigde lening (iteratief)
+  let borg = 0;
+  if(state.nhg){
+    borg = totaalLening * 0.004;
+    kk += borg;
+    kkDetail.push('NHG-borg ' + eurStr(Math.round(borg)));
+  }
+  const totaalBehoefte = koop + kk + state.bouwdepot;
+  const hypNodig = totaalBehoefte - state.eigenGeld;
+  return { koop, kk, kkDetail: kkDetail.join(' + '), borg,
+           bouwdepot: state.bouwdepot, totaalBehoefte,
+           eigenGeld: state.eigenGeld, hypNodig };
+}
+
+// ===== TOETSEN =====
+// Bereken pct + wgt voor een (income, isAow) scenario
+function calcGeintegreerd(income, isAow){
+  const totaal = state.delen.reduce((s,d)=>s+d.bedrag,0);
+  if(income <= 0 || totaal <= 0){
+    return null;
+  }
+  const ds_b1 = isAow ? DATA.welAOW_box1 : DATA.nietAOW_box1;
+  const ds_b3 = isAow ? DATA.welAOW_box3 : DATA.nietAOW_box3;
+
+  // Bereken effectieve rentes per box (max werkelijke rente in dat box)
+  const box1Delen = state.delen.filter(d=>!d.box3);
+  const box3Delen = state.delen.filter(d=>d.box3);
+  const box1Bedrag = box1Delen.reduce((s,d)=>s+d.bedrag,0);
+  const box3Bedrag = box3Delen.reduce((s,d)=>s+d.bedrag,0);
+
+  const effRate1 = box1Delen.length ? Math.max(...box1Delen.map(d=>toetsRente(d.rente,d.rentevast))) : 0;
+  const effRate3 = box3Delen.length ? Math.max(...box3Delen.map(d=>toetsRente(d.rente,d.rentevast))) : 0;
+
+  const row1 = box1Delen.length ? lookupRow(ds_b1, income) : null;
+  const row3 = box3Delen.length ? lookupRow(ds_b3, income) : null;
+
+  const pct1 = row1 ? row1.row[1][bucketIndex(effRate1)] : 0;
+  const pct3 = row3 ? row3.row[1][bucketIndex(effRate3)] : 0;
+
+  // Gewogen percentage
+  const wgtPct = totaal > 0 ? (pct1*box1Bedrag + pct3*box3Bedrag) / totaal : 0;
+  // Gewogen rente
+  const wgtRate = totaal > 0 ? (effRate1*box1Bedrag + effRate3*box3Bedrag) / totaal : 0;
+
+  // Verhogingen
+  const verhAmt = verhogingApplies(income, isAow) ? VERHOGING_BEDRAG : 0;
+  const ebvAmt = ebvBedrag();
+  const ebbAmt = ebbBedrag();
+  const totalExtra = verhAmt + ebvAmt + ebbAmt;
+  const af = annuityFactor(wgtRate, 30);
+
+  // Maandlast extra
+  const extraMaand = totalExtra * af;
+  const baseToegMaand = (income * wgtPct) / 12;
+  const verplLast = totaleVerplMaand();
+  const toegestaan = baseToegMaand + extraMaand - verplLast;
+
+  // Werkelijke maandlast voor toets (annuiteit @ toetsrente per deel)
+  const werkelijk = state.delen.reduce((s,d)=>{
+    const tr = toetsRente(d.rente, d.rentevast);
+    return s + d.bedrag * annuityFactor(tr, 30);
+  }, 0);
+
+  return {
+    income, isAow, pct1, pct3, wgtPct, wgtRate, af,
+    box1Bedrag, box3Bedrag, totaal,
+    verhAmt, ebvAmt, ebbAmt, totalExtra, extraMaand,
+    baseToegMaand, verplLast, toegestaan, werkelijk,
+    ruimte: toegestaan - werkelijk,
+    past: werkelijk <= toegestaan
+  };
+}
+
+// Werkelijke maandlast per deel (per aflosvorm, ECHT rente)
+function werkelijkeMaandlast(deel){
+  const r = deel.rente / 100;
+  if(deel.aflosvorm === 'aflossingsvrij'){
+    return deel.bedrag * r / 12;
+  } else if(deel.aflosvorm === 'lineair'){
+    // Eerste maand: aflossing + rente (hoogste maandlast)
+    return deel.bedrag/360 + deel.bedrag*r/12;
+  } else {
+    // Annuitair
+    return deel.bedrag * annuityFactor(deel.rente, 30);
+  }
+}
+
+// LTV / NHG / Aflossingsvrij
+function calcLtvNhg(){
+  const totaalLening = state.delen.reduce((s,d)=>s+d.bedrag,0);
+  const mw = state.marktwaarde;
+  const ltvRatio = mw > 0 ? totaalLening/mw : 0;
+
+  // LTV-grens: 100% standaard, 106% met EBV/EBB toepasselijk
+  const heeftEbv = ebvBedrag() > 0;
+  const heeftEbb = state.ebb && ebbBedrag() > 0;
+  const ltvMaxPct = (heeftEbv || heeftEbb) ? 1.06 : 1.00;
+  const ltvMaxBedrag = mw * ltvMaxPct;
+  const ltvPast = totaalLening <= ltvMaxBedrag + 1;
+
+  // Aflossingsvrij ≤ 50% marktwaarde (alleen box 1)
+  const avBedrag = state.delen
+    .filter(d => d.aflosvorm === 'aflossingsvrij' && !d.box3)
+    .reduce((s,d)=>s+d.bedrag, 0);
+  const avPct = mw > 0 ? avBedrag/mw : 0;
+  const avPast = avPct <= 0.50 + 0.0001;
+
+  // NHG
+  const nhgGrens = (heeftEbv || heeftEbb) ? NHG_GRENS_EBV_2026 : NHG_GRENS_2026;
+  const nhgPast = state.nhg ? totaalLening <= nhgGrens : true;
+  const nhgBorg = state.nhg ? totaalLening * 0.004 : 0;
+
+  return {
+    totaalLening, mw, ltvRatio, ltvMaxPct, ltvMaxBedrag, ltvPast,
+    avBedrag, avPct, avPast,
+    nhgGrens, nhgPast, nhgBorg
+  };
+}
+
+// Maximaal box 3 (voor sectie X)
+function calcMaxBox3(income, isAow){
+  if(income <= 0) return null;
+  const ds = isAow ? DATA.welAOW_box3 : DATA.nietAOW_box3;
+  // Pak hoogste rente onder de leningdelen die als box 3 zijn gemarkeerd, anders 5%
+  const box3Delen = state.delen.filter(d=>d.box3);
+  const maxToetsRente = box3Delen.length
+    ? Math.max(...box3Delen.map(d=>toetsRente(d.rente,d.rentevast)))
+    : 5.0;
+  const row = lookupRow(ds, income);
+  if(!row) return null;
+  const pct = row.row[1][bucketIndex(maxToetsRente)];
+  const af = annuityFactor(maxToetsRente, 30);
+  const baseMaand = (income * pct) / 12;
+  const verplLast = totaleVerplMaand();
+  const beschikbaar = baseMaand - verplLast;
+  const verhAmt = verhogingApplies(income, isAow) ? VERHOGING_BEDRAG : 0;
+  const ebvAmt = ebvBedrag();
+  const ebbAmt = ebbBedrag();
+  const totalExtra = verhAmt + ebvAmt + ebbAmt;
+  // Max hyp: beschikbaar / af, plus verhogingen
+  const baseHyp = beschikbaar > 0 ? Math.floor(beschikbaar / af / 100) * 100 : 0;
+  const totaalHyp = baseHyp + totalExtra;
+  return {
+    income, isAow, pct, toetsRente: maxToetsRente,
+    verhAmt, ebvAmt, ebbAmt, totalExtra,
+    baseHyp, totaalHyp,
+    overigeVerpl: verplLast,
+    inkomenLaag: pct === 0
+  };
+}
+
+// ===== RENDER =====
+function renderRows(){
+  const wrap = document.getElementById('rows');
+  if(state.delen.length === 0){
+    wrap.innerHTML = '<div class="empty-state">Voeg eerst een leningdeel toe</div>';
+    return;
+  }
+  wrap.innerHTML = state.delen.map((d, idx) => `
+    <div class="loan-cols loan-row" data-id="${d.id}">
+      <div class="row-cell"><span>€</span>
+        <input type="number" class="bedrag-in" value="${d.bedrag}" min="0" step="1000"></div>
+      <div class="row-cell">
+        <input type="number" class="rente-in" value="${d.rente}" min="0" max="20" step="0.1"><span>%</span></div>
+      <div class="row-cell">
+        <input type="number" class="rv-in" value="${d.rentevast}" min="1" max="30" step="1"><span>jr</span></div>
+      <div class="row-toggle">
+        <select class="aflosvorm-sel">
+          <option value="annuitair" ${d.aflosvorm==='annuitair'?'selected':''}>Annuïtair</option>
+          <option value="lineair" ${d.aflosvorm==='lineair'?'selected':''}>Lineair</option>
+          <option value="aflossingsvrij" ${d.aflosvorm==='aflossingsvrij'?'selected':''}>Aflossingsvrij</option>
+        </select>
+      </div>
+      <div class="row-toggle">
+        <label class="toggle"><input type="checkbox" class="b3-in" ${d.box3?'checked':''}><span class="slider"></span></label>
+      </div>
+      <div><button class="remove-btn" data-idx="${idx}" title="Verwijder">×</button></div>
+    </div>`).join('');
+
+  wrap.querySelectorAll('.bedrag-in').forEach((el,i)=>el.addEventListener('input',e=>{
+    state.delen[i].bedrag = +e.target.value || 0; renderResults();
+  }));
+  wrap.querySelectorAll('.rente-in').forEach((el,i)=>el.addEventListener('input',e=>{
+    state.delen[i].rente = +e.target.value || 0; renderResults();
+  }));
+  wrap.querySelectorAll('.rv-in').forEach((el,i)=>el.addEventListener('input',e=>{
+    state.delen[i].rentevast = +e.target.value || 1; renderResults();
+  }));
+  wrap.querySelectorAll('.aflosvorm-sel').forEach((el,i)=>el.addEventListener('change',e=>{
+    state.delen[i].aflosvorm = e.target.value; renderResults();
+  }));
+  wrap.querySelectorAll('.b3-in').forEach((el,i)=>el.addEventListener('change',e=>{
+    state.delen[i].box3 = e.target.checked; renderResults();
+  }));
+  wrap.querySelectorAll('.remove-btn').forEach(btn=>btn.addEventListener('click',e=>{
+    const idx = +e.target.dataset.idx;
+    state.delen.splice(idx,1); renderRows(); renderResults();
+  }));
+}
+
+function renderHeader(){
+  document.getElementById('stamp-naam').textContent = state.naamKlant || '—';
+  document.getElementById('stamp-adviseur').textContent = state.naamAdviseur || '—';
+  document.getElementById('stamp-wft').textContent = state.wftNummer || '—';
+  document.getElementById('stamp-datum').textContent = todayNL();
+  document.getElementById('datum-input').value = todayNL();
+}
+
+function renderAankoop(){
+  const a = calcAankoop();
+  document.getElementById('sum-koopsom').textContent = eurStr(a.koop);
+  document.getElementById('sum-kk').textContent = eurStr(Math.round(a.kk));
+  document.getElementById('sum-kk-detail').textContent = a.kkDetail || '—';
+  document.getElementById('sum-depot').textContent = eurStr(a.bouwdepot);
+  document.getElementById('sum-totaal').textContent = eurStr(Math.round(a.totaalBehoefte));
+  document.getElementById('sum-eigen').textContent = eurStr(a.eigenGeld);
+  document.getElementById('sum-hyp-nodig').textContent = eurStr(Math.round(a.hypNodig));
+  // Vergelijk met som van leningdelen
+  const lDelen = state.delen.reduce((s,d)=>s+d.bedrag,0);
+  const diff = lDelen - a.hypNodig;
+  let detail = '';
+  if(Math.abs(diff) < 100){ detail = 'leningdelen sluiten aan'; }
+  else if(diff > 0){ detail = 'leningdelen ' + eurStr(Math.round(diff)) + ' hóger dan nodig'; }
+  else { detail = 'leningdelen ' + eurStr(Math.round(-diff)) + ' lager dan nodig'; }
+  document.getElementById('sum-hyp-vs-delen').textContent = detail;
+}
+
+function renderVerplichtingen(){
+  const sl = studieleningLast();
+  const bkr = bkrLast() + aliLast();
+  const tot = sl + bkr;
+  document.getElementById('vsum-studie').textContent = eurStr(Math.round(sl));
+  document.getElementById('vsum-studie-detail').textContent = state.studie.aan
+    ? 'factor ' + bruteringsFactor(state.studie.rente).toFixed(2).replace('.',',')
+    : '—';
+  document.getElementById('vsum-bkr').textContent = eurStr(Math.round(bkr));
+  document.getElementById('vsum-totaal').textContent = eurStr(Math.round(tot));
+}
+
+function renderAowFor(personIdx){
+  const birthEl = personIdx === 1 ? state.birth1 : state.birth2;
+  const a = calcAow(birthEl);
+  const prefix = 'aow' + personIdx;
+  if(personIdx === 2){
+    const info = document.getElementById('aow2-info');
+    info.style.display = (state.inc2 > 0 && state.birth2) ? 'grid' : 'none';
+    if(!a) return;
+  }
+  if(!a){
+    if(personIdx === 1){
+      document.getElementById('aow1-current').textContent = '—';
+      document.getElementById('aow1-target').textContent = '—';
+      document.getElementById('aow1-date').textContent = '—';
+      document.getElementById('aow1-status').textContent = '—';
+    }
+    return;
+  }
+  document.getElementById(prefix+'-current').textContent = a.age + ' jr';
+  document.getElementById(prefix+'-target').innerHTML = fmtAowAge(a.aowAge) +
+    (a.estimateUsed ? '<span class="estimate-tag">indic.</span>' : '');
+  document.getElementById(prefix+'-target-sub').textContent = a.estimateUsed ? 'na 2032 indicatief' : '';
+  document.getElementById(prefix+'-date').textContent = fmtAowDate(a.aowDate);
+  const cell = document.getElementById(prefix+'-status-cell');
+  cell.classList.remove('status-yes','status-no','status-soon');
+  let label = '', sub = '';
+  if(a.isAowNow){ label = 'AOW bereikt'; sub = ''; cell.classList.add('status-yes'); }
+  else if(a.within10){ label = 'Binnen 10 jaar'; sub = '±' + Math.round(a.yearsToAow*10)/10 + ' jr'; cell.classList.add('status-soon'); }
+  else{ label = 'Niet AOW'; sub = '±' + Math.round(a.yearsToAow) + ' jr'; cell.classList.add('status-no'); }
+  document.getElementById(prefix+'-status').textContent = label;
+  document.getElementById(prefix+'-status-sub').textContent = sub;
+}
+
+function pensionStatus(){
+  // Returns object: anyWithin10, anyAow, totalIncomePre, totalIncomePost, isAowPre, isAowPost
+  const a1 = calcAow(state.birth1);
+  const a2 = state.inc2 > 0 ? calcAow(state.birth2) : null;
+  const anyAow = (a1 && a1.isAowNow) || (a2 && a2.isAowNow);
+  const anyWithin10 = (a1 && a1.within10) || (a2 && a2.within10);
+  const totalIncomePre  = state.inc1 + state.inc2;
+  const totalIncomePost = state.pens1 + state.pens2;
+  return { anyAow, anyWithin10, totalIncomePre, totalIncomePost, a1, a2 };
+}
+
+function renderToggleStates(){
+  // Verhoging
+  const inc1 = state.inc1;
+  const verhEl = document.getElementById('verh-block');
+  const verhStatus = document.getElementById('verh-status');
+  const verhReason = document.getElementById('verh-reason');
+  // Status: niet-AOW als basis (werknemer)
+  const ps = pensionStatus();
+  const isAowForVerh = ps.anyAow;
+  const applies = verhogingApplies(inc1, isAowForVerh);
+  verhEl.classList.remove('active-rule','inactive-rule');
+  if(state.verhoging){
+    if(applies){
+      verhEl.classList.add('active-rule');
+      verhStatus.className = 'opt-status gold-active';
+      verhStatus.textContent = 'incl. € 17k';
+      verhReason.textContent = '';
+    } else {
+      verhEl.classList.add('inactive-rule');
+      verhStatus.className = 'opt-status inactive';
+      verhStatus.textContent = 'Niet van toepassing';
+      const start = isAowForVerh ? STARTINKOMEN_WELAOW : STARTINKOMEN_NIETAOW;
+      if(state.inc2 > 0) verhReason.textContent = '(2e inkomen aanwezig)';
+      else if(inc1 <= start) verhReason.textContent = '(inkomen ≤ startinkomen €' + eur(start) + ')';
+      else verhReason.textContent = '';
+    }
+  } else {
+    verhStatus.className = 'opt-status off';
+    verhStatus.textContent = 'Uit';
+    verhReason.textContent = '';
+  }
+
+  // EBB
+  const ebbEl = document.getElementById('ebb-block');
+  const ebbStatus = document.getElementById('ebb-status');
+  const ebbReason = document.getElementById('ebb-reason');
+  const ebbBedragVal = state.ebb ? (EBB_BY_LABEL[state.energielabel] || 0) : 0;
+  ebbEl.classList.remove('active-rule','inactive-rule');
+  if(state.ebb){
+    if(ebbBedragVal > 0){
+      ebbEl.classList.add('active-rule');
+      ebbStatus.className = 'opt-status moss-active';
+      ebbStatus.textContent = '+ € ' + eur(ebbBedragVal);
+      ebbReason.textContent = '';
+    } else {
+      ebbEl.classList.add('inactive-rule');
+      ebbStatus.className = 'opt-status inactive';
+      ebbStatus.textContent = 'Niet van toepassing';
+      ebbReason.textContent = '(label biedt geen EBB)';
+    }
+  } else {
+    ebbStatus.className = 'opt-status off';
+    ebbStatus.textContent = 'Uit';
+    ebbReason.textContent = '';
+  }
+
+  // NHG
+  const nhgEl = document.getElementById('nhg-block');
+  const nhgStatus = document.getElementById('nhg-status');
+  nhgEl.classList.remove('active-rule','inactive-rule');
+  if(state.nhg){
+    nhgEl.classList.add('active-rule');
+    nhgStatus.className = 'opt-status teal-active';
+    nhgStatus.textContent = 'Aan';
+  } else {
+    nhgStatus.className = 'opt-status off';
+    nhgStatus.textContent = 'Uit';
+  }
+
+  // Studielening
+  const slEl = document.getElementById('studie-block');
+  const slStatus = document.getElementById('studie-status');
+  const slReason = document.getElementById('studie-reason');
+  slEl.classList.remove('active-rule','inactive-rule');
+  if(state.studie.aan){
+    slEl.classList.add('active-rule');
+    slStatus.className = 'opt-status plum-active';
+    const last = studieleningLast();
+    slStatus.textContent = '− € ' + eur(Math.round(last)) + '/mnd';
+    slReason.textContent = '';
+  } else {
+    slStatus.className = 'opt-status off';
+    slStatus.textContent = 'Uit';
+    slReason.textContent = '';
+  }
+
+  // Subfields visibility
+  document.getElementById('studie-subfields').style.display = state.studie.aan ? 'grid' : 'none';
+  document.getElementById('studie-mt-wrap').style.display = state.studie.fase === 'regulier' ? '' : 'none';
+  document.getElementById('studie-rest-wrap').style.display = state.studie.fase !== 'regulier' ? '' : 'none';
+  document.getElementById('studie-looptijd-wrap').style.display = state.studie.fase !== 'regulier' ? '' : 'none';
+}
+
+function renderInteg(toets, label){
+  document.getElementById('aow-summary-int').textContent = label;
+  const totaal = state.delen.reduce((s,d)=>s+d.bedrag,0);
+  document.getElementById('int-bedrag').textContent = eur(Math.round(totaal));
+  if(!toets){
+    document.getElementById('int-banner').className = 'toets-banner idle';
+    document.getElementById('int-icon').textContent = '—';
+    document.getElementById('int-title').textContent = 'Voer leningdelen en inkomen in';
+    document.getElementById('int-text').textContent = 'Toets verschijnt zodra inkomen en leningdelen beschikbaar zijn.';
+    document.getElementById('int-last').textContent = '—';
+    document.getElementById('int-toeg').textContent = '—';
+    document.getElementById('int-toeg-sub').textContent = '—';
+    document.getElementById('int-ruimte').textContent = '—';
+    document.getElementById('int-ruimte-card').classList.remove('pos','neg');
+    return;
+  }
+  // Banner
+  const banner = document.getElementById('int-banner');
+  const icon = document.getElementById('int-icon');
+  const title = document.getElementById('int-title');
+  const text = document.getElementById('int-text');
+  banner.className = 'toets-banner ' + (toets.past ? 'pass' : 'fail');
+  icon.textContent = toets.past ? '✓' : '✗';
+  title.textContent = toets.past
+    ? 'Past binnen TRHK 2026 (' + label + ')'
+    : 'Past niet binnen TRHK 2026 (' + label + ')';
+  text.textContent = toets.past
+    ? 'Werkelijke toetslast valt binnen toegestane financieringslast.'
+    : 'Werkelijke toetslast overschrijdt toegestane last met € ' + eur(Math.round(-toets.ruimte)) + '/mnd.';
+
+  document.getElementById('int-last').textContent = eur(Math.round(toets.werkelijk));
+  document.getElementById('int-toeg').textContent = eur(Math.round(toets.toegestaan));
+  let sub = pctStr(toets.wgtPct*100,2) + ' · ' + pctStr(toets.wgtRate,2) + ' rente';
+  if(toets.verplLast > 0) sub += ' · − €' + eur(Math.round(toets.verplLast)) + ' verpl.';
+  document.getElementById('int-toeg-sub').textContent = sub;
+  document.getElementById('int-ruimte').textContent = (toets.ruimte >= 0 ? '+' : '−') + ' ' + eur(Math.round(Math.abs(toets.ruimte)));
+  const ruimteCard = document.getElementById('int-ruimte-card');
+  ruimteCard.classList.remove('pos','neg');
+  ruimteCard.classList.add(toets.ruimte >= 0 ? 'pos' : 'neg');
+
+  // Breakdown
+  const wrap = document.getElementById('breakdown-rows');
+  wrap.innerHTML = state.delen.map((d,i)=>{
+    const tr = toetsRente(d.rente, d.rentevast);
+    const wm = werkelijkeMaandlast(d);
+    const tm = d.bedrag * annuityFactor(tr, 30);
+    return `<div class="breakdown-row">
+      <div class="cell" data-label="Deel"><span class="num">${i+1}</span></div>
+      <div class="cell" data-label="Bedrag"><span class="num">€ ${eur(d.bedrag)}</span></div>
+      <div class="cell" data-label="Rente"><span class="num">${pctStr(d.rente,2)}</span></div>
+      <div class="cell" data-label="Toetsr."><span class="num">${pctStr(tr,2)}</span></div>
+      <div class="cell" data-label="Vorm"><span class="form-tag">${d.aflosvorm.charAt(0).toUpperCase()+d.aflosvorm.slice(1)}</span></div>
+      <div class="cell" data-label="Werk. mnd"><span class="num">€ ${eur(Math.round(wm))}</span></div>
+      <div class="cell" data-label="Toets mnd"><span class="num">€ ${eur(Math.round(tm))}</span></div>
+      <div class="cell" data-label="Box 3"><span class="b3-tag ${d.box3?'yes':'no'}">${d.box3?'Box 3':'Box 1'}</span></div>
+    </div>`;
+  }).join('');
+}
+
+function renderAowToets(ps){
+  const sec = document.getElementById('aow-section');
+  if(!ps.anyWithin10 && !ps.anyAow){
+    sec.style.display = 'none';
+    document.getElementById('pension-warning').style.display = 'none';
+    return;
+  }
+  sec.style.display = '';
+  document.getElementById('pension-warning').style.display = ps.anyWithin10 ? '' : 'none';
+
+  const pre = calcGeintegreerd(ps.totalIncomePre, false);
+  const post = calcGeintegreerd(ps.totalIncomePost, true);
+
+  // Pre card
+  const preCard = document.getElementById('pre-aow-card');
+  preCard.classList.remove('pass-state','fail-state');
+  if(pre){
+    document.getElementById('pre-inkomen').textContent = eurStr(ps.totalIncomePre);
+    document.getElementById('pre-pct').textContent = pctStr(pre.wgtPct*100,2);
+    document.getElementById('pre-toeg').textContent = eurStr(Math.round(pre.toegestaan));
+    document.getElementById('pre-werk').textContent = eurStr(Math.round(pre.werkelijk));
+    document.getElementById('pre-ruimte').textContent = (pre.ruimte>=0?'+':'−') + ' € ' + eur(Math.round(Math.abs(pre.ruimte)));
+    document.getElementById('pre-status').textContent = pre.past ? 'Past ✓' : 'Past niet ✗';
+    preCard.classList.add(pre.past ? 'pass-state' : 'fail-state');
+  }
+  // Post card
+  const postCard = document.getElementById('post-aow-card');
+  postCard.classList.remove('pass-state','fail-state');
+  if(post){
+    document.getElementById('post-inkomen').textContent = eurStr(ps.totalIncomePost);
+    document.getElementById('post-pct').textContent = pctStr(post.wgtPct*100,2);
+    document.getElementById('post-toeg').textContent = eurStr(Math.round(post.toegestaan));
+    document.getElementById('post-werk').textContent = eurStr(Math.round(post.werkelijk));
+    document.getElementById('post-ruimte').textContent = (post.ruimte>=0?'+':'−') + ' € ' + eur(Math.round(Math.abs(post.ruimte)));
+    document.getElementById('post-status').textContent = post.past ? 'Past ✓' : 'Past niet ✗';
+    postCard.classList.add(post.past ? 'pass-state' : 'fail-state');
+  } else {
+    document.getElementById('post-inkomen').textContent = '—';
+    document.getElementById('post-status').textContent = 'Vul pensioeninkomen in';
+  }
+}
+
+function renderLtvNhg(){
+  const r = calcLtvNhg();
+  // LTV
+  const ltvCard = document.getElementById('ltv-card');
+  ltvCard.classList.remove('pass','fail','idle');
+  document.getElementById('ltv-lening').textContent = eurStr(r.totaalLening);
+  document.getElementById('ltv-mw').textContent = eurStr(r.mw);
+  document.getElementById('ltv-ratio').textContent = pctStr(r.ltvRatio*100,1);
+  document.getElementById('ltv-max').textContent = eurStr(Math.round(r.ltvMaxBedrag)) + ' (' + pctStr(r.ltvMaxPct*100,0) + ')';
+  document.getElementById('av-bedrag').textContent = eurStr(r.avBedrag);
+  document.getElementById('av-pct').textContent = pctStr(r.avPct*100,1) + ' van marktwaarde';
+  const allLtv = r.ltvPast && r.avPast;
+  document.getElementById('ltv-status').textContent = allLtv
+    ? 'Past ✓'
+    : (!r.ltvPast ? 'LTV te hoog ✗' : 'Aflossingsvrij > 50% ✗');
+  ltvCard.classList.add(r.totaalLening === 0 ? 'idle' : (allLtv ? 'pass' : 'fail'));
+
+  // NHG
+  const nhgCard = document.getElementById('nhg-card');
+  nhgCard.classList.remove('pass','fail','idle');
+  document.getElementById('nhg-gewenst').textContent = state.nhg ? 'Ja' : 'Nee';
+  document.getElementById('nhg-grens').textContent = eurStr(r.nhgGrens);
+  document.getElementById('nhg-lening').textContent = eurStr(r.totaalLening);
+  document.getElementById('nhg-borg').textContent = state.nhg ? eurStr(Math.round(r.nhgBorg)) : '—';
+  const verschil = r.nhgGrens - r.totaalLening;
+  document.getElementById('nhg-verschil').textContent = (verschil >= 0 ? '+' : '−') + ' € ' + eur(Math.round(Math.abs(verschil)));
+  if(!state.nhg){
+    nhgCard.classList.add('idle');
+    document.getElementById('nhg-status-result').textContent = 'NHG niet aangevraagd';
+  } else {
+    nhgCard.classList.add(r.nhgPast ? 'pass' : 'fail');
+    document.getElementById('nhg-status-result').textContent = r.nhgPast ? 'Past binnen NHG ✓' : 'Boven NHG-grens ✗';
+  }
+}
+
+function renderMaxBox3(){
+  const ps = pensionStatus();
+  // Voor max box 3: gebruik totaal pre-AOW inkomen voor noaow, totaal post-AOW voor aow
+  const noaowIn = ps.totalIncomePre;
+  const aowIn = ps.totalIncomePost;
+
+  const c1 = calcMaxBox3(noaowIn, false);
+  const c2 = calcMaxBox3(aowIn, true);
+
+  if(c1){
+    document.getElementById('hyp-noaow').textContent = eur(c1.totaalHyp);
+    document.getElementById('pct-noaow').textContent = (c1.pct*100).toFixed(2).replace('.',',');
+    let marks = '';
+    if(c1.verhAmt) marks += '<span class="chip gold">+€' + eur(c1.verhAmt) + '</span> verhoging ';
+    if(c1.ebvAmt) marks += '<span class="chip moss">+€' + eur(c1.ebvAmt) + '</span> EBV ';
+    if(c1.ebbAmt) marks += '<span class="chip plum">+€' + eur(c1.ebbAmt) + '</span> EBB ';
+    if(c1.overigeVerpl) marks += '<span class="chip" style="background:var(--terra-bg);color:var(--terra);">−€' + eur(Math.round(c1.overigeVerpl)) + '/mnd</span> verpl. ';
+    document.getElementById('hyp-noaow-marks').innerHTML = marks;
+    document.getElementById('warn-noaow').innerHTML = c1.inkomenLaag
+      ? '<div class="warn-row">Inkomen valt buiten tabelbereik (te laag of te hoog)</div>' : '';
+  } else {
+    document.getElementById('hyp-noaow').textContent = '—';
+    document.getElementById('pct-noaow').textContent = '—';
+    document.getElementById('hyp-noaow-marks').innerHTML = '';
+    document.getElementById('warn-noaow').innerHTML = '';
+  }
+  if(c2){
+    document.getElementById('hyp-aow').textContent = eur(c2.totaalHyp);
+    document.getElementById('pct-aow').textContent = (c2.pct*100).toFixed(2).replace('.',',');
+    let marks = '';
+    if(c2.verhAmt) marks += '<span class="chip gold">+€' + eur(c2.verhAmt) + '</span> verhoging ';
+    if(c2.ebvAmt) marks += '<span class="chip moss">+€' + eur(c2.ebvAmt) + '</span> EBV ';
+    if(c2.ebbAmt) marks += '<span class="chip plum">+€' + eur(c2.ebbAmt) + '</span> EBB ';
+    if(c2.overigeVerpl) marks += '<span class="chip" style="background:var(--terra-bg);color:var(--terra);">−€' + eur(Math.round(c2.overigeVerpl)) + '/mnd</span> verpl. ';
+    document.getElementById('hyp-aow-marks').innerHTML = marks;
+    document.getElementById('warn-aow').innerHTML = c2.inkomenLaag
+      ? '<div class="warn-row">Pensioeninkomen valt buiten tabelbereik</div>' : '';
+  } else {
+    document.getElementById('hyp-aow').textContent = '—';
+    document.getElementById('pct-aow').textContent = '—';
+    document.getElementById('hyp-aow-marks').innerHTML = '';
+    document.getElementById('warn-aow').innerHTML = '';
+  }
+
+  // Active highlight
+  document.getElementById('card-noaow').classList.toggle('active', !ps.anyAow);
+  document.getElementById('card-aow').classList.toggle('active', ps.anyAow);
+}
+
+function renderResults(){
+  renderHeader();
+  renderAankoop();
+  renderVerplichtingen();
+  renderAowFor(1);
+  renderAowFor(2);
+  renderToggleStates();
+
+  const ps = pensionStatus();
+  // Primary integrated toets: gebruik huidige inkomen en de aow-status (ja als beide AOW)
+  const isAowPrimary = ps.anyAow;
+  const incomePrimary = ps.totalIncomePre;
+  const primaryToets = calcGeintegreerd(incomePrimary, isAowPrimary);
+  const primLabel = isAowPrimary ? 'AOW-gerechtigd' : 'Pre-AOW';
+  renderInteg(primaryToets, primLabel);
+
+  renderAowToets(ps);
+  renderLtvNhg();
+  renderMaxBox3();
+
+  // Bouwjaar warning
+  const bj = state.bouwjaar;
+  document.getElementById('bouwjaar-warn').style.display = (bj && bj < 1970) ? '' : 'none';
+  // Funderings link
+  const fundBtn = document.getElementById('fund-btn');
+  if(state.adres && state.adres.length > 5){
+    fundBtn.removeAttribute('aria-disabled');
+    fundBtn.href = 'https://www.funderingslabel.nl/?q=' + encodeURIComponent(state.adres);
+  } else {
+    fundBtn.setAttribute('aria-disabled','true');
+    fundBtn.href = 'https://www.funderingslabel.nl';
+  }
+  // Income type help
+  document.getElementById('inc1-flex-help').style.display = state.inc1Type === 'flex' ? '' : 'none';
+}
+
+// ===== EVENT BINDINGS =====
+function bindEvents(){
+  // Klant
+  document.getElementById('naam').addEventListener('input', e => { state.naamKlant = e.target.value; renderResults(); });
+  document.getElementById('adviseur').addEventListener('input', e => { state.naamAdviseur = e.target.value; renderResults(); });
+  document.getElementById('wft').addEventListener('input', e => { state.wftNummer = e.target.value; renderResults(); });
+
+  // Woning
+  document.getElementById('adres').addEventListener('input', e => { state.adres = e.target.value; renderResults(); });
+  document.getElementById('bouwjaar').addEventListener('input', e => { state.bouwjaar = +e.target.value || null; renderResults(); });
+  document.getElementById('elabel').addEventListener('change', e => { state.energielabel = e.target.value; renderResults(); });
+  document.getElementById('vonkk').addEventListener('change', e => { state.vonOfKk = e.target.value; renderResults(); });
+
+  // Aankoop
+  document.getElementById('koopsom').addEventListener('input', e => { state.koopsom = +e.target.value || 0; renderResults(); });
+  document.getElementById('marktwaarde').addEventListener('input', e => { state.marktwaarde = +e.target.value || 0; renderResults(); });
+  document.getElementById('overdrachtspct').addEventListener('input', e => { state.overdrachtspct = +e.target.value || 0; renderResults(); });
+  document.getElementById('notariskosten').addEventListener('input', e => { state.notariskosten = +e.target.value || 0; renderResults(); });
+  document.getElementById('taxatiekosten').addEventListener('input', e => { state.taxatiekosten = +e.target.value || 0; renderResults(); });
+  document.getElementById('advieskosten').addEventListener('input', e => { state.advieskosten = +e.target.value || 0; renderResults(); });
+  document.getElementById('bouwdepot').addEventListener('input', e => { state.bouwdepot = +e.target.value || 0; renderResults(); });
+  document.getElementById('eigengeld').addEventListener('input', e => { state.eigenGeld = +e.target.value || 0; renderResults(); });
+  document.getElementById('nhg-toggle').addEventListener('change', e => { state.nhg = e.target.checked; renderResults(); });
+
+  // Inkomen
+  document.getElementById('inc1').addEventListener('input', e => { state.inc1 = +e.target.value || 0; renderResults(); });
+  document.getElementById('inc1type').addEventListener('change', e => { state.inc1Type = e.target.value; renderResults(); });
+  document.getElementById('birth1').addEventListener('change', e => { state.birth1 = e.target.value; renderResults(); });
+  document.getElementById('pens1').addEventListener('input', e => { state.pens1 = +e.target.value || 0; renderResults(); });
+  document.getElementById('inc2').addEventListener('input', e => { state.inc2 = +e.target.value || 0; renderResults(); });
+  document.getElementById('inc2type').addEventListener('change', e => { state.inc2Type = e.target.value; renderResults(); });
+  document.getElementById('birth2').addEventListener('change', e => { state.birth2 = e.target.value; renderResults(); });
+  document.getElementById('pens2').addEventListener('input', e => { state.pens2 = +e.target.value || 0; renderResults(); });
+
+  // Verhogingen
+  document.getElementById('verh-toggle').addEventListener('change', e => { state.verhoging = e.target.checked; renderResults(); });
+  document.getElementById('ebb-toggle').addEventListener('change', e => { state.ebb = e.target.checked; renderResults(); });
+
+  // Studielening
+  document.getElementById('studie-toggle').addEventListener('change', e => { state.studie.aan = e.target.checked; renderResults(); });
+  document.getElementById('studie-fase').addEventListener('change', e => { state.studie.fase = e.target.value; renderResults(); });
+  document.getElementById('studie-mt').addEventListener('input', e => { state.studie.mt = +e.target.value || 0; renderResults(); });
+  document.getElementById('studie-rente').addEventListener('input', e => { state.studie.rente = +e.target.value || 0; renderResults(); });
+  document.getElementById('studie-rest').addEventListener('input', e => { state.studie.rest = +e.target.value || 0; renderResults(); });
+  document.getElementById('studie-looptijd').addEventListener('input', e => { state.studie.looptijd = +e.target.value || 1; renderResults(); });
+
+  // BKR
+  document.getElementById('bkr-dk').addEventListener('input', e => { state.bkr.dk = +e.target.value || 0; renderResults(); });
+  document.getElementById('bkr-pl').addEventListener('input', e => { state.bkr.pl = +e.target.value || 0; renderResults(); });
+  document.getElementById('bkr-lease').addEventListener('input', e => { state.bkr.lease = +e.target.value || 0; renderResults(); });
+  document.getElementById('bkr-rest').addEventListener('input', e => { state.bkr.rest = +e.target.value || 0; renderResults(); });
+
+  // Alimentatie
+  document.getElementById('ali-kind').addEventListener('input', e => { state.ali.kind = +e.target.value || 0; renderResults(); });
+  document.getElementById('ali-partner').addEventListener('input', e => { state.ali.partner = +e.target.value || 0; renderResults(); });
+
+  // Add deel
+  document.getElementById('add-btn').addEventListener('click', () => {
+    state.delen.push({id: state.nextId++, bedrag: 0, rente: 4.0, rentevast: 10, box3: false, aflosvorm: 'annuitair'});
+    renderRows();
+    renderResults();
+  });
+}
+
+// ===== INIT =====
+bindEvents();
+renderRows();
+renderResults();
+
+</script>
+</body>
+</html>
